@@ -1,0 +1,180 @@
+# =============================================================================
+# Data Orchestration Agent - Master Docker Compose Configuration
+# =============================================================================
+# Orchestrates all MCP agents for complete data platform development
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # =============================================================================
+  # Data Discovery Agent - Port 8080
+  # =============================================================================
+  data-discovery-agent:
+    build:
+      context: ../data-discovery-agent
+      dockerfile: Dockerfile
+    container_name: data-discovery-mcp
+    image: data-discovery-agent:latest
+    env_file:
+      - ../data-discovery-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8080
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/mcp/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../data-discovery-agent/src:/app/src:ro
+      - ../data-discovery-agent/config:/app/config:ro
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/mcp/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-platform
+
+  # =============================================================================
+  # Query Generation Agent - Port 8081
+  # =============================================================================
+  query-generation-agent:
+    build:
+      context: ../query-generation-agent
+      dockerfile: Dockerfile
+    container_name: query-generation-mcp
+    image: query-generation-agent:latest
+    env_file:
+      - ../query-generation-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8081
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/appuser/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8081:8081"
+    volumes:
+      - ../query-generation-agent/logs:/app/logs
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/appuser/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8081/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-platform
+
+  # =============================================================================
+  # Data Planning Agent - Port 8082
+  # =============================================================================
+  data-planning-agent:
+    build:
+      context: ../data-planning-agent
+      dockerfile: Dockerfile
+    container_name: data-planning-mcp
+    image: data-planning-agent:latest
+    env_file:
+      - ../data-planning-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8082
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/mcp/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8082:8082"
+    volumes:
+      - ../data-planning-agent/output:/app/output
+      - ../data-planning-agent/context.example:/app/context:ro
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/mcp/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8082/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-platform
+
+  # =============================================================================
+  # Data GraphQL Agent - Port 8083
+  # =============================================================================
+  data-graphql-agent:
+    build:
+      context: ../data-graphql-agent
+      dockerfile: Dockerfile
+    container_name: data-graphql-mcp
+    image: data-graphql-agent:latest
+    env_file:
+      - ../data-graphql-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8083
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/mcp/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8083:8083"
+    volumes:
+      - ../data-graphql-agent/output:/app/output
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/mcp/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8083/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-platform
+
+# =============================================================================
+# Shared Network
+# =============================================================================
+networks:
+  mcp-platform:
+    driver: bridge
+    name: mcp-platform-network
+
+# =============================================================================
+# Usage Instructions
+# =============================================================================
+# 
+# Start all agents:
+#   docker-compose up -d
+#
+# Start specific agents:
+#   docker-compose up -d data-discovery-agent query-generation-agent
+#
+# View logs for all agents:
+#   docker-compose logs -f
+#
+# View logs for specific agent:
+#   docker-compose logs -f data-planning-agent
+#
+# Check status:
+#   docker-compose ps
+#
+# Stop all agents:
+#   docker-compose down
+#
+# Rebuild and restart:
+#   docker-compose up -d --build
+#
+# Check health of all endpoints:
+#   curl http://localhost:8080/health  # Data Discovery
+#   curl http://localhost:8081/health  # Query Generation
+#   curl http://localhost:8082/health  # Data Planning
+#   curl http://localhost:8083/health  # Data GraphQL
+#
+# =============================================================================
+
