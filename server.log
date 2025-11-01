@@ -1,0 +1,95 @@
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:42: UserWarning: [EXPERIMENTAL] BigQueryCredentialsConfig: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credentials_config = BigQueryCredentialsConfig(credentials=credentials)
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/google/adk/utils/feature_decorator.py:87: UserWarning: [EXPERIMENTAL] BaseGoogleCredentialsConfig: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  return orig_init(self, *args, **kwargs)
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:44: UserWarning: [EXPERIMENTAL] BigQueryToolConfig: Config defaults may have breaking change in the future.
+  tool_config = BigQueryToolConfig(
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:50: UserWarning: [EXPERIMENTAL] BigQueryToolset: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  bigquery_toolset = BigQueryToolset(
+2025-10-31 17:42:51,793 - __main__ - INFO - Starting Data Orchestration Agent on 0.0.0.0:8085
+INFO:     Started server process [46356]
+INFO:     Waiting for application startup.
+2025-10-31 17:42:51,805 - __main__ - INFO - Loading configuration...
+2025-10-31 17:42:51,810 - __main__ - INFO - Initializing MCP clients...
+2025-10-31 17:42:51,996 - __main__ - INFO - Creating BigQuery sub-agent...
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:42: UserWarning: [EXPERIMENTAL] BigQueryCredentialsConfig: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credentials_config = BigQueryCredentialsConfig(credentials=credentials)
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/google/adk/utils/feature_decorator.py:87: UserWarning: [EXPERIMENTAL] BaseGoogleCredentialsConfig: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  return orig_init(self, *args, **kwargs)
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:44: UserWarning: [EXPERIMENTAL] BigQueryToolConfig: Config defaults may have breaking change in the future.
+  tool_config = BigQueryToolConfig(
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:50: UserWarning: [EXPERIMENTAL] BigQueryToolset: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  bigquery_toolset = BigQueryToolset(
+2025-10-31 17:42:53,402 - data_orchestration_agent.agents.bigquery_agent - INFO - BigQuery sub-agent created successfully with BigQueryToolset
+2025-10-31 17:42:53,402 - __main__ - INFO - Creating orchestration agent...
+2025-10-31 17:42:53,402 - data_orchestration_agent.agents.root_agent - INFO - Injected clients into tool modules
+2025-10-31 17:42:53,402 - data_orchestration_agent.agents.ask_agent - INFO - Ask/Discover agent created successfully
+2025-10-31 17:42:53,402 - data_orchestration_agent.agents.plan_agent - INFO - Plan agent created successfully with PRP generator sub-agent
+2025-10-31 17:42:53,403 - data_orchestration_agent.agents.action_agent - INFO - Action agent created successfully
+2025-10-31 17:42:53,403 - data_orchestration_agent.agents.root_agent - INFO - Created specialized sub-agents (ask, plan, action)
+2025-10-31 17:42:53,403 - data_orchestration_agent.agents.root_agent - INFO - Root orchestration agent created with sub-agents
+2025-10-31 17:42:53,403 - __main__ - INFO - Orchestration agent ready!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8085 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58850 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58860 - "GET /health HTTP/1.1" 200 OK
+2025-10-31 17:43:08,767 - __main__ - INFO - Processing message for session test-session: what data do I have to backtest my nfl predictions?
+2025-10-31 17:43:08,768 - __main__ - INFO - Creating new chat session for test-session
+2025-10-31 17:43:08,768 - __main__ - ERROR - Error processing chat: 'LlmAgent' object has no attribute 'create_chat'
+Traceback (most recent call last):
+  File "/home/user/git/data-orchestration-agent/src/data_orchestration_agent/main.py", line 214, in chat
+    chat_sessions[request.session_id] = agent_instance.create_chat()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'LlmAgent' object has no attribute 'create_chat'
+INFO:     127.0.0.1:58860 - "POST /chat HTTP/1.1" 500 Internal Server Error
+2025-10-31 17:43:08,783 - __main__ - INFO - Processing message for session test-session: what about live inferences
+2025-10-31 17:43:08,783 - __main__ - INFO - Creating new chat session for test-session
+2025-10-31 17:43:08,783 - __main__ - ERROR - Error processing chat: 'LlmAgent' object has no attribute 'create_chat'
+Traceback (most recent call last):
+  File "/home/user/git/data-orchestration-agent/src/data_orchestration_agent/main.py", line 214, in chat
+    chat_sessions[request.session_id] = agent_instance.create_chat()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'LlmAgent' object has no attribute 'create_chat'
+INFO:     127.0.0.1:58860 - "POST /chat HTTP/1.1" 500 Internal Server Error
+2025-10-31 17:43:08,791 - __main__ - INFO - Processing message for session test-session: ok it looks like I am interested in backtest_regression_inferences and regression_predictions tell me more about these tables
+2025-10-31 17:43:08,791 - __main__ - INFO - Creating new chat session for test-session
+2025-10-31 17:43:08,791 - __main__ - ERROR - Error processing chat: 'LlmAgent' object has no attribute 'create_chat'
+Traceback (most recent call last):
+  File "/home/user/git/data-orchestration-agent/src/data_orchestration_agent/main.py", line 214, in chat
+    chat_sessions[request.session_id] = agent_instance.create_chat()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'LlmAgent' object has no attribute 'create_chat'
+INFO:     127.0.0.1:58860 - "POST /chat HTTP/1.1" 500 Internal Server Error
+2025-10-31 17:43:08,799 - __main__ - INFO - Processing message for session test-session: great lets create a plan
+2025-10-31 17:43:08,799 - __main__ - INFO - Creating new chat session for test-session
+2025-10-31 17:43:08,799 - __main__ - ERROR - Error processing chat: 'LlmAgent' object has no attribute 'create_chat'
+Traceback (most recent call last):
+  File "/home/user/git/data-orchestration-agent/src/data_orchestration_agent/main.py", line 214, in chat
+    chat_sessions[request.session_id] = agent_instance.create_chat()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'LlmAgent' object has no attribute 'create_chat'
+INFO:     127.0.0.1:58860 - "POST /chat HTTP/1.1" 500 Internal Server Error
+2025-10-31 17:43:08,807 - __main__ - INFO - Processing message for session test-session: yes switch to plan mode
+2025-10-31 17:43:08,808 - __main__ - INFO - Creating new chat session for test-session
+2025-10-31 17:43:08,808 - __main__ - ERROR - Error processing chat: 'LlmAgent' object has no attribute 'create_chat'
+Traceback (most recent call last):
+  File "/home/user/git/data-orchestration-agent/src/data_orchestration_agent/main.py", line 214, in chat
+    chat_sessions[request.session_id] = agent_instance.create_chat()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'LlmAgent' object has no attribute 'create_chat'
+INFO:     127.0.0.1:58860 - "POST /chat HTTP/1.1" 500 Internal Server Error
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-10-31 17:45:31,168 - __main__ - INFO - Shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46356]

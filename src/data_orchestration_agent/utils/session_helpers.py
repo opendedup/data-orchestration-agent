@@ -10,8 +10,12 @@ class SessionState(dict):
         """Initialize session state with default values."""
         super().__init__(*args, **kwargs)
         self.setdefault("current_mode", "ask")  # Always start in Ask/Discover mode
-        self.setdefault("planning_session_id", None)
-        self.setdefault("planning_complete", False)
+        self.setdefault("planning", {
+            "qa_history": [],
+            "discovered_datasets": [],
+            "intent_confirmed": False,
+            "datasets_confirmed": False
+        })
         self.setdefault("prp_text", None)
         self.setdefault("discovered_datasets", None)
         self.setdefault("query_results", None)

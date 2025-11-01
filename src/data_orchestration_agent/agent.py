@@ -13,7 +13,6 @@ from .clients import (
     ApolloMCPClient,
     DiscoveryClient,
     GraphQLClient,
-    PlanningClient,
     QueryGenClient,
 )
 from .config import load_config
@@ -30,10 +29,6 @@ discovery_client = DiscoveryClient(
 )
 query_gen_client = QueryGenClient(
     config.query_gen_agent_url,
-    timeout=config.http_timeout
-)
-planning_client = PlanningClient(
-    config.planning_agent_url,
     timeout=config.http_timeout
 )
 graphql_client = GraphQLClient(
@@ -53,7 +48,6 @@ root_agent = create_orchestration_agent(
     config=config,
     discovery_client=discovery_client,
     query_gen_client=query_gen_client,
-    planning_client=planning_client,
     graphql_client=graphql_client,
     apollo_mcp_client=apollo_mcp_client,
     bigquery_agent=bigquery_agent,

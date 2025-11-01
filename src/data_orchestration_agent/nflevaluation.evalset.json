@@ -1,0 +1,1066 @@
+{
+  "eval_set_id": "nflevaluation",
+  "name": "nflevaluation",
+  "eval_cases": [
+    {
+      "eval_id": "case5701bd",
+      "conversation": [],
+      "session_input": {
+        "app_name": "data_orchestration_agent",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1762007428.4833384
+    },
+    {
+      "eval_id": "casefa000c",
+      "conversation": [
+        {
+          "invocation_id": "e-4a8267fa-470f-4766-b361-c4f1fc9de584",
+          "user_content": {
+            "parts": [
+              {
+                "text": "what data do I have to backtest my nfl predictions?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CqQGAePx_16wxb-uQ55lo0JGkFr_wdQj-_KSG8yg09RFFD4APr5Tkmi1H-APTvueR2kG1eo2JtwuflvUDccnLdtz4lpTiQcwkMp_oRlgSYJHgpxUqV9tBadcx9OBcLmHmjg16kK_ITV7_aAcFgv2FCmmZwDV9K6qHYfpkvCM14M1wUVWFvl9wzqRizqFTj0yiiaQwwVAs2xEg45NK6I0raiuK-ETCHPQePVBdEaTRUaFBJou_07JkcrF6d1v67rL2OmpERUIS78t4rbFKzM-CZ5NE55rBU-yhP0T7dVUhjKAYYcPKzWv8eY1F-rTGETqd1-8aXRP1Mii_2Ue4uc-v2oOZWe5pXdLGjzq-RUkb62JAeydg8-4RGaKBn6-oLmASoNhCSRF0Ed8SLHQQfLpLmfeG_6ajCorHzXwP5pfmfU0V2CeFlTQhqEsjoHu9uHOfJNcdz6vDRhkaDEHZHBGQSXtKEVoJQ-mZEGbrBFs4Q3IVXcU6Urqlgp_mxPWbklfMRmlvDpE-5GhCG9jsCKwKm-Kt1_pQS0KoR5TS3Hx-2WWq5rw88UdNjf0pLAUFW1UhLk4lMHiQlHsrn9ZSnyCOanBJeAiCTq9Je5glPlDxQevzJ22xr28SZqguC2QVb-ZXtowBA0_pD8WwvQ8D-PEA7vnw_6fUPw41x_7vfE2RXCE1Jg2BME2fj0Boyg3JR2i1gCZTSGFb391Wj65ZBUfXjvs70g_VokrS91AxuGXV9KPYPzfeiQMLl4WySiuOHkN1OcdowGAwfNh6TTpTaScuyu9mkyr9V0bnr8exNPNu5nnIppwZxGw-0z9N52N8JxHC3kx0shB3zTwkGu5i5d9B_Yf8iDsqN-owYRwbW4bSZlWhRhkQm-LVNn-XoR65puKssAOUgGTA-N6PUQjBbATZuCCIazgdD0eqcbETDi7qqDHdmtK78hJGUHVvsDHKtc9xD0QLXJHBQiy3_Qh8QP3y5uXjoKXFh0qRCtv3aZduJFZkvaqg4qIAtN4d8EzUfxfLj0HL0Xf0BscMkbZV0_UV7IbaWt664MkCcBL40O-P5NrOZ29Tk4p",
+                "text": "# Ask Mode\nI found several datasets that might be useful for backtesting your NFL predictions:\n\n*   **lennyisagoodboy.lfndata.backtest_qb_td_inferences**: This table seems to contain inferences (predictions) specifically for quarterback touchdowns, which could be directly relevant for backtesting. It has 702 rows.\n*   **lennyisagoodboy.lfndata.backtest_regression_inferences**: Similar to the above, this table also contains backtest inferences, possibly for a broader range of predictions based on regression models. It has 449 rows.\n*   **lennyisagoodboy.lfndata.qb_td_predictions**: This table likely holds the original quarterback touchdown predictions before backtesting. It has 168 rows.\n*   **lennyisagoodboy.lfndata.regression_predictions**: This table might contain general regression-based predictions. It has 700 rows.\n*   **lennyisagoodboy.lfndata.post_game_summaries**: This table could provide the actual outcomes of games, which are necessary to compare against your predictions during backtesting. It has 1205 rows.\n\nWould you like me to get more details on any of these tables, such as their schemas, to help you understand their content better?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "root_orchestration_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CvECAePx_14f4aqd1VEotOCXfaWgZpsmWQRt8-BVm8u2lv5axjfivqL3A0Xalq7s-aZNz44UjBvRvJROZIhCQOELGTCZATTDUgd-8fFrrIio3mngcRTxMOw5xOFquDVM1NTjA7L81WC2oTFFS8MspjUFbtonGwH_gQ4EouPFTSyGVNi1zTOicZ8htpIGC2aAIj8yA7hzjW-0mpTRNm_g7FVDuQTCo0-fFKj87hzQ6nD9Z9U3sVaLZFNUJycp7ubg-CCm_sodYL2fE5IaYCa4s9FSK2wBPG6yTkqqqJTc8FPSLDG4C_lPm9aYiZ3ouwZGNfNhBymRnjHaVm_4D_A2nSjCQtxHJnxHpSnpzRWCMaTVMXe6TYyUFD-OsrfvQIwbLYDRU2rRIOuzYJF6iKfqFOfC0Hapd7OMeUXfbGN5H7BnaBu-Rpus02PC0l-aLonS7xu-lUOZl2u0b3frF3EGBYWuLHllwNLrzPibCYpLu6RYbi--",
+                      "function_call": {
+                        "id": "adk-f0cd87d7-dbd7-44de-a9fa-2159273ca434",
+                        "args": {
+                          "agent_name": "ask_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "root_orchestration_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f0cd87d7-dbd7-44de-a9fa-2159273ca434",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CogEAePx_15d4h4cLmerWNmHmfhRPxhCnOTA6LkkugnaFMA-XWWR263MMDBVAdniZW0gbIiQ1h-on6fmSYdxohY0ffXdSx3igfkHhxLRPcrtIfSPObbA2xC-cnPuNNqGI0CLTC3kcbuwe51Ct0XXjhwC9vcrkK7xCU-gKDSPMW0_enS0fYPwYzIJ1m2oGMe3OKYqMuMYNGU_DveB5IBCfzRJNJHA61dq1tfTDncYTTc1iM77xA-6jiSNdZd1QFyGSIqm6xBOeUn2zIiW3x1HSYjp1ywngaw5iyCLGnZ6gj-BMBQ3H-QBylSqBv2Qs9l7ZowpzLKxuANB1ytG47tUPmaok41Y9KPMaShth1aKZ0nVDqSnSeo5lJ4pcRGCscw2y3uwIlUAe2ixTrPwRAwMXmaTIjUovCAU6C5mox9fsuWEZwer0P20lw6Hs8oVwQtIIXA3UkSFnOHxKBMdw1LTmJ7z3t4wPkxNENvNqLHCUPF_rodXT08CRDg77IW7qWTbkPv05hKH4h8DthRRTtvBQouC4QqHKueLGs6xrJ5jRn1spStWjtBd2nCiN0tXGRtmuaV6mCh51sDQ-synVQ10TV3k95M6a7PsHCR1-y5PXU7UiNYZfeCBOHtFxsJjh-PJm3V7Zax1NjU5BC20F6qO0I0D-BesDvSyp5WBmUrUAZsKbuIoA5M8aXNbzQ==",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-eeb88be5-9121-4f6e-ab5e-405d503edbb1",
+                        "args": {
+                          "query": "NFL predictions backtest data"
+                        },
+                        "name": "search_datasets"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-eeb88be5-9121-4f6e-ab5e-405d503edbb1",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 32 dataset(s):\n\n1. **lennyisagoodboy.lfndata.backtest_qb_td_inferences**\n   - Description: None\n   - Rows: 702\n\n2. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n3. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n4. **lennyisagoodboy.lfndata.backtest_regression_inferences**\n   - Description: None\n   - Rows: 449\n\n5. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n... and 27 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007539.975617
+        },
+        {
+          "invocation_id": "e-9303f07e-1909-4b8b-8f58-f0ecb2f5d7eb",
+          "user_content": {
+            "parts": [
+              {
+                "text": "what about live inferences?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CpoGAePx_15qW5l3mgKUG77n5TKN8_OiHN7ag9YyfsfS6d5LWhLhTzTlkM71hba681vanpKmW33_1FIfKKxgR1OQEEf7D4ocnHCRFtKAlqi00fNPw6PyQoyE4FpBjxB1DWkPTUqxIBZ9AF6FV2Kc-SlVxnDZ4nh3Ea2K8fm46kRUJxR9sNazHHA4VHyJlt_9SD4x7AaBGuJ9BCqmRbMM65GyUbUdSO5TnN27LTxGtAZPClHp7kiuIfeWcTaM0r1hbyGKowtR_2M4Mob4KaeE0dTcHYAoncDoBWKeIpCeX2IWhH6uGXuTzu7eBuAGQ5Tq8sLHLthI9LvVs8xrdSUD3FIDXW7PXQY32Ux4cm5-fIv55l77maGItXVNGuMtLiTJjxFEtQgxlKetiHCrtL4jk1unWk-IGXF9ISbH0_FNuJgFRk7evzRIGKfnJyzmHDrFrDTu5spKzzw9FPpPM4l6htkEhxj2bO-skFGuDyx6SbnTaT0GZf1HuIB1U51b9J4pdjxncS9fHFuOmPrTLFimnZlO9VJFAFolccbT6xoAbkNDwV-eMNdTe_tEh_vseyOaD_kQ1_fYcp2HtneJw4krZNf_oR1EwxVaCguwfSLlRBGp1AUi18LehUBE2iuaGs9vz0BkF5tf5FeZRUUJTI0nskC8C1nrWL-IhS4fAY-bCCz95EsZPr2oxR1QQEHoAKKJ8ZRGXIFfG-oSC_ap6IbtVsmT2fTSiDLR79IonA9q8mURSHpTpvR8bw_sYKbohGeqCZNAiooyNFXOUe050RkTmNTIttTQ6T8QhxNBtpcTnn4ApCNCqesIPzl1lRZ7duXcgTxLP1NJgkCriLaC_UGOgVCGEuzDrXWQEXNO5fPmYnrNI76fuNYxZVzBONf8xfW2rDzrW9wb57ICbiK4amlPL3itDm3DIGqPHnM7C4SkYnCaCibovalXy6nrUd8ezGZOEnhct6cjD4epsQpZetO3aEhCIZgilFERHl9WFQuHIcMNFeYBqPEnWOBvQrQgupoKPBQOQg0m27JCk8PAoxfDEs4xki-Wfp18ZyGLTgY=",
+                "text": "# Ask Mode\nI searched for \"NFL live inferences data\" and found a couple of tables that *might* be relevant, but they currently show 0 rows:\n\n*   **lennyisagoodboy.lfndata.historical_inference_view**\n*   **lennyisagoodboy.lfndata.historical_inference_view_questionable**\n\nThis suggests there might not be actively populated \"live inference\" tables with that exact naming convention.\n\nI also found tables like `lennyisagoodboy.lfndata.post_game_summaries` and `lennyisagoodboy.lfndata.pre_game_team_data` which contain historical data, but don't directly indicate \"live inferences\".\n\nWere you looking for:\n*   \"Real-time predictions\"\n*   \"Streaming predictions\"\n*   \"In-game predictions\"\n*   \"Prediction API data\"\n\nOr could you clarify what aspects of \"live inferences\" you're most interested in (e.g., real-time scores, in-progress game statistics, live betting odds, etc.)?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CqEDAePx_16KMXXwa6W4dcYyDL3ILe0jfFzWFe8k4Snp5OdXFq-pcxkFWfFNiddY3OAKz4uT8x8E4NHP7VYypQhLLVlsUlKNTLzZzTbM5dxpkv0L7tDJO6t-krr9uLykgT5huqRdVlfrsRPNInkkhUhVVpM9YY6281ZE2dXVNHQnXgHbWDxaZSwSOC_b3WpbD4xeoej4GpQk4dOP0Az1w8dT-b7N3DUQtrlu5NMWE0iFrn3T4o7C0yaY5P6WrAa19PEs8M2HVEp-cG-FuSDkKimZJS542DyWVclbAxOuu9_Xhu5MB7P_Lw3ado_gzFFqWbcuAJ0yw-o15cUuFZkhTWfgbHE7RoF5Wz7rOEoyQk0xoGPaqxP5C-yPI38jGUC0DCb3uEIslX22UP0bAAR_Onu7REoUG4rkBufaM3ylSB-49ft3-z8WbRT7e2VV5aUluJgX19aF_4LUdusf8W9rIPEgcsfuXEKNR0TtBFr0jIiBUMMHS4VHRjOnnxQODY89cKiQE72SnRVQigKmDvYc3sNcXFiTBfrZ5y1tSdQYjESqJbPG",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-68a69f74-ad4e-43ef-a5d4-073a7014ea2f",
+                        "args": {
+                          "query": "NFL live inferences data"
+                        },
+                        "name": "search_datasets"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-68a69f74-ad4e-43ef-a5d4-073a7014ea2f",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 33 dataset(s):\n\n1. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n2. **lennyisagoodboy.lfndata.backtest_regression_inferences**\n   - Description: None\n   - Rows: 449\n\n3. **lennyisagoodboy.lfndata.pre_game_team_data**\n   - Description: None\n   - Rows: 190\n\n4. **lennyisagoodboy.lfndata.historical_inference_view**\n   - Description: None\n   - Rows: 0\n\n5. **lennyisagoodboy.lfndata.historical_inference_view_questionable**\n   - Description: None\n   - Rows: 0\n\n... and 28 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007559.905461
+        },
+        {
+          "invocation_id": "e-cac8f0da-155c-46f5-b851-9683c637c7ba",
+          "user_content": {
+            "parts": [
+              {
+                "text": "search for all of those terms"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CpQLAePx_14b6Ne5Tqw-nuyy-2CNXcRe_BgpHkBKo3Yy43SuCCIa3tFPwPMxcyQ5V1TR8WxMvDB992R44J-AX-_B7uoGCN7eCfHzXg-6EQu59wE2RSCsJ0eRDzynmRpRRMTjHvBj9GcKXNZEpxcf9SCydMeHrBnkmPmAK390qydi9P0EAdUI98Jn_FmiDZyxW98uBdVR1i7MjlR85BM-v_-VCgqhHPqInwyrEJB_ElP0Z8f6OUUS9RydLsqQO5kQcVSJFJmBOf9C7pxF_cJUEZgu0q3dMMXSVuln5hX6bSoS65iXwAKhEVl6f0vaUvo6Z1FZeth6yp7TUPAmn2EDh01HrnFlXZRmHlO2CcSQYaZVpoXZBxWjyVFDgmM7s-k4UVGdhBsfoPcdfiA3IK4ygWFVU7I3_IepD4oNoQng-By_8iaRrnzvpWUgzjvdBPLJ_fT_EIcFL6WerW_bxOg-_6UHwX9keZYajS2_xnTdbBE-9poX2wUcKs9HikLysL8W-E3zxKgLiNcbKpf8i2LBgxtp5f6HrO4xVQH17I8E94utiXljCiGqhnO6R2CuHjStDy7GRLG4qH9ixNNGr3bCkxXaUy5aGDDDoq1yEHG4G5j4kmcJSu4cjDaQIt9HnzqlU5tM9aivoponAA7sA7NwpIZVFYfRufAbEDJTuU9IboFhFZKeFHHxWfn2xdVGH_bMbM1wy8ykTyZBRD6jc3JzCHKAa_FYkto6zMJLTishpP2VlMppQtg-V-mdn8GLeRnrwczT8ozPE_z0aaQhy9QeYc7OAEsR37bX1EBApg-ykaUhUHZSARWUCxBu9Q1vM2Ag4yWxsw1slWS0V1lvtj9DIJwJFyMm35PzyurVZfr6bs4n-IJktOG-ThmdszQHPEJQ1tp3kpu5cOKScevG7PLlFMO7JYVhJtrFqxmAOHh-Yk6COxDwsz7qnAcoNDbv7-EBEz35GJt72xAjl77azj8GqXJbs2bZIdM2PLcfI5vI60-hS2aUusSKuM6QEd2L82tdMbnMnR1ZmOT4Bp5bMxDjgnbQDfKPGtwm9gze7qErElxIUO0n49_ht0BCrR-hOl40YYJX7ijnhulseb9XTTGzBOLRcbNG7Lh81jUvidHGIdBIMd90H_QdFj9pYpV8nzPLielRO8uv0ubIwCFdlIFoGsyUWzelgPu_Od82hkb1fa0Tyz9FuWDSzK5dJQGxhrXceNkauxrSKmPpIV6-Nmx84FBO4g2PPHSk9cth3ulDkdmJafjrg0HTK1DW5HVl9zBKLRHRzev-jGnzt4tnKmA54vS5HskltCovGBw8Y52etj0Le2vzmbiGpRanvlPh0VYyWwdUBO7fz5xZGB85lqGgSKjfrPrOwAyOUPRw3HxdKmUu0d5K1liZqcAWjXhX4dCHUnAehfGO3NfnpEvZvd5so8dkhMUI0vLolyIT71FhHzDfVUrb0H8L67iP6NGr7UNl9jOeD1A-hDpYinHCChRVyLrbDAigIlME2s_MShq-jkosSOViaVThLODlnsxuE0Uh9gCB44mOzohGVRhy8fhxl7MlHPu9IjYPpWxIFLd828POSu-mp3r82fasGr1vJlPGHQQOGSrei2rQlwbRBDL3f3UG32TUltOScX7Ner36xyMhf39RdIq4heLjfHszoxnQaJe1wi0BpGoTJDqe5MQ2eUqtcgRHi9XJ8c_I6Rqvja59y0T2LWloqgw_e15TqmXpxuilxxMNdzqB4DzFBaFW1jxSbhNRvlH1D7fdOx3R1IOsFD1nnPibgGHMX-sa0wxiK7eiQtTl-evyRYJMK0QJcXZIOwE-5xn2inqgVOTN4mHn6Qxp_z9dkfERrRIPF2bL2rGaW43nLr8tcFcUs9-SiTXQ7k7xIbbOxx0RkTx1wR1kTtL-0U4D",
+                "text": "# Ask Mode\nI've searched for data related to \"NFL real-time predictions\", \"streaming predictions\", \"in-game predictions\", and \"prediction API data\". Here's a summary of what I found:\n\n**Potentially relevant tables (but currently with 0 rows):**\n*   **lennyisagoodboy.lfndata.inference_dataset_view**: This table appeared in all four searches and seems like it would contain inference data, but it currently has 0 rows.\n*   **lennyisagoodboy.lfndata.historical_inference_view** and **lennyisagoodboy.lfndata.historical_inference_view_questionable**: These also appeared in some searches and have 0 rows.\n\n**Tables that might be useful for live-related data (with rows):**\n*   **lennyisagoodboy.lfndata.odds_props** (5850 rows) and **lennyisagoodboy.lfndata.odds** (132197 rows): These tables came up in the \"prediction API data\" search. Odds data is often updated in real-time, so these could be relevant for \"live\" information or as a source for building live prediction models.\n*   **lennyisagoodboy.lfndata.qb_td_predictions** (168 rows) and **lennyisagoodboy.lfndata.regression_predictions** (700 rows): While these don't explicitly say \"live\", they contain prediction data which could be updated frequently, depending on how they are generated.\n*   **lennyisagoodboy.lfndata.post_game_summaries** (1205 rows) and **lennyisagoodboy.lfndata.pre_game_summaries** (12 rows): These contain game summaries before and after games, which might have components used in \"live\" contexts.\n\nGiven that the tables explicitly named \"inference_view\" have no data, the `odds` tables (e.g., `lennyisagoodboy.lfndata.odds_props`, `lennyisagoodboy.lfndata.odds`) seem like the most promising candidates for \"live\" data due to their nature.\n\nWould you like me to get more details on any of these tables, especially the `odds` tables, to see their schema and understand their content better?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CucCAePx_17kgVVGXJfxJb_m4n_rH-eVMdnuiICVfmOXkxElSeDV-02kyQIFwuScYrGKjMeC-K1wkQ9xzU6F-5PeMhfPbltiLAv_-SF8R-02ngJi4Kc9SjfiSPfFd11b6-XenrS9tlgybrI_BarMBk0tcEgAVv4XZKFeJ-dfIHoqL6a-A7o6gcyYA8dI-xlkEJ0iuUIcUiubg7_qbHjxiURJD4W-8snrk6KJyxhEXLW9J-0k2GIoHn9xVn-22NcOt3djpvYhnk2TtGE61FcQwon6sgDBHHJ5ykuvGcldSvZZ8jHDPlrwynYsnbgt6h3dscRsDEcDWCDpNlHeG4GnQmaGqqZdOpvTeWRpcPAwN9YuWgItHcU3yFlScmR1uYaXapdOihTykWslIba0VyqsuiizAsdoi4e3patnXCsexqgdwT8egb0Ig6m6cF3HjTpfeX_yGyzcNB_cg3HajS-52u95QxlKF1Ynn6Y=",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-db28940c-20ad-4fc6-8bb4-4094a0e5e126",
+                        "args": {
+                          "query": "NFL real-time predictions"
+                        },
+                        "name": "search_datasets"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-a0793314-bd94-45c5-a75f-f4cfdeae4670",
+                        "args": {
+                          "query": "NFL streaming predictions"
+                        },
+                        "name": "search_datasets"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-49608c73-83c9-4985-a66d-96e638e3431a",
+                        "args": {
+                          "query": "NFL in-game predictions"
+                        },
+                        "name": "search_datasets"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-cef1c36c-65c5-4125-afb1-46ff9dc6bf0d",
+                        "args": {
+                          "query": "NFL prediction API data"
+                        },
+                        "name": "search_datasets"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-db28940c-20ad-4fc6-8bb4-4094a0e5e126",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 26 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n3. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n4. **lennyisagoodboy.lfndata.historical_inference_view_questionable**\n   - Description: None\n   - Rows: 0\n\n5. **lennyisagoodboy.lfndata.pre_game_summaries**\n   - Description: None\n   - Rows: 12\n\n... and 21 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-a0793314-bd94-45c5-a75f-f4cfdeae4670",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 18 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n3. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n4. **lennyisagoodboy.lfndata.pre_game_summaries**\n   - Description: None\n   - Rows: 12\n\n5. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n... and 13 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-49608c73-83c9-4985-a66d-96e638e3431a",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 22 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.pre_game_summaries**\n   - Description: None\n   - Rows: 12\n\n3. **lennyisagoodboy.lfndata.historical_inference_view**\n   - Description: None\n   - Rows: 0\n\n4. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n5. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n... and 17 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-cef1c36c-65c5-4125-afb1-46ff9dc6bf0d",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 33 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n3. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n4. **lennyisagoodboy.lfndata.odds_props**\n   - Description: None\n   - Rows: 5850\n\n5. **lennyisagoodboy.lfndata.odds**\n   - Description: None\n   - Rows: 132197\n\n... and 28 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007578.683497
+        },
+        {
+          "invocation_id": "e-e0dbb6cd-3492-4294-9614-5ca01281f95b",
+          "user_content": {
+            "parts": [
+              {
+                "text": "ok tell me about backtest_regression_inferences and regression_predictions"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "Co0VAePx_14u1sm9CBcrCKij6YzHQUQVLIwrmN9DXzSQmakeKYeKat704Ben9RUmqsDwFZVNJJyKMsLAp_Vb8YynJcMsyvLZH5cfTd-m37aSvuw4oX7Tosxzvnb46XXc2iwtX3bg3n6OqS8HaZg9XBi16twMEP3R06Mw-Q-1phiuCnYPsCWDFGlrxIcKw_Nn6JHZOSQRSzJLB3KNCSB2dCiTBX_wBnBLpVWWlbedIPaL6fYmly3Zeryd0jfrMaT0XJJbFg4mYAQLBtBsnB_wUaLQPJyEQMm6XTNDhqJbNVoKJYzbPu8NaxAImIbL01PGsc8TKZqly9xtDQCyHMeAEtWYU6xhegK48mlmUmnTPDjUYb4LWLLfLQjeVjdPS5KdTq4IhKBaG7IDutbL7pkUD3neMaOMby5bZ1PhrvLy_9m30rZunXbSjSXo9ZLSDOUVUNe86U8tkyXlnR902FeffDIhjD0U0pj46bpgxK1curAxeJvPEHWD9xfUIktYFdp7ZxwhJ05TKHsWuSQ_nUbTdVSQ_1dy3qE3n5tUOGbbU9yEAX67fdvA8hLxnuRPLlt91aAqXQhmSk2xK9xb0LLBZyDAeaTedGEA-h_sNO2d1IG4FxtpbKTgPzgE0eBXF0PvzpyngcJHXaOiZCIG2UZR4fFfmdrAfSRHQJpraXrUC5U66Cy6Eh3vgYuA66yvWt5UjvLyZ275HOllKpRyfNtHZpBVbbj2iczzbiiRLMHm4KdB4kPUXtz5XpgeSBNmxwIJ21HDUbR_qqQj9oh9nMax1pChgo3P5tqQcGfstuhu5cJhfKahKfUCH785aJ11uWokeBzzzykChfm3OJRnkoiR6A8XqVliJN68sny--frENT67g6A9_-KvN9YcUI0SQAcla2Vaivt8dNDiisDkE7wQDBvQkzu1YMA8KFGSQShMdNp00M8pXGOn8mTAnam-NbdAwYbg0jyaGPaaX394BH9ELTKEobixFZi-M05RVFnADkyAb43nc94nHkvR-JEeGySuXfI1Cm7NcqvLlAd1GdIc1U8Dan8GVdPRKoaE5BBNFMzAFvSH0UnU79AlMhkYr3H07_qoapdy9eQMB9cHCwIeBOyRw4VPeJd5iWBH-SRtU8OPFwngHqlqEyZJtEyDWTDrP1RTQeixTuwNfox52_79ZRPs0KrRnE1zajTQeb8cAFppB7O-sW5yZZYZDISv3bUI-f_7RfeLJl4O0ppGQhG0S9LqgXlqk8RYJYDyl_dc0eX0ggz-qSDZ1q1t7xX3ewM_I-YXjSuoaQZJ9Mb-4KKbYOazs8nA5eDwGFQ5TVAUC7I-uoR3GR082o7LmLMYjPuLkvi-gtwEUYhzL2DtKbBIvmDHUDbKSJJLE7M4S-dgzXpvW9oOyabM8teBK1RTqocvSIOCn_zf5XRIFUmuRCV5GZ6UKY1xUcpkGbcuR4DqWJEyl_IUKjCXo1M_ZV-8FgV4tUUT9pRauHoqt4aGMBKp_GVMsoLsR1-LH_oXe9ITaAZQBcHPsmNlVgHWzS2bnbCaN4dzxot1KV7sxAX7ytQJkORvhmJlS43Qq67xYg0uSBTIs8BhglKKv__viwfDeJsJyR1J39EDbUqp1X6fNRmPIWzUqYn9aOoNu4wNQQln9gtD634Yuoev2i8B7JP68eZUOQ5jnm2Sf81FX_o7xfWV7PDuA10zmk8Y2JrvQn9LVGd2E7yFG_yp1a6bPUsgSE569c1bhcgZ7aXkw-nL5LHQpfcvEoYrz0wnwyLLN8UXnYelAhvLLm_HTICt6-Q8UdAJ6bVVLWX_M4YwxkbqsiGRFcR3eQvymXb-jXIPwgQiFwnZiKY5tiiNW9gQIorT70uvzxn3VYZrk3CoawJN-Kvu1G_ZLpYg_tUBGTdwmJemDhbht2zU_SDzw7dnmmoshjaR8oDM52LA2557u31UGryOyM2m26sKY5nu06nmRxdPl_Ess7VFjumgc4VZ-w7-IO7daGqBKuL0lBwrZO4grBYj_UDFuByvx7Y_I12ux6sxkNuQh3SnW73QHA3mCXGgo42Q5b3K6dnWL6VuzYvQuw4ppYNx036o-ecUKm1HsYN9I9QWtHgG6YfQ7UvE5qvzdrnJ4lANXN6ZPyTuCzHs0AtHOAoy4TAhFAO8Q8CZATUTYE2AzCCmFIiURNRbuKI5GWeUnLarDUfwBgmfZ-c8mNYlP_RywIDUqXq4C1c2_a527Qn01SUhpMA0cswWhDljxMJqcBp8Vad05Ez8FS9ylZqQAwU_i0PeLHO3UJ_Yp0wiSHGAbzZfR9MnIYGCcR5zAKZDh_D30F_4oVHpst7DfVmACxg0dubtSldZXGpspeohpC7dqeZ-opRrDESeKj0eWGa62lPEMEZwsNt3aQwnCvIxDdL4SPJlGi2Y7gr25oJJbzNy-rOLLDK9ZtueVNlNRXEstuT03RwgzvxW8sCG_1Auw8oTSsFmWBHYdE-PTW6sqvzDoon9SDU8yDQSD6JHBbDbl3YVsZb1yiW90wiFxJvbUsL4IPUxiibxs_5qoTxY_P1C7dEKZBdII6iVR3q23OK89EMrb6c4lMvDUCkUfayPsEGi2IQk_RT9ZzrAtrsJe6ulDvLfpoRYfXzcPjWvgh-wIMFFQLpJfz5csJI1Gbc5mI4odSLQKmVhwPf0LvulMy6Jtt6weyaOOzb98VmBViK9M0-d6rX0Ra25ntzLBaprakXZ9vbNCE1Xqj2uTTodooqtdURS81Xhi5v8ehbXgOPJde3e0mGNFvLTlNYqow1G3zh7OBqMBrEeYC7qERFpbLbcOk3IJBsB0CbG6W6DCYkpN1_tXL-X4jYdqsJ4e0dpKgdsDE30r_QM9i4cEV7sALlqRA8S5xzCbYEA8YGB3qyK6zYJnGvcmvWgvj-9c6W-W-0KRbEYVJW3iZxCYOwhf88QCCkbvA9B-QCpYuv6RDYzRx0u8X-D1z7SXfR2Ghq0ifjhmhCQPMtqu8yt1kmClZn-KcZOiQ_pj4swo_DgQyBmQjhPCtQSjJajo7go0IfEmapSBFhohox-SS_OEtVG9xwMLrdm9C5ZI9XG257SSihRIDJcGFemP5yRheTe3QikKS262BGM_l4qQ7bSp-YvXQO3TEyTA8qA2sEsvIXCRxO7kC2FrEp-Dw8QPmc9bhvQ-jpbOQoCdnjaQa2OdHKs9shbDLUKhPCEdS0k8m86dtw_EK8GgLsqlbGt4tV96ZSvRZmNcABIrama0FqEQvSC2sNkXB-jue_C8PwGQEHqynybea8O5kCOlyIIfrbAdU4kEpAJYpD9ukbXJJaVRUBaud_6A5sB3EbG987q2nHObE__9z_kYo-j4qLw6HmF6y09s30oroFfRIAOHv_O7uqP2NfT-_bfhmCU0e1uLbJ9PFBi57EeKNV4SfaLy8O9qUTrNum5nUtZZg0PImtkl6zLt_YOq9vkreeZCa4a9JvolmI4LdfuYOCwP5wHQhDpZP6rdvsdoBftOOueX69a0dWL3m2MZFdc3FyRLz9YkBiDsyuGJ_JxH1A5qurMYA6_j5xTnHg-iu-kqN92cKjNFWgwaVus5l4dVAD9gU4Cf8MGhLAcVQx9gaauLgQWNQrdhcPZaw==",
+                "text": "# Ask Mode\nHere are the details for the two tables you asked about:\n\n### `lennyisagoodboy.lfndata.backtest_regression_inferences`\n\nThis table appears to be specifically designed for backtesting.\n\n*   **Description**: No description available.\n*   **Row Count**: 449 rows\n*   **Key Columns**:\n    *   `run_id`: A unique identifier for the backtest run.\n    *   `game_id`: A unique identifier for the game.\n    *   `year`, `week`, `game_date`: Temporal details of the game.\n    *   `team`, `opponent`: The teams involved in the prediction.\n    *   `vegas_spread`: The closing point spread from the sportsbook.\n    *   `predicted_spread`: The model's predicted point spread differential. This is likely what you would compare against `vegas_spread` and `actual_result`.\n    *   `actual_result`: The outcome of the bet, either 'WIN' or 'LOSS', indicating how the prediction performed.\n    *   `edge`: The difference between the predicted spread and the Vegas spread, suggesting the model's perceived value.\n    *   `shap_features`: Top 10 features contributing to the prediction, stored as a JSON string for explainability.\n    *   `model_used`: The GCS path of the model used for the prediction.\n    *   `insert_time`: When the record was inserted.\n*   **Data Classification**: Does not contain PII or PHI.\n\nThis table seems highly relevant for directly evaluating the performance of regression-based predictions against actual outcomes.\n\n### `lennyisagoodboy.lfndata.regression_predictions`\n\nThis table contains the raw regression predictions and associated betting information.\n\n*   **Description**: No description available.\n*   **Row Count**: 700 rows\n*   **Key Columns**:\n    *   `game_id`, `team`, `opponent`, `week`, `start_time`: Basic game and team identifiers.\n    *   `spread`: The point spread (likely from Vegas).\n    *   `predicted_margin`: The model's predicted score differential between the team and its opponent. This is likely the core prediction.\n    *   `edge`: Points of value against the spread.\n    *   `tier`, `implied_win_prob`, `kelly_pct`, `bet_amount`, `is_sound_bet`, `original_bet_amount`: Several columns related to betting strategy and implied probabilities.\n    *   `model_name`: The name of the model that generated the prediction.\n    *   `prediction_timestamp_utc`: The timestamp when the prediction was made.\n    *   `explainability`: SHAP values as a JSON for model explainability.\n    *   `gemini_narrative`, `gemini_reasoning`: Textual narratives or reasoning, potentially AI-generated.\n    *   `role`: Indicates whether the team is the FAVORITE or UNDERDOG.\n*   **Data Classification**: Contains PII (Personally Identifiable Information).\n\nThis table appears to be the source of the predictions that could then be backtested using a table like `backtest_regression_inferences`. It also provides additional context around betting strategy and model explainability.\n\nDo these tables meet your needs for backtesting NFL predictions, or would you like to explore other datasets or details?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CrsCAePx_16NwZkounl9y7M1HwquNAPI6hNSlN7Q4QR17FHPrqzwPy8Oqaz03lW2yaHLo_EhFLaWPD_87pQqW9MiqndNsg1lQXp_PQoMjx5njGuct4kcLxt4wEBU3xvJCRURDgbIEZSh5UogTCBQyMZqL-m7aqo_eW5Kwx71bAeKgaLAVcNft9-G2NSQQdMr8XLDTsONN_okFtVsAUdtRO8eOO7BhlE6Fcj6oTO0ClKUzT1tx_dOJw9MLVKcMlu4oP1UBTsN1aKdiL6Bo14ngkaUxNJTPtLqUtRw5BnaqL-Td-ISaWKKf0bVOSxerN4nNUs9skW0PSFMOlM8jjwXOtgSPRQ3azyqDeS2HGBqBBn4NA5ASmhpKjSsAujs21qA6i13UNqIc6NZ-sHgplnWuZ5SfLyNxIHKp-WyNgbL",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-8fe42bfe-d722-4e45-b94d-29675a3689de",
+                        "args": {
+                          "table_id": "lennyisagoodboy.lfndata.backtest_regression_inferences"
+                        },
+                        "name": "get_dataset_details"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-94918f52-0ad0-438e-9bcc-37859506fd36",
+                        "args": {
+                          "table_id": "lennyisagoodboy.lfndata.regression_predictions"
+                        },
+                        "name": "get_dataset_details"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-8fe42bfe-d722-4e45-b94d-29675a3689de",
+                        "name": "get_dataset_details",
+                        "response": {
+                          "result": "# lfndata.backtest_regression_inferences\n\n**Full ID**: `c533f07daac7dd9b284be035036e51f8`\n**Type**: TABLE\n**Description**: No description available\n\n## Statistics\n\n- **Row Count**: 449 rows\n- **Size**: 0.00 GB\n- **Created**: 2025-10-26 05:59:28.029 UTC\n- **Last Modified**: 2025-10-28 20:58:44.24 UTC\n\n## Data Classification\n\n- **Contains PII**: No\n- **Contains PHI**: No\n- **Environment**: unknown\n\n## Schema\n\n| Column | Type | Mode | Description |\n|--------|------|------|-------------|\n| `run_id` | STRING | NULLABLE | A unique identifier for the backtest run. |\n| `game_id` | STRING | NULLABLE | A unique identifier for the game. |\n| `year` | INTEGER | NULLABLE | The year of the game. |\n| `week` | INTEGER | NULLABLE | The week of the game. |\n| `game_date` | TIMESTAMP | NULLABLE | The UTC timestamp for the start of the game. |\n| `team` | STRING | NULLABLE | The team the prediction is for. |\n| `opponent` | STRING | NULLABLE | The opponent team. |\n| `vegas_spread` | FLOAT | NULLABLE | The closing point spread from the sportsbook. |\n| `predicted_spread` | FLOAT | NULLABLE | The model's predicted point spread differential. |\n| `actual_result` | STRING | NULLABLE | The outcome of the bet ('WIN' or 'LOSS'). |\n| `edge` | FLOAT | NULLABLE | The difference between the predicted spread and the Vegas spread. |\n| `shap_features` | STRING | NULLABLE | Top 10 features contributing to the prediction, as a JSON string. |\n| `model_used` | STRING | NULLABLE | The GCS path of the model used for the prediction. |\n| `insert_time` | TIMESTAMP | NULLABLE | The UTC timestamp when the record was inserted. |\n\n## Lineage\n\n- **Upstream Sources**: 0\n- **Downstream Targets**: 0\n"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-94918f52-0ad0-438e-9bcc-37859506fd36",
+                        "name": "get_dataset_details",
+                        "response": {
+                          "result": "# lfndata.regression_predictions\n\n**Full ID**: `1514fc8c4363ec6eaa3b358dc613d3ce`\n**Type**: TABLE\n**Description**: No description available\n\n## Statistics\n\n- **Row Count**: 700 rows\n- **Size**: 0.00 GB\n- **Created**: 2025-10-10 18:48:35.62 UTC\n- **Last Modified**: 2025-10-31 20:08:02.062 UTC\n\n## Data Classification\n\n- **Contains PII**: Yes\n- **Contains PHI**: No\n- **Environment**: unknown\n\n## Schema\n\n| Column | Type | Mode | Description |\n|--------|------|------|-------------|\n| `game_id` | STRING | NULLABLE | Game Id - String field |\n| `team` | STRING | NULLABLE | Team - String field |\n| `opponent` | STRING | NULLABLE | Opponent - String field |\n| `week` | INTEGER | NULLABLE | Week - Integer field |\n| `start_time` | TIMESTAMP | NULLABLE | Start Time - Timestamp field |\n| `spread` | FLOAT | NULLABLE | Spread - Float field |\n| `spread_price` | INTEGER | NULLABLE | Spread Price - Integer field |\n| `predicted_margin` | FLOAT | NULLABLE | Model's predicted score differential (Team - Opponent). |\n| `edge` | FLOAT | NULLABLE | Points of value against the spread. |\n| `tier` | STRING | NULLABLE | Tier - String field |\n| `implied_win_prob` | FLOAT | NULLABLE | Implied Win Prob - Float field |\n| `kelly_pct` | FLOAT | NULLABLE | Kelly Pct - Float field |\n| `bet_amount` | FLOAT | NULLABLE | Bet Amount - Float field |\n| `model_name` | STRING | NULLABLE | Model Name - String field |\n| `prediction_timestamp_utc` | TIMESTAMP | NULLABLE | Prediction Timestamp Utc - Timestamp field |\n| `explainability` | STRING | NULLABLE | SHAP values JSON. |\n| `gemini_narrative` | STRING | NULLABLE | Gemini Narrative - String field |\n| `is_sound_bet` | BOOLEAN | NULLABLE | Is Sound Bet - Boolean field |\n| `gemini_reasoning` | STRING | NULLABLE | Gemini Reasoning - String field |\n| `role` | STRING | NULLABLE | Whether team is FAVORITE or UNDERDOG based on spread. |\n| `original_bet_amount` | FLOAT | NULLABLE | Original bet amount before bankroll scaling. |\n\n## Lineage\n\n- **Upstream Sources**: 0\n- **Downstream Targets**: 0\n"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007599.211005
+        },
+        {
+          "invocation_id": "e-8a02aca8-21fb-48a7-a476-630fba9defa4",
+          "user_content": {
+            "parts": [
+              {
+                "text": "I want to join these two datasets to see if the back trace data is leaky. the back trace uses a different dataset than the future inferencing done in live bets."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CpwFAePx_14zrwZKn_NsubeBU3elSgXzIWaiDuCr6K19_lrn5Xs2csQfo9CNBS3Ktimx02FDT2QFp9RZem9JgxdzB1HIgXSeT0eJAC5jBJk0mJJAO1vhceIx9eUvLg3euLJc18LzxqxUhlNY6IY2XGZ-p2eYCXOQaSYwFc7kgGvhubIwPTK2Ovw8JyykPBvcbISu0tNyjBniszFWoQH4h0YX6hJLGrUOy4-qAr_XW-Ed1vY2BBEWERYvnmkA3y9Klqj_V0MM6Ztejv2UYDI2WQ4otXOvKK8Pp482dUfDEW7ST8xOepIbQkHu4e3w9fQRMPFgeiJfsL8GDg55coEHq0aBfNEKv757qfNV0tADaKgAS4Tc-_7YbWoD5cQFtad0hK70RDZb_Jb1AwTJmvawENhFhFEBya-xT6lbuNOF87vbrCLVd3qmCdzyFrNf47_3M-I2fk5kEkRqJ-Uwf45wF_qRmPx1vGyx3vRT3xb9bkXC-HRZt1ar2FCIsM7C3PkKOkjSmo02oZ9IW5n1ssBUR1vTg9VopYD_nrdWkNwX0pIci0ngZolEJwVfbA0GG8YC4-20txdM2qkYJtY_kTtFfEMw_mQMu_FjojbPJNs-iw_Lsi6RTFihfVUDaVnQ-WKdkNkF6vPUiXKF2_qAdjysN38mETusz5Kxv90gQWPyCtuZqvVyCHCuvn0uydcwKRRB7xUT92nrpaDX5muosGANrZ0YSaWtq_DTZBR9wfbFdBfwSeuk_XTMicBfINMz3KVjHs4vL7yVXIq6pgjK_IElmCoEHQGDiUm679hsQ9an4mF9qTaxpmguU1gyXgWUYwS4Ng_KYAxMxSrJCTBs0n4p-pHArXkZtgHfX6QIf8ET7GThxtccIZmcTmuoAqCd9Zk=",
+                "text": "# Ask Mode\nI understand you'd like to join `lennyisagoodboy.lfndata.backtest_regression_inferences` and `lennyisagoodboy.lfndata.regression_predictions` to investigate data leakage, especially concerning the difference in datasets used for backtesting versus live inferencing.\n\nTo perform data joins, analyze the combined data, and potentially write queries to identify leakage, I need to switch to **Action Mode**.\n\nWould you like me to switch to Action Mode so you can proceed with this analysis?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {},
+          "creation_timestamp": 1762007731.636937
+        },
+        {
+          "invocation_id": "e-604147f7-5e1a-4d63-a5aa-ea7367baa42d",
+          "user_content": {
+            "parts": [
+              {
+                "text": "yes"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CsgLAePx_16b4We-jYXjfpo66gPTLe-aT8PdZfOZ9AIsp84o-Wvb15tpvGmackF8P0Mk8ajJg5LcBdlH3dAgkQ53Ac9QCx27aY4vAe31kCqR3dtvVjhnxARSoLb6uMT8GqSU6R2HTK0QVaGB_iqhjnfAl8Humv-3MFSISAjMSvvyCr-ntcSdND7gQEEGsr30jR-xU8ULLfYiTlZdLRCrzZ6O5cUFF3LpZJJKBq0fYKLX_Ili3Z5goMMJJ-35uNEtlAwQxGioP6Q3URS7cYKS6DGY0UwjY1WdFjuWIATDk4KdAPXsHff2-ndb0a3hzs32FB708NBvHUtpqNtBRl4TGNTkcjD8ddQM55_Dv48ZrW4-o-lL-dOjT09pGpZ6IpAJRpqB3R2M3KVy4-9O6RjnL74oIVnP3eJzzNkoKxnuv9M1gzUkx8ER9fedyH9ftlwimXIq1PChVJTM2I-GXLUyqf3lD9YiypxmSIX_4ZyeRqvPvIBJ76ebbeLqkExJKLGd5VKcT-lSxOv3XmgZ5Uq0it0v3W7kRN1cOI-33EyG4SeMbjFEo0-NUJ9_HBj-w8EGHjmkxNPzoafpyUUAaojJsrIusz6u7K5B_3xk8O13azjpv5jYW6CtaGdrkweUgEiCfLFyNYpTXgSdtnK_JyThvlKjpOI1j3op6450a34PP-_cyiYii0m6dSnCCUyCGGvhwNldchRJHg4YPx2OZMDDqkJYXqfbzhTiEDUpiSc2wEPOCLWK9WNo9NOvKURtKDyC3ZiLRDXZEVqtdo3J0reAi-u3hl6c6SU2u4cx4vDdxvZLjr69VhjetxR9d24z3H8CiK0QwGwKfS6p7b37xSycAxwIm3GJxhj9UxBoyg5plyCZ1rBeWbWlGp1HPjJwcU00K8VpIMpkKdLv90RYNV1b_eFCYClRFNp1wRYBbMel1MGvPObWFcWq0dctvP8RLs5fa2BtuZ8aK5jiGqnq9eZtia8uataauTcUqmzeTx4pLLPKP51LqRqMDYI2najL5S3NcZM8lT6mF63UwfKXdzdAz0oGkrvJl6OWkvlnNv1UbqZlooU76aW8kX_6qJSLzvOhB2fSh7sXuHWM6aAr9a8gQKoWT7QN8rWCy_6eCoDGX45vrnYG5TQ0vRKVMqBauGjukenEytwvfoFq21EtD-bCcatSu1BdeHFnSEedqdiZz-ryB_ty-muGLGwcYTutMj6H_1YlIPy5bPVkYR5pBZwFEQ4KFRF_6eX9Jwlh4a3dj2Z6DMi-9FYijvnIrAnQ7Md4qEMqbST5M_ZXWyJH7-sIWLNDpA2xJ8n4qFe5V_SBVmFTtDwtXvH9vCU3UKKQSrLLCt0Ky5NueNFCT_aqIzQCVJ2ysluaCxs4lb5mSzBWwdLG8biiiArH3TCx4LKGMPKvYup2VckaJ92GA-3LsENpyaLwFmlQvGpOyuUkfQHijJ4u7gs56RIbxR_4DgcQthDr1MSsZpr5DfVEzeZaLZhWrcb0UYA40ND5ry4XZb2F0RUvFmuFUrozivxPqiXfUod1eEY_L1s5CGRq9oLRsyRUIcXOry27ofURRbGFB9NlaRG6A2hr0UBP7QYRbDDI4v9uBn_jzQ7WfBDneQxucmA6nx27TS-702kTcXA_35c5p44OupjZY9I9_YRL2XsiZzAgNoYgd1gE-tMPHkbqKGdyAutTXkP3RPWgUHUAXd0Cc9tvbmjgTGYYGmFPWnooegzmuPIytZXIU2Z0a5Jc1HZ0cIjwasYfI9cORY8OkDQ2xwbUtA66-hnHFL6J0jY-D0MGHqI4dMkfUfx539DKjGAn7G3TioMZyLBa_yFEmwWfGNlLqu3LpYf5qZ0EJXMbbj-1HdezC7pqQkgDztwzBLqkBy-W2kQBS2F544COr04ICCByuZrtQ5Js508lVW2Mqi6jTaxmJp7BGWNFu7XwJn-u3mqk_n5QO6dzcVFg4U4VFObwsmZ3tw2TN7m21w==",
+                "text": "# Action Mode\nIt appears that the session state with the discovered datasets from our previous conversation in Ask Mode was not carried over or is not accessible in this Action Mode session. The `prepare_tables_for_analysis` tool requires these datasets to be explicitly available in the current session.\n\nTo resolve this, I need to go back to Ask Mode and re-search for the specific tables you want to join. Then, we can switch back to Action Mode, and I can proceed with joining `lennyisagoodboy.lfndata.backtest_regression_inferences` and `lennyisagoodboy.lfndata.regression_predictions`.\n\nWould you like me to switch to Ask Mode so we can re-discover these datasets?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CsMBAePx_158DZhuKW9jbH4M_LOHlISv5Q2PV-nSu5UvhomuLYxy3cFu8StIw4blDqzkYoJtWAYw8PU5eyTVXcYQufDGoy5PmIoKKntZ6CgEbYYPwTrLJ44ODTFFBggGZlmtH5Y8v_eYUNbgszh7lwOVINCb39tzuxoRto_O_VwMOAQkP4yN0a_ETIazUckIVdJQnaj0qc2dqPnzKrCvQ2g0e9V5NHXbZ_kzxIDWVkiQ1WCzDUmv2VjqKee8R_5zddOUhoJI",
+                      "function_call": {
+                        "id": "adk-f98148a0-40d4-4265-9d44-60c1c352572e",
+                        "args": {},
+                        "name": "switch_to_action_mode"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f98148a0-40d4-4265-9d44-60c1c352572e",
+                        "name": "switch_to_action_mode",
+                        "response": {
+                          "result": "Switching to Action Mode. You can now execute queries or build data products from PRPs."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CroEAePx_14zZwoakmzXTAf0smNsu1njYqyK9MOQuOPDP7YUKa246fejggtolLWt8-JBryhV5cUFZJy_lJ8ds6XJAzXfhZggR1bShWZgWtzZyHz1XnOvPtmftnI1ju1iJOM4tlaLfg7b_2e-rju61HnNTB5lGZBfem2dJ6AisRiJxqME3_rc6PFNNPpmWDslOqglcKtcn1iz1G_bf_zAq6BKv3dztds6n9XGpDCYlI3Ve5HqxPkc18LNmz2R-pXbrYIe5ArouHUOuhNCBMmDgBZlYi9BiDLXOU3l5_9htrB2287zNrK4DgM15E2dPxCuARIcEewMa4g-CNTkZ1i2SvyxAyBU-MtFA9jSZTgFGDMSo0yDkZdfFAr3hgfcEO-2RkDnzYyt4geWncfVmCzZlnKlB26jB_wUZh2hiwjBUsVb6U3XzaQYsVMB2-okYapjpxQo66zlVoA4AOlg4i4TkrfOulg_gW4psuw5x2It35iHY20OhDe33ZIPtnCAIGQmXuJWm8tpFcM3Fb7a4TgSnKnKdaRHnr45l_d2vMwwuua-9gUxYY_mZDowJNB8e_lpcSvgee0mhALHxLMvRBI60u0zKx4pS4zBxMNAttsxTDmA30tYIuSVhvoZCI6CFAZ0_5Ms5zfrLKdUNdFR-xI5RnJuxZbvbFoGWaFsKkJMMCYplYEwck7FrvfO8MqHgEg8tOmJIzUl6OiGiIVv36NMPGlP9PqrycQCXYplphWD1Bi1ZpgXAvd7GTlWTnmK",
+                      "text": "# Action Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-6bca47ef-b9cd-44b1-a9cf-cac17b66db32",
+                        "args": {
+                          "question": "Join lennyisagoodboy.lfndata.backtest_regression_inferences and lennyisagoodboy.lfndata.regression_predictions to investigate data leakage, specifically if the backtrace data is leaky compared to live inferencing."
+                        },
+                        "name": "prepare_tables_for_analysis"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-6bca47ef-b9cd-44b1-a9cf-cac17b66db32",
+                        "name": "prepare_tables_for_analysis",
+                        "response": {
+                          "result": "Error: No search results found in session. Please run search_datasets first in Ask Mode to discover tables."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "Cuk9AePx_16ihYt8d7BlsWMA0T8fV0S0b4oW-HEXV0ld32HNRPLKvr0TOyU8aVxD6ymK_H-g2sI4mVQnmvRr1GtXeV4Ix-NyXVu1gFc9KNkOCjHGRMmjVglkuAB_JbN_k8NMPxFpJB6trUYiTR7TbbWqPzlu3MDOpvf_HbTJGWE0IHKLMcimcoPCZGhiNw9CZot-h2FaAbZwnAEzn0kXiHICyDp7StTM76G-LrsvyUIkDQ5ouJFOUNiMrqYWdgscvZZLvs1KHmSJOdgA2SQdiQBQKAbnKbGDo1uYVxBvbHYgYaIBgEEMCEoxGsYvX9xqYG6AKUthF70zGzaBUrOirPVEP3sOUNDjdRQseB7vCoUNz0O7T_0WHSzVbwa9ap824rkJbjY5gMOcnS9PTRniMWfpOpLM-TBP8dKa6MPNiGXgeg7yCiim9wuknXscY-uZp2x1U7JnFRFeOL_-nSjxyD5MNXyA2Ep-7qoBvr3JptAI4fXiZMzhJ4BKVq9wLQOTPCMAlhQYKRTaXEz82H5GD82Vx3UJuvbN6Ed5WPnUPjToEeZaUI9m7C3uDYq5HXaCexd39jFTGe8-3AFaIKeH2lBNnHnF9gD8Y6DaLh_bcmUQBB_OylTeNuXcU4LEt4amyV98dtIhcXWFb-nvnWeZ_v-OoDmwb-IJZUonJsgEGXX5_XhbLEAv6a28PX5VxF4l9beukdOXi6EmHDrwm9CbEOzdWDfe36Ml8CG4z5_Fd_vkyDnaRc_bkTtNGouu6n8XYkg__QdcZp3GYcBuY7QMQRABCBZRDaAUc63R3_CoS3nMrPVrceyvGsB6QLTl8W7hnby4Zxf6tX2Xb-GVfQV-1CKjiCKsS9aqLFXuEffmrq086v1GD7-iw4YnESSvwU7OUgXMxuYiSu8lt-9evWvet_lJWe4XOPrvrjSHLezLk36rN7RdaPXd3yI58n3VufHhMFtGIrhN5sRRS3yZJj1UjG98MQmrdUIpocQNz-ceZah4UlMQGgKqNSkjl-CmhD08Lz8rdM4Ti082ggncSFulPaGoxOdtaPTR2Ac_EYSWsGv1wCw0dsuzW4_bn-zJQUWERQfGgIGqvQkG4qHw09casCwLfG_OEm-a1e-Gf8Tbbd5z7dYrdquJ7wUI8dSc07i-76NYzBYxrWi9yjt93YDW9hSUcAeMr45_vus8jaxHUCVUKdXs8n5BCirZbb8x52VoGSyfd7fi3NK5zJRXIBxyuyuCOzzSccrAZIUvKCO_1RjKWq8mCQTIsfsSVDfLo3P1JaDHYkOGTs7iF2mMEX7zYfOVgup_VWMscc4q-8-7CgYa9C7ppflQ2GJTad1laXFhG0lT_vH3SabtxfclZ9ZhCRrA8xjFSxsif8DpqxhLjYd-rjawbSboOxkjtTyiN8PezOEPIjwwYUPLmneBqOrokTAXG8QgLMvbnhy3floautBB01tA1qBwQprodCpw4K590KtidyJTnlgASqcAHGg9QTb4vJAdYFNZKJCPuvsMC_9MV7yU2G9Pd80VeGvxMb2fbZtENnYeSgtSXWV2v0PUIQcxw49sRDvIyhvULg8AZ9lcbd5GNDt-EwRIZV5sjCvM9hCHneN48BEVgEXaKpR0Ucqr91M3uIsxO6KMylEsge2GLs9n-iEa6aE13a0q67xcNj26eTHW1yFYaLXCwfkSuMHFvY_hamKeqcTIDSi65ZSNp3hcfS911hPv8Rx1intVkTtPdWyVx122mnuxdBqv_4SJSPV6DZLruu_NoFLxjmS-ML01fi0ni_vo7oL8yZiXuZHQbDzpg4OmUwsU_IVY6DjlgSU9EVekeltD2vvwt4OPoDiD5tuqlebbZLt-i_Qe2MAyaZiALTbdm24_Ob1fR54on7gKvN33NeWy1hbTfnjHBjWd7tJoaN2s_TZmH-rJCgypGBWZvQHkmzeEeMFiSHVd-Ym8lbNiC5EibFEh0eDTc8UqcqdquqYx4CrD0eEUKY3Sj68eM3c2hvHjFpfjJrz09i05kZrbm-FtV3TzMGxhpsn0JH7zE3Rid95xpto4Z-QNfgqZke6kYgAaInwEB8POaR16J2ShRZK-u7uaxAfLC865pAY_I5OyD-PIK9-TN0ss1J68rlOJA3NByHrnK4nxMlKZtczFXAOb8mYbVCc1vyd4K-FZgSwO2PSholvZqJjpKkYAx3PFOD_iV-AAVhHpHo2oDsX6FuQ35h3jE98MBJfIUF_r6Iwi0wo0VrLo2yi2I6CCQXqoIpyqUUZP8v5_Pqp1I7VN1_HxaT1_SE-5fvoYtXY--E1FeVO1PFW8qE-Che9S5Ek2Isu_CsN71nmiWC3pGeXyoft40VLzSykoA9au-w-kqxPv8eTBkRtsCA_1kxy8gKeMDBUBSNMAWEmffSpUGkZvDpUOWta4kQTOU3rjyFL7TMF0NbzCkPFs_IpLiQ-3Ol29dKm3Q8xwiWy1X2yX6nTURdhz1qFG1fiSx0wAKLyPen7ho5S8Q5VAK356Ai8OeF3R-MQn4nQfUI62eaG9t-fc9dPJou2lBBNQqX9sa8DhMc-3rP47ebNLGD9MfGfYjbi-He62tf7RDds14FedCBn0UEvO0URwfkQy3ZYeQJ3GjpPOIcyTJVM_87y-Cihpubq4Ue6m3aB6r9dENlT0zJmoQPbFb-GgawWVNTfo3pfaE9eEl7413L1lDVyOBkGYhDF0-81LYK8tjZgHAcFlcmZW3_979uspevutiw4T9ynzsv8lMzdh7eUz54bC6-fu9kbReCeVEQSElBj1uFZ-fG_M4vfiea01FWrzgpWdSLt08fUp8KTdsFKoCPTuR7JLxlv6ESSH_Z_eVKfslFOdn46bGzUsMUKxIMu_F3R1DUt0zHWkobRIrtTlK4KuDJ4rlRMySUoC0_W00oLHC0Kc-QQ_iwBcfMS8P3brzk9F6aTmcjbsWLNrALoso2_MzY9r1LYgp0iWFEUyp-2K-ITy2sbL3fNFhrU_6hDIay6cmUTGTg0hCUplLghnopl1y5Kwgys7tz_7eJVTSHf6UTIUKMEjtKy5zEa-4F9s_oSV23-aNt4NhN5yE3OUMLJLZ_gMh5lbafvu7K2fgAJsub59fuJuN5nMHAH3_VXbqqnG2nEHTaqlYcrlPWC39hAuB00Wefjdo3DuYAAJne4meeAY8lAkyccupQ_LQpTAOUxS-3BOI1aM6rshED4R0SX6LV7Eq7SkweuVI8p_1gATH0IDKnWVidEgbmebLQUha8ApCFkVklOOz2L7CyNOdgKKlqxvR21BWlI4yLobxN9KZw6z4I1hrIPCV7oO0EqJX37w8FEJjPs-EVcq-stqk-bguzEbMpYtXRzoH7iTBs2Q1L2lBsD5II648q9K6dNmO3pqX2bi60o3BrDFQeC8mGw8S1aLa3hN1Y865TJe1TlztiUWyF31v22YD4-nowJRW_ezTKHbO3LLhRYIVwUIt5ME0GSHUIvc5go9dddzDy9KryHDA8MCXRkvYjsl3p2z8oxg6U3MivJ-UGdtHTy2iWxJwjXVSqA4kMXn1Z67Bat95sRKIlv8FOeaBL6eHD9F5iI-bClBA-n0eDKurYCMJgoCeiPpbLIcDLu-1hsW06joyW6tWDr5qnMVNxmNuwJTaZrNgd7f7XXMSRgxdP_lpBztNoo0FZIV6OKXR4t_zpZdwL_C1CNQtUdA4MK3emrEkKlSDExvJ36L7jWR0WGwA6Y1rL1JoQLdZ0FkVJP5UQufn2Pl25OZwTz7lbAzT8EV_yPbZ2ncjuh-MVJvrc00Ups9cZVSiQxLVmHy3RxeRG6hldhHgAgZdVM0bVjQa91_afE5-579nt41FPYpnh_B2HDUIuGOtdxChJ6UlrDCBAh5atYBvYKkdJLFCbBxYzE2upT_vf-iq1PTpobgUfitP6Si5JO13O5rjVnOd-10AK-Hq2crj5J6MpVGnTyUMaeulDL2Y2B_Nh5uWcfaxphaINAIqjODhoIoKndCZ55tsktJz_7eG-qpchPpxUDkRs-F2xLCsmB6zPG71X0QlY_ySaUwLdMF94ElwI4GXNkAWd3iMRpcH24_HeZAqVaoTOYWsfoB6EJYIiZcpeZdNhrb4EVxlSoobAPA38Dgm2qMzg3lV1vWEWotlpN71gFLIPmjUdsbl_l3RVVfc4GACoL5IOg-ydoEWNkb6ltNTsDjoEnH3Q1544j9pGiMqFdxX_VxBcdeBjt84DXy6SN0tFphwFLUvsw4Dwqf0-2Xl3CN52NuY5WopXHS_Xc7kMck6B888HusSKjK7WugET8RC6B-0IP7jd-Fb9XTdnymip6TGug0N3XrEOgn4c8GQJ7eJQqbElACEM73obbNnvUp9XoBlL2-JQ1MxrDIUykkOmCrq_1pqfbt1BNR_pVk2xUgh2QJTcXbleX3oXii6DE0gjepGVCGK8kT5o35dG4ogGETO-Px-6MFpANyG56gujjs7fc2FsvGai7SalZT_akvcYWCcBhDeP6DcTf95faWBa5qQq2mcKuTVyHm9d9lZQ4-aD1aV2Q_UE4C46BoFjk-052AvC3Cy4H8cnO_dcjrfEjseaVaY8hhCmS7epYuTOfNw0vYV0Kn-_nZf6gTB_7Hrgzwgq0dokXX47oz3EsMeX-ea45NukgDIooHF4LaPjJiAt9Qp1hOGtYvRtoqvIbAxUHgsCp_BiPWt9Yov3XMo61SNF73bdoDM2YY02d7M2o0-wtuUy8wkVs9uYRBPLAbfI7Ok3i9XLSjixUQU97vvjo06pS_OZBDSZwzO_4hRs4kXEzf9jOXuOHFI1EbERCvS0NeA9YDzdm6FyDmjvmD2hHUcXBw2rQhKW3kysJSKWnYWQWb7fyY3eQ4ZitKmGSjGfkn3dZFaQq3eZGNlC-a36kQ1PDctsTeBLE9Rf3H1v1ILR9t96iv7jfXy8cis_qljjZDQbj1UsRJRP25s_F3qmXVTv_ZpGKp9OGsm0i3JCCltgFmnEVEC-zFM_s7v7eTa1Zs9H3CwNSI1ye5vgxflZXHF9mzZS9ciCuz7VcfUhI6UvKe0avOY_Hzo_gJFn5KYt1ykyx8jaIGYLqvbNgL_JhZDiY5QjAVRgv1FIIPl_4sSTg9XZfYpN6g1aLWCnuozp-WU2ZtLKqrgHtuSZuijEsjGs0sJEuQeoRr4xlCoGciFUkGAyNgc3P7xNm9rhd5SaNWKZLEiv5b-sd8lyNCchGoCdkZIUiBCG_Qu9aaQPCT6o3ZEqnbnNV0aQ2qhVbQWNag1d5Zm7pprvUE5GyrxCAjGuCK_6HIV2Irf6A12lW3paNoBhUytP7jT1PlNZxan86Od20gDwNNSw4ooaqwW3oi24tR8PNrDC5G89RZgEgPaG4qL8Rxntv76OGYldVUPWuGd4uxY-8a6Zb20LKh8tIb75otxvZFLCshH36N-D4Ue8JVEiTJqNcK2WgrbPbazo5NoZvaLn3lbfLGu0wvxsco-DoWwfrPUVTdRcFt7vETCjaU1lZUr4Dey3vqZyd1GfgdnpXONmt003_xtaSqt8ZKFV-aS45q2dqhaychsuJ3UjPID73I9UaQe6ooQmdylvqyZl22gjKgxNn08TiikjzW-qe4gTzErerYof5Z4jLXl_b_DZ45MkfkHGUYzjLLdxZcjw5jSM3IOgurNo5IY9D4JUu5lpP_wB8YqMgyHMgg5rHIfDvUZF-UZDUwpfBUbo3i464X6JFebi1wXIpqCRCMaJu8uIm5ctk_8PkCBCgOHWrCfXVna7Ls_hdRieV0y3opJ2irVPl6kXuxkjrL17RdMWktbzT4azvh7d8X4euD1utqwpH3hJwSq6LAsktDmCO0sV6Fx7uG__1PhVE5OcLn9i5M_z4TviU5BWvsBuAcEE96Pu4PURWvzWUSaqe6IQbi9QQIJ5lmVvipkJUAdYlGolWmN7WFBbRkp353m33QObRGjCHTpCrIM7eO9io4X8eQnv54YtnDRxNO_WODuA3cexPmsr0VoZVidCAxOomKBaWuprvxD5Ur5qBEO7YkbEXbt6FgjUwx1-GRXPvbTKFtxJJXLdj6w23ebEyCUobNw4M33juiyaAYX9IToargUkSqoG0E3nTaf9F4P1kgVvGeMNNmYrbCcdP6Setsc0UPHQ57j0aEE8UiIGcYjcr2K5NroccBPrr_vD_Ta0MmXAC2JIO-amb6WubVb3RS-ARFCcLx9sIbJv2Ad4k8PNiiZf4ICDkgx2Ncl7txXvdfXPg1tuk9vvRec2jBIUsHzOYbCZma6ilPLhdqvDy5kW_yIGBR6Qi8Aak2aOAER4tj5hWegPnnA07kJbvOljGv24fWRSNR3f_YQMLbepvxQyXctkEPdAzUo0XHWU8mn-i_WsY1jOHdCRPkRXuwAPt1BgRbrAJ2tuyqoAw2CuxvvfEmw_WVoReyGCruuLCIA7XtpZfdUEKx8pdnUN0nmoguto1Wj5D3BkryoRQ6oABFUdBj0dI5ieWv9hWrSBxdBiKHpg9vJpj3MuEzPbrDxdw7N7nEjqoSqe00I9ahJe8SUkegExqE3jqJRSzP9lhu7pktj1cd_l-Qm6AzJ1gWMnara_XOy9pM1-yxSCD0NnM2nqbGruIny5uA7oDlR8S31bW1-o0LnaBSv7r25CUay1qIVzSXxvvMZbNlEhsOscG0cK6111U7ZG40TzD2sPbLF5NsrH2Ob2suwtUlvNXJbh9s5HYakjDquGlqhXxZ37A9MfhDblf1ed9FuMNiyMHM6SMTumnGVEPONZRh7TVtH7I18i_iEcSwkm1ommfejCTMm6zGRXw5gwK7Fb-fwC7f7Q907IeGXfGwP8GpHFtEZ_rWlxJOm_74m3RaFfmeT2XFw0ztvzAxUB328kOryGXd_lMawV7PJkL16OAGKgPL9MMOLBqjYLBk503MgBIIvpiiIlYk6NeZH7M-q6gh__g2Qtlu-ORwJcNShFL0gVY_RgXXWdqABRJ2QzboMjIzSRFiIr__4O84X5TCNHUEttzCHK1YgDbo0LIrb6YhQeumbhFKe08KNSjLH8uX3Lsd52IsJ-H6zBXKxIL-w8x1creSMVMpVYtwEU6FOh79RS8rdRSFeEaVQixpreYupkYiLZKWTDGLS2MM5BHo8c4F63XNRScHoh3zmtlxZBP11H1JuPXraJjiKz2Wg8OVUdBedRlCkFAdby4pyKu4TAG1CHkXL6pFEgsxriOjM-MnmW7V2Ynm6Vljd888HOM6JhTHLEgVSIEO91uy71Mc6DcepLDRsO9-llsyVhkmTbJubRYt8OI2hUGf26Hss-niOBVtHfk94HLyWEybIozqUMNvhA8D6VaGMw9Mf40Eku2IM-e9wLxr8ECvXS6Z7t5DQMrZLXJuo9JK63T7JTQEAGZMvTO9OEDsZYnPTcQsbI11GpCY_Ee93iBfwD59klM5-tkML9VziIe3QQRXOsoWtmYYYZK45uIxoYnt2w9U-SjX8rXO_EWCyN6MTsIH38OFrjmsRcKIuWFhXix96vBhcXKT4GvWm9OG-2YcfD9OKr22rDKJGSMZ3yBDjF_HVaEARKgPM5DniShzsnX941Skzpt2c0XtYTWtPaclR-5rxCIoOsV77NxHz7QVe3MrPOzGLUdRX_HMg3WkQs-5irHM1y-IBaE3ZRWHDjTnrA_aIVbrHiUNrovhinWi2LD43fLOJJ7Cc_68mP4ft5RbuQGvtJv4HMZ56q7lCFPTmmqp-MnX3xelWQ25diPWSYNSxTcjOlcVfsiZzTPKEPC9v94FNGjDRSfmxUoaFSsjPYPgIDbP_irSE3ATfi16Xm1oAuvC0skFB4WA_Ya_AaxNQR3pBWu5OsARXAEBG9m-92M2vjUU7J0CQimWtKsA6QBtfJJ27vM8d7Xb71zGMZnT6JjY5BjmxfABCMs_mDkav9fG9SBSX9lxQGJ1GIJAC4UlFUQMwHkU8BQNE25AtY_o2DI0kjGPSa82Bd2i_BGIlydhJgwwDRIyAz4MiCVcpS6oJvFLRtyj9mwaJ2fulzkb0MBRfDufhk8LlH_sOVsz9YBVYKPwkyA_w9rK2ErQzwLwlyw3adqKTl18phx8KJEzZw1NEPFh_MBiBq9bV5-5JLzG53uZpe3mbE5Oo_crJ_bRL_Ok5u34uYbAmTx9UmFU7uFi7pUn-wKkQsD8swAKkWV2a8Jhb-I4wAqtcvRRHtRx8UFx2Vy24x8Im8QIEsVNxzEQav995kxtxZw4e7WI6RRmR0vDJr4g_va2w1RAkV4Pc1E8CH4_eRkr0iR-sFeqbeUsxzz2rcdDgdAEHrm9AGppMf2SybpIOaQbv_V7dC2lOxbGN1QyMdi6QM4XJs_8QGJUE5ndGuOtVe4PDrqm8k1IfBKXDXPtyr50GWIZhGiZjnKeJ4y8sQgjz6NEF4ormo0dmiF1daMqqvn_0nM3eCOntu6QXxO-pb6AQdB4gCf03s8f10e8N5umkTe5pfnuzG1ItRTu6aLl3dmPzN0sRErWGirJNivK7QERwPcq5rz5v0gcUp93m_INqDOUjj1mm5P0Wf17QCeylVsWpT_GZJosdIQ_2sCXxNBW2F3I_dnxLXRF3RTssEm6pTyU1lA0PyMy0y-E0WgymuGWV8YLkB6K9dSmRLQEQsrjUo08kIjQeT2J6hhXm2d9F4aMkaRpJc6idKfZJiclkvla5jvxZ3OgOdkNGBfCcXcPkcq_YRmRrVTUMcXBOzBNE0mKnR_QLGozAR79OjViaTWXwlwwjDgTrBFu2dQ2XP_iSdkYL57BIeUKwSbJAdi3AsEhIa7bOaNQ0JlTN42SCYVG4J8NV6CG5oYWP9xFhRROc7zwqPh5Ds83aEiZ6LyJLfROgOhMxh--kpi0_n6PgOskb9jrYoGELG9pIays-NVPwlZR0GZlN2GyKJRIt5Ih0gtIApOwi4TBiH_PQvZhDGw1acVhkqb5JueZOCmHNbwJ7JMrWWxIn_6G3zKKrS1ip1s2ijIMbNCqdfJJjrp9uJlSQ160IrL6fIqH96Wick0RO29pyGObaIks9AIQE4m4Fw29IV6MgY3uotwq78GUA27RJJtR3_bbYAlvNxYLFlEtIOSqOVtxNF98LFND-elySl8E1VXkTHTXLNM_2a0ObL_5NlLdSY_OmeLyXOSWxf2316HBN56GEdESXXha9LuC6CJpRSu-3HbS5WUKsnKdCQNjiCeGBoiXWj_sFczbel0rOWhpGaGcaLL5bDzoYuNERdgOpfKFtgJKrWBMG4NXrY_c0bkTLpZqXBMdzKsh9ob48-TkKg5L3j2768OyUodofmLSMZ72yAIT7fLz57nN8rURkK5LmQ8_Sbxs85gn8uo9UjZFf0FftWTAIQ4cSvPjr6hwDwnTAlQ5JPhO2NqeNK7Cpzszubr7kz4M-__xuD2QJ0jxNdUnFL3pUl5IkVRWDdxwhTjmJpikA5t_FX7vG-loyJpR3g-CFX4jgGun0M6lZZJml8L78thr-MXXs4PmKMxorLdCOfjQgJRA2xE3kDgZQFAdLHo5HECNlC-jflLxaXZJthzqzpGJbbeY3KqBaJc82exRzLDisW7GWtrcqaxcEACUYvMELuoTlsMNYl8lnohlco3bbz54uAkDUHHBE3wOgyGE04sD8Uc0E3xGxDANYiV2BGA7CH1nfCYQaLRSxY0JpkQBeV_MI-9J-AQ2dOnIu2qGHpLPIcKS67eny6aXgnmD_TFcRuwckqRTHTwwKcGMrHdZGbsDOO0W0peGFC1j_E-SEx9n31pp4l1217OVEWb4mTUJ1k-Wz8POXSnOSbe_4fGgm2_QQKuLMmfxd8aBWzRLoYXMevCkIXhlVNxIEuLfuul00muSgsLkJCbGxGLs7qJ97i1aqhaNYTusYPfq9xvOcttJaRKQrNqokb5G3fQFnfR7popofbD-GgVsg8OLw314oHhO8oC2D0_SwYRfq50b_-a8-KhkwvKYcn4NBCrw3PZqfEAuQ64iHoy04b7vzoE94kLS-kzKoZ7Ko6T1ApIdJJiOJGe78_2A6KYsXXrfhwKWwzAafyYjjNoENzAMF1ncbi4oQZPZMvzc7YqZ5JjOkJpkEoJ0_l2w9oaIoQABnRxFlHTyl51pVCQR7H1I-X4P_uHuNVEoI7ci7s5llRrHkkM3eblfNgvH2NE-2X8vcPaDZisqmxZiJPnjF-qoBje48EF8RCUe5IGdSV2ybHuE4qGOaiHcE-tmUdrB2o4MrNohdV4RR8zAAmkpieNb9UiBDCyuGkzx_uu5zsnXX-htB-NoIQ9He8gH-86PSs6eeuqThbYZwujCYM_1BFWk46V-gZwzPwHKWREeq0hAmzDKVkLKMmC9wJiQCCFXbjs_aGzUvF7_c7YkrE-HPSuGe_ClyRmL44_dFmx_p1dnt5SrHvVbfZVvwQG7eOW5D8I4VdFwOAWyoAat293bggPElHz3VEWXlAuoqYng5wFoQa1TxU5PU-BxM8Vp94jvDyq6oXMbUKWF4cbJn0oNW9qUeWvG35ItR2BlzG_e1atXY6JwxCKQD690l-PB_htD3mfmNzxOWsndDIFJNsbACGFPClWGnkE4mKgCW43cS-s=",
+                      "text": "# Action Mode\nIt seems there's an issue with the session state. Even though we discussed these tables in Ask Mode, the current Action Mode session doesn't have the `search_datasets` results available for `prepare_tables_for_analysis`.\n\nThis means I can't proceed with generating SQL until the datasets are recognized in this mode. I need to get the session state for \"planning\" to see what's available."
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-7bf439ff-1f73-4260-9ad0-8951d4a2ce82",
+                        "args": {
+                          "state_path": "planning"
+                        },
+                        "name": "get_session_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-7bf439ff-1f73-4260-9ad0-8951d4a2ce82",
+                        "name": "get_session_state",
+                        "response": {
+                          "result": "State path not found: planning"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007751.685967
+        }
+      ],
+      "session_input": {
+        "app_name": "data_orchestration_agent",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1762007788.4726686
+    },
+    {
+      "eval_id": "case4f48e7",
+      "conversation": [
+        {
+          "invocation_id": "e-4a8267fa-470f-4766-b361-c4f1fc9de584",
+          "user_content": {
+            "parts": [
+              {
+                "text": "what data do I have to backtest my nfl predictions?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CqQGAePx_16wxb-uQ55lo0JGkFr_wdQj-_KSG8yg09RFFD4APr5Tkmi1H-APTvueR2kG1eo2JtwuflvUDccnLdtz4lpTiQcwkMp_oRlgSYJHgpxUqV9tBadcx9OBcLmHmjg16kK_ITV7_aAcFgv2FCmmZwDV9K6qHYfpkvCM14M1wUVWFvl9wzqRizqFTj0yiiaQwwVAs2xEg45NK6I0raiuK-ETCHPQePVBdEaTRUaFBJou_07JkcrF6d1v67rL2OmpERUIS78t4rbFKzM-CZ5NE55rBU-yhP0T7dVUhjKAYYcPKzWv8eY1F-rTGETqd1-8aXRP1Mii_2Ue4uc-v2oOZWe5pXdLGjzq-RUkb62JAeydg8-4RGaKBn6-oLmASoNhCSRF0Ed8SLHQQfLpLmfeG_6ajCorHzXwP5pfmfU0V2CeFlTQhqEsjoHu9uHOfJNcdz6vDRhkaDEHZHBGQSXtKEVoJQ-mZEGbrBFs4Q3IVXcU6Urqlgp_mxPWbklfMRmlvDpE-5GhCG9jsCKwKm-Kt1_pQS0KoR5TS3Hx-2WWq5rw88UdNjf0pLAUFW1UhLk4lMHiQlHsrn9ZSnyCOanBJeAiCTq9Je5glPlDxQevzJ22xr28SZqguC2QVb-ZXtowBA0_pD8WwvQ8D-PEA7vnw_6fUPw41x_7vfE2RXCE1Jg2BME2fj0Boyg3JR2i1gCZTSGFb391Wj65ZBUfXjvs70g_VokrS91AxuGXV9KPYPzfeiQMLl4WySiuOHkN1OcdowGAwfNh6TTpTaScuyu9mkyr9V0bnr8exNPNu5nnIppwZxGw-0z9N52N8JxHC3kx0shB3zTwkGu5i5d9B_Yf8iDsqN-owYRwbW4bSZlWhRhkQm-LVNn-XoR65puKssAOUgGTA-N6PUQjBbATZuCCIazgdD0eqcbETDi7qqDHdmtK78hJGUHVvsDHKtc9xD0QLXJHBQiy3_Qh8QP3y5uXjoKXFh0qRCtv3aZduJFZkvaqg4qIAtN4d8EzUfxfLj0HL0Xf0BscMkbZV0_UV7IbaWt664MkCcBL40O-P5NrOZ29Tk4p",
+                "text": "# Ask Mode\nI found several datasets that might be useful for backtesting your NFL predictions:\n\n*   **lennyisagoodboy.lfndata.backtest_qb_td_inferences**: This table seems to contain inferences (predictions) specifically for quarterback touchdowns, which could be directly relevant for backtesting. It has 702 rows.\n*   **lennyisagoodboy.lfndata.backtest_regression_inferences**: Similar to the above, this table also contains backtest inferences, possibly for a broader range of predictions based on regression models. It has 449 rows.\n*   **lennyisagoodboy.lfndata.qb_td_predictions**: This table likely holds the original quarterback touchdown predictions before backtesting. It has 168 rows.\n*   **lennyisagoodboy.lfndata.regression_predictions**: This table might contain general regression-based predictions. It has 700 rows.\n*   **lennyisagoodboy.lfndata.post_game_summaries**: This table could provide the actual outcomes of games, which are necessary to compare against your predictions during backtesting. It has 1205 rows.\n\nWould you like me to get more details on any of these tables, such as their schemas, to help you understand their content better?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "root_orchestration_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CvECAePx_14f4aqd1VEotOCXfaWgZpsmWQRt8-BVm8u2lv5axjfivqL3A0Xalq7s-aZNz44UjBvRvJROZIhCQOELGTCZATTDUgd-8fFrrIio3mngcRTxMOw5xOFquDVM1NTjA7L81WC2oTFFS8MspjUFbtonGwH_gQ4EouPFTSyGVNi1zTOicZ8htpIGC2aAIj8yA7hzjW-0mpTRNm_g7FVDuQTCo0-fFKj87hzQ6nD9Z9U3sVaLZFNUJycp7ubg-CCm_sodYL2fE5IaYCa4s9FSK2wBPG6yTkqqqJTc8FPSLDG4C_lPm9aYiZ3ouwZGNfNhBymRnjHaVm_4D_A2nSjCQtxHJnxHpSnpzRWCMaTVMXe6TYyUFD-OsrfvQIwbLYDRU2rRIOuzYJF6iKfqFOfC0Hapd7OMeUXfbGN5H7BnaBu-Rpus02PC0l-aLonS7xu-lUOZl2u0b3frF3EGBYWuLHllwNLrzPibCYpLu6RYbi--",
+                      "function_call": {
+                        "id": "adk-f0cd87d7-dbd7-44de-a9fa-2159273ca434",
+                        "args": {
+                          "agent_name": "ask_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "root_orchestration_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f0cd87d7-dbd7-44de-a9fa-2159273ca434",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CogEAePx_15d4h4cLmerWNmHmfhRPxhCnOTA6LkkugnaFMA-XWWR263MMDBVAdniZW0gbIiQ1h-on6fmSYdxohY0ffXdSx3igfkHhxLRPcrtIfSPObbA2xC-cnPuNNqGI0CLTC3kcbuwe51Ct0XXjhwC9vcrkK7xCU-gKDSPMW0_enS0fYPwYzIJ1m2oGMe3OKYqMuMYNGU_DveB5IBCfzRJNJHA61dq1tfTDncYTTc1iM77xA-6jiSNdZd1QFyGSIqm6xBOeUn2zIiW3x1HSYjp1ywngaw5iyCLGnZ6gj-BMBQ3H-QBylSqBv2Qs9l7ZowpzLKxuANB1ytG47tUPmaok41Y9KPMaShth1aKZ0nVDqSnSeo5lJ4pcRGCscw2y3uwIlUAe2ixTrPwRAwMXmaTIjUovCAU6C5mox9fsuWEZwer0P20lw6Hs8oVwQtIIXA3UkSFnOHxKBMdw1LTmJ7z3t4wPkxNENvNqLHCUPF_rodXT08CRDg77IW7qWTbkPv05hKH4h8DthRRTtvBQouC4QqHKueLGs6xrJ5jRn1spStWjtBd2nCiN0tXGRtmuaV6mCh51sDQ-synVQ10TV3k95M6a7PsHCR1-y5PXU7UiNYZfeCBOHtFxsJjh-PJm3V7Zax1NjU5BC20F6qO0I0D-BesDvSyp5WBmUrUAZsKbuIoA5M8aXNbzQ==",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-eeb88be5-9121-4f6e-ab5e-405d503edbb1",
+                        "args": {
+                          "query": "NFL predictions backtest data"
+                        },
+                        "name": "search_datasets"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-eeb88be5-9121-4f6e-ab5e-405d503edbb1",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 32 dataset(s):\n\n1. **lennyisagoodboy.lfndata.backtest_qb_td_inferences**\n   - Description: None\n   - Rows: 702\n\n2. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n3. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n4. **lennyisagoodboy.lfndata.backtest_regression_inferences**\n   - Description: None\n   - Rows: 449\n\n5. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n... and 27 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007539.975617
+        },
+        {
+          "invocation_id": "e-9303f07e-1909-4b8b-8f58-f0ecb2f5d7eb",
+          "user_content": {
+            "parts": [
+              {
+                "text": "what about live inferences?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CpoGAePx_15qW5l3mgKUG77n5TKN8_OiHN7ag9YyfsfS6d5LWhLhTzTlkM71hba681vanpKmW33_1FIfKKxgR1OQEEf7D4ocnHCRFtKAlqi00fNPw6PyQoyE4FpBjxB1DWkPTUqxIBZ9AF6FV2Kc-SlVxnDZ4nh3Ea2K8fm46kRUJxR9sNazHHA4VHyJlt_9SD4x7AaBGuJ9BCqmRbMM65GyUbUdSO5TnN27LTxGtAZPClHp7kiuIfeWcTaM0r1hbyGKowtR_2M4Mob4KaeE0dTcHYAoncDoBWKeIpCeX2IWhH6uGXuTzu7eBuAGQ5Tq8sLHLthI9LvVs8xrdSUD3FIDXW7PXQY32Ux4cm5-fIv55l77maGItXVNGuMtLiTJjxFEtQgxlKetiHCrtL4jk1unWk-IGXF9ISbH0_FNuJgFRk7evzRIGKfnJyzmHDrFrDTu5spKzzw9FPpPM4l6htkEhxj2bO-skFGuDyx6SbnTaT0GZf1HuIB1U51b9J4pdjxncS9fHFuOmPrTLFimnZlO9VJFAFolccbT6xoAbkNDwV-eMNdTe_tEh_vseyOaD_kQ1_fYcp2HtneJw4krZNf_oR1EwxVaCguwfSLlRBGp1AUi18LehUBE2iuaGs9vz0BkF5tf5FeZRUUJTI0nskC8C1nrWL-IhS4fAY-bCCz95EsZPr2oxR1QQEHoAKKJ8ZRGXIFfG-oSC_ap6IbtVsmT2fTSiDLR79IonA9q8mURSHpTpvR8bw_sYKbohGeqCZNAiooyNFXOUe050RkTmNTIttTQ6T8QhxNBtpcTnn4ApCNCqesIPzl1lRZ7duXcgTxLP1NJgkCriLaC_UGOgVCGEuzDrXWQEXNO5fPmYnrNI76fuNYxZVzBONf8xfW2rDzrW9wb57ICbiK4amlPL3itDm3DIGqPHnM7C4SkYnCaCibovalXy6nrUd8ezGZOEnhct6cjD4epsQpZetO3aEhCIZgilFERHl9WFQuHIcMNFeYBqPEnWOBvQrQgupoKPBQOQg0m27JCk8PAoxfDEs4xki-Wfp18ZyGLTgY=",
+                "text": "# Ask Mode\nI searched for \"NFL live inferences data\" and found a couple of tables that *might* be relevant, but they currently show 0 rows:\n\n*   **lennyisagoodboy.lfndata.historical_inference_view**\n*   **lennyisagoodboy.lfndata.historical_inference_view_questionable**\n\nThis suggests there might not be actively populated \"live inference\" tables with that exact naming convention.\n\nI also found tables like `lennyisagoodboy.lfndata.post_game_summaries` and `lennyisagoodboy.lfndata.pre_game_team_data` which contain historical data, but don't directly indicate \"live inferences\".\n\nWere you looking for:\n*   \"Real-time predictions\"\n*   \"Streaming predictions\"\n*   \"In-game predictions\"\n*   \"Prediction API data\"\n\nOr could you clarify what aspects of \"live inferences\" you're most interested in (e.g., real-time scores, in-progress game statistics, live betting odds, etc.)?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CqEDAePx_16KMXXwa6W4dcYyDL3ILe0jfFzWFe8k4Snp5OdXFq-pcxkFWfFNiddY3OAKz4uT8x8E4NHP7VYypQhLLVlsUlKNTLzZzTbM5dxpkv0L7tDJO6t-krr9uLykgT5huqRdVlfrsRPNInkkhUhVVpM9YY6281ZE2dXVNHQnXgHbWDxaZSwSOC_b3WpbD4xeoej4GpQk4dOP0Az1w8dT-b7N3DUQtrlu5NMWE0iFrn3T4o7C0yaY5P6WrAa19PEs8M2HVEp-cG-FuSDkKimZJS542DyWVclbAxOuu9_Xhu5MB7P_Lw3ado_gzFFqWbcuAJ0yw-o15cUuFZkhTWfgbHE7RoF5Wz7rOEoyQk0xoGPaqxP5C-yPI38jGUC0DCb3uEIslX22UP0bAAR_Onu7REoUG4rkBufaM3ylSB-49ft3-z8WbRT7e2VV5aUluJgX19aF_4LUdusf8W9rIPEgcsfuXEKNR0TtBFr0jIiBUMMHS4VHRjOnnxQODY89cKiQE72SnRVQigKmDvYc3sNcXFiTBfrZ5y1tSdQYjESqJbPG",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-68a69f74-ad4e-43ef-a5d4-073a7014ea2f",
+                        "args": {
+                          "query": "NFL live inferences data"
+                        },
+                        "name": "search_datasets"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-68a69f74-ad4e-43ef-a5d4-073a7014ea2f",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 33 dataset(s):\n\n1. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n2. **lennyisagoodboy.lfndata.backtest_regression_inferences**\n   - Description: None\n   - Rows: 449\n\n3. **lennyisagoodboy.lfndata.pre_game_team_data**\n   - Description: None\n   - Rows: 190\n\n4. **lennyisagoodboy.lfndata.historical_inference_view**\n   - Description: None\n   - Rows: 0\n\n5. **lennyisagoodboy.lfndata.historical_inference_view_questionable**\n   - Description: None\n   - Rows: 0\n\n... and 28 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007559.905461
+        },
+        {
+          "invocation_id": "e-cac8f0da-155c-46f5-b851-9683c637c7ba",
+          "user_content": {
+            "parts": [
+              {
+                "text": "search for all of those terms"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CpQLAePx_14b6Ne5Tqw-nuyy-2CNXcRe_BgpHkBKo3Yy43SuCCIa3tFPwPMxcyQ5V1TR8WxMvDB992R44J-AX-_B7uoGCN7eCfHzXg-6EQu59wE2RSCsJ0eRDzynmRpRRMTjHvBj9GcKXNZEpxcf9SCydMeHrBnkmPmAK390qydi9P0EAdUI98Jn_FmiDZyxW98uBdVR1i7MjlR85BM-v_-VCgqhHPqInwyrEJB_ElP0Z8f6OUUS9RydLsqQO5kQcVSJFJmBOf9C7pxF_cJUEZgu0q3dMMXSVuln5hX6bSoS65iXwAKhEVl6f0vaUvo6Z1FZeth6yp7TUPAmn2EDh01HrnFlXZRmHlO2CcSQYaZVpoXZBxWjyVFDgmM7s-k4UVGdhBsfoPcdfiA3IK4ygWFVU7I3_IepD4oNoQng-By_8iaRrnzvpWUgzjvdBPLJ_fT_EIcFL6WerW_bxOg-_6UHwX9keZYajS2_xnTdbBE-9poX2wUcKs9HikLysL8W-E3zxKgLiNcbKpf8i2LBgxtp5f6HrO4xVQH17I8E94utiXljCiGqhnO6R2CuHjStDy7GRLG4qH9ixNNGr3bCkxXaUy5aGDDDoq1yEHG4G5j4kmcJSu4cjDaQIt9HnzqlU5tM9aivoponAA7sA7NwpIZVFYfRufAbEDJTuU9IboFhFZKeFHHxWfn2xdVGH_bMbM1wy8ykTyZBRD6jc3JzCHKAa_FYkto6zMJLTishpP2VlMppQtg-V-mdn8GLeRnrwczT8ozPE_z0aaQhy9QeYc7OAEsR37bX1EBApg-ykaUhUHZSARWUCxBu9Q1vM2Ag4yWxsw1slWS0V1lvtj9DIJwJFyMm35PzyurVZfr6bs4n-IJktOG-ThmdszQHPEJQ1tp3kpu5cOKScevG7PLlFMO7JYVhJtrFqxmAOHh-Yk6COxDwsz7qnAcoNDbv7-EBEz35GJt72xAjl77azj8GqXJbs2bZIdM2PLcfI5vI60-hS2aUusSKuM6QEd2L82tdMbnMnR1ZmOT4Bp5bMxDjgnbQDfKPGtwm9gze7qErElxIUO0n49_ht0BCrR-hOl40YYJX7ijnhulseb9XTTGzBOLRcbNG7Lh81jUvidHGIdBIMd90H_QdFj9pYpV8nzPLielRO8uv0ubIwCFdlIFoGsyUWzelgPu_Od82hkb1fa0Tyz9FuWDSzK5dJQGxhrXceNkauxrSKmPpIV6-Nmx84FBO4g2PPHSk9cth3ulDkdmJafjrg0HTK1DW5HVl9zBKLRHRzev-jGnzt4tnKmA54vS5HskltCovGBw8Y52etj0Le2vzmbiGpRanvlPh0VYyWwdUBO7fz5xZGB85lqGgSKjfrPrOwAyOUPRw3HxdKmUu0d5K1liZqcAWjXhX4dCHUnAehfGO3NfnpEvZvd5so8dkhMUI0vLolyIT71FhHzDfVUrb0H8L67iP6NGr7UNl9jOeD1A-hDpYinHCChRVyLrbDAigIlME2s_MShq-jkosSOViaVThLODlnsxuE0Uh9gCB44mOzohGVRhy8fhxl7MlHPu9IjYPpWxIFLd828POSu-mp3r82fasGr1vJlPGHQQOGSrei2rQlwbRBDL3f3UG32TUltOScX7Ner36xyMhf39RdIq4heLjfHszoxnQaJe1wi0BpGoTJDqe5MQ2eUqtcgRHi9XJ8c_I6Rqvja59y0T2LWloqgw_e15TqmXpxuilxxMNdzqB4DzFBaFW1jxSbhNRvlH1D7fdOx3R1IOsFD1nnPibgGHMX-sa0wxiK7eiQtTl-evyRYJMK0QJcXZIOwE-5xn2inqgVOTN4mHn6Qxp_z9dkfERrRIPF2bL2rGaW43nLr8tcFcUs9-SiTXQ7k7xIbbOxx0RkTx1wR1kTtL-0U4D",
+                "text": "# Ask Mode\nI've searched for data related to \"NFL real-time predictions\", \"streaming predictions\", \"in-game predictions\", and \"prediction API data\". Here's a summary of what I found:\n\n**Potentially relevant tables (but currently with 0 rows):**\n*   **lennyisagoodboy.lfndata.inference_dataset_view**: This table appeared in all four searches and seems like it would contain inference data, but it currently has 0 rows.\n*   **lennyisagoodboy.lfndata.historical_inference_view** and **lennyisagoodboy.lfndata.historical_inference_view_questionable**: These also appeared in some searches and have 0 rows.\n\n**Tables that might be useful for live-related data (with rows):**\n*   **lennyisagoodboy.lfndata.odds_props** (5850 rows) and **lennyisagoodboy.lfndata.odds** (132197 rows): These tables came up in the \"prediction API data\" search. Odds data is often updated in real-time, so these could be relevant for \"live\" information or as a source for building live prediction models.\n*   **lennyisagoodboy.lfndata.qb_td_predictions** (168 rows) and **lennyisagoodboy.lfndata.regression_predictions** (700 rows): While these don't explicitly say \"live\", they contain prediction data which could be updated frequently, depending on how they are generated.\n*   **lennyisagoodboy.lfndata.post_game_summaries** (1205 rows) and **lennyisagoodboy.lfndata.pre_game_summaries** (12 rows): These contain game summaries before and after games, which might have components used in \"live\" contexts.\n\nGiven that the tables explicitly named \"inference_view\" have no data, the `odds` tables (e.g., `lennyisagoodboy.lfndata.odds_props`, `lennyisagoodboy.lfndata.odds`) seem like the most promising candidates for \"live\" data due to their nature.\n\nWould you like me to get more details on any of these tables, especially the `odds` tables, to see their schema and understand their content better?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CucCAePx_17kgVVGXJfxJb_m4n_rH-eVMdnuiICVfmOXkxElSeDV-02kyQIFwuScYrGKjMeC-K1wkQ9xzU6F-5PeMhfPbltiLAv_-SF8R-02ngJi4Kc9SjfiSPfFd11b6-XenrS9tlgybrI_BarMBk0tcEgAVv4XZKFeJ-dfIHoqL6a-A7o6gcyYA8dI-xlkEJ0iuUIcUiubg7_qbHjxiURJD4W-8snrk6KJyxhEXLW9J-0k2GIoHn9xVn-22NcOt3djpvYhnk2TtGE61FcQwon6sgDBHHJ5ykuvGcldSvZZ8jHDPlrwynYsnbgt6h3dscRsDEcDWCDpNlHeG4GnQmaGqqZdOpvTeWRpcPAwN9YuWgItHcU3yFlScmR1uYaXapdOihTykWslIba0VyqsuiizAsdoi4e3patnXCsexqgdwT8egb0Ig6m6cF3HjTpfeX_yGyzcNB_cg3HajS-52u95QxlKF1Ynn6Y=",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-db28940c-20ad-4fc6-8bb4-4094a0e5e126",
+                        "args": {
+                          "query": "NFL real-time predictions"
+                        },
+                        "name": "search_datasets"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-a0793314-bd94-45c5-a75f-f4cfdeae4670",
+                        "args": {
+                          "query": "NFL streaming predictions"
+                        },
+                        "name": "search_datasets"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-49608c73-83c9-4985-a66d-96e638e3431a",
+                        "args": {
+                          "query": "NFL in-game predictions"
+                        },
+                        "name": "search_datasets"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-cef1c36c-65c5-4125-afb1-46ff9dc6bf0d",
+                        "args": {
+                          "query": "NFL prediction API data"
+                        },
+                        "name": "search_datasets"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-db28940c-20ad-4fc6-8bb4-4094a0e5e126",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 26 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n3. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n4. **lennyisagoodboy.lfndata.historical_inference_view_questionable**\n   - Description: None\n   - Rows: 0\n\n5. **lennyisagoodboy.lfndata.pre_game_summaries**\n   - Description: None\n   - Rows: 12\n\n... and 21 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-a0793314-bd94-45c5-a75f-f4cfdeae4670",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 18 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n3. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n4. **lennyisagoodboy.lfndata.pre_game_summaries**\n   - Description: None\n   - Rows: 12\n\n5. **lennyisagoodboy.lfndata.post_game_summaries**\n   - Description: None\n   - Rows: 1205\n\n... and 13 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-49608c73-83c9-4985-a66d-96e638e3431a",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 22 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.pre_game_summaries**\n   - Description: None\n   - Rows: 12\n\n3. **lennyisagoodboy.lfndata.historical_inference_view**\n   - Description: None\n   - Rows: 0\n\n4. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n5. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n... and 17 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-cef1c36c-65c5-4125-afb1-46ff9dc6bf0d",
+                        "name": "search_datasets",
+                        "response": {
+                          "result": "Found 33 dataset(s):\n\n1. **lennyisagoodboy.lfndata.qb_td_predictions**\n   - Description: None\n   - Rows: 168\n\n2. **lennyisagoodboy.lfndata.regression_predictions**\n   - Description: None\n   - Rows: 700\n\n3. **lennyisagoodboy.lfndata.inference_dataset_view**\n   - Description: None\n   - Rows: 0\n\n4. **lennyisagoodboy.lfndata.odds_props**\n   - Description: None\n   - Rows: 5850\n\n5. **lennyisagoodboy.lfndata.odds**\n   - Description: None\n   - Rows: 132197\n\n... and 28 more\n\n✓ Results saved. You can now analyze this data using the three-step workflow: prepare_tables_for_analysis → generate_sql_for_question → execute_sql_query"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007578.683497
+        },
+        {
+          "invocation_id": "e-e0dbb6cd-3492-4294-9614-5ca01281f95b",
+          "user_content": {
+            "parts": [
+              {
+                "text": "ok tell me about backtest_regression_inferences and regression_predictions"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "Co0VAePx_14u1sm9CBcrCKij6YzHQUQVLIwrmN9DXzSQmakeKYeKat704Ben9RUmqsDwFZVNJJyKMsLAp_Vb8YynJcMsyvLZH5cfTd-m37aSvuw4oX7Tosxzvnb46XXc2iwtX3bg3n6OqS8HaZg9XBi16twMEP3R06Mw-Q-1phiuCnYPsCWDFGlrxIcKw_Nn6JHZOSQRSzJLB3KNCSB2dCiTBX_wBnBLpVWWlbedIPaL6fYmly3Zeryd0jfrMaT0XJJbFg4mYAQLBtBsnB_wUaLQPJyEQMm6XTNDhqJbNVoKJYzbPu8NaxAImIbL01PGsc8TKZqly9xtDQCyHMeAEtWYU6xhegK48mlmUmnTPDjUYb4LWLLfLQjeVjdPS5KdTq4IhKBaG7IDutbL7pkUD3neMaOMby5bZ1PhrvLy_9m30rZunXbSjSXo9ZLSDOUVUNe86U8tkyXlnR902FeffDIhjD0U0pj46bpgxK1curAxeJvPEHWD9xfUIktYFdp7ZxwhJ05TKHsWuSQ_nUbTdVSQ_1dy3qE3n5tUOGbbU9yEAX67fdvA8hLxnuRPLlt91aAqXQhmSk2xK9xb0LLBZyDAeaTedGEA-h_sNO2d1IG4FxtpbKTgPzgE0eBXF0PvzpyngcJHXaOiZCIG2UZR4fFfmdrAfSRHQJpraXrUC5U66Cy6Eh3vgYuA66yvWt5UjvLyZ275HOllKpRyfNtHZpBVbbj2iczzbiiRLMHm4KdB4kPUXtz5XpgeSBNmxwIJ21HDUbR_qqQj9oh9nMax1pChgo3P5tqQcGfstuhu5cJhfKahKfUCH785aJ11uWokeBzzzykChfm3OJRnkoiR6A8XqVliJN68sny--frENT67g6A9_-KvN9YcUI0SQAcla2Vaivt8dNDiisDkE7wQDBvQkzu1YMA8KFGSQShMdNp00M8pXGOn8mTAnam-NbdAwYbg0jyaGPaaX394BH9ELTKEobixFZi-M05RVFnADkyAb43nc94nHkvR-JEeGySuXfI1Cm7NcqvLlAd1GdIc1U8Dan8GVdPRKoaE5BBNFMzAFvSH0UnU79AlMhkYr3H07_qoapdy9eQMB9cHCwIeBOyRw4VPeJd5iWBH-SRtU8OPFwngHqlqEyZJtEyDWTDrP1RTQeixTuwNfox52_79ZRPs0KrRnE1zajTQeb8cAFppB7O-sW5yZZYZDISv3bUI-f_7RfeLJl4O0ppGQhG0S9LqgXlqk8RYJYDyl_dc0eX0ggz-qSDZ1q1t7xX3ewM_I-YXjSuoaQZJ9Mb-4KKbYOazs8nA5eDwGFQ5TVAUC7I-uoR3GR082o7LmLMYjPuLkvi-gtwEUYhzL2DtKbBIvmDHUDbKSJJLE7M4S-dgzXpvW9oOyabM8teBK1RTqocvSIOCn_zf5XRIFUmuRCV5GZ6UKY1xUcpkGbcuR4DqWJEyl_IUKjCXo1M_ZV-8FgV4tUUT9pRauHoqt4aGMBKp_GVMsoLsR1-LH_oXe9ITaAZQBcHPsmNlVgHWzS2bnbCaN4dzxot1KV7sxAX7ytQJkORvhmJlS43Qq67xYg0uSBTIs8BhglKKv__viwfDeJsJyR1J39EDbUqp1X6fNRmPIWzUqYn9aOoNu4wNQQln9gtD634Yuoev2i8B7JP68eZUOQ5jnm2Sf81FX_o7xfWV7PDuA10zmk8Y2JrvQn9LVGd2E7yFG_yp1a6bPUsgSE569c1bhcgZ7aXkw-nL5LHQpfcvEoYrz0wnwyLLN8UXnYelAhvLLm_HTICt6-Q8UdAJ6bVVLWX_M4YwxkbqsiGRFcR3eQvymXb-jXIPwgQiFwnZiKY5tiiNW9gQIorT70uvzxn3VYZrk3CoawJN-Kvu1G_ZLpYg_tUBGTdwmJemDhbht2zU_SDzw7dnmmoshjaR8oDM52LA2557u31UGryOyM2m26sKY5nu06nmRxdPl_Ess7VFjumgc4VZ-w7-IO7daGqBKuL0lBwrZO4grBYj_UDFuByvx7Y_I12ux6sxkNuQh3SnW73QHA3mCXGgo42Q5b3K6dnWL6VuzYvQuw4ppYNx036o-ecUKm1HsYN9I9QWtHgG6YfQ7UvE5qvzdrnJ4lANXN6ZPyTuCzHs0AtHOAoy4TAhFAO8Q8CZATUTYE2AzCCmFIiURNRbuKI5GWeUnLarDUfwBgmfZ-c8mNYlP_RywIDUqXq4C1c2_a527Qn01SUhpMA0cswWhDljxMJqcBp8Vad05Ez8FS9ylZqQAwU_i0PeLHO3UJ_Yp0wiSHGAbzZfR9MnIYGCcR5zAKZDh_D30F_4oVHpst7DfVmACxg0dubtSldZXGpspeohpC7dqeZ-opRrDESeKj0eWGa62lPEMEZwsNt3aQwnCvIxDdL4SPJlGi2Y7gr25oJJbzNy-rOLLDK9ZtueVNlNRXEstuT03RwgzvxW8sCG_1Auw8oTSsFmWBHYdE-PTW6sqvzDoon9SDU8yDQSD6JHBbDbl3YVsZb1yiW90wiFxJvbUsL4IPUxiibxs_5qoTxY_P1C7dEKZBdII6iVR3q23OK89EMrb6c4lMvDUCkUfayPsEGi2IQk_RT9ZzrAtrsJe6ulDvLfpoRYfXzcPjWvgh-wIMFFQLpJfz5csJI1Gbc5mI4odSLQKmVhwPf0LvulMy6Jtt6weyaOOzb98VmBViK9M0-d6rX0Ra25ntzLBaprakXZ9vbNCE1Xqj2uTTodooqtdURS81Xhi5v8ehbXgOPJde3e0mGNFvLTlNYqow1G3zh7OBqMBrEeYC7qERFpbLbcOk3IJBsB0CbG6W6DCYkpN1_tXL-X4jYdqsJ4e0dpKgdsDE30r_QM9i4cEV7sALlqRA8S5xzCbYEA8YGB3qyK6zYJnGvcmvWgvj-9c6W-W-0KRbEYVJW3iZxCYOwhf88QCCkbvA9B-QCpYuv6RDYzRx0u8X-D1z7SXfR2Ghq0ifjhmhCQPMtqu8yt1kmClZn-KcZOiQ_pj4swo_DgQyBmQjhPCtQSjJajo7go0IfEmapSBFhohox-SS_OEtVG9xwMLrdm9C5ZI9XG257SSihRIDJcGFemP5yRheTe3QikKS262BGM_l4qQ7bSp-YvXQO3TEyTA8qA2sEsvIXCRxO7kC2FrEp-Dw8QPmc9bhvQ-jpbOQoCdnjaQa2OdHKs9shbDLUKhPCEdS0k8m86dtw_EK8GgLsqlbGt4tV96ZSvRZmNcABIrama0FqEQvSC2sNkXB-jue_C8PwGQEHqynybea8O5kCOlyIIfrbAdU4kEpAJYpD9ukbXJJaVRUBaud_6A5sB3EbG987q2nHObE__9z_kYo-j4qLw6HmF6y09s30oroFfRIAOHv_O7uqP2NfT-_bfhmCU0e1uLbJ9PFBi57EeKNV4SfaLy8O9qUTrNum5nUtZZg0PImtkl6zLt_YOq9vkreeZCa4a9JvolmI4LdfuYOCwP5wHQhDpZP6rdvsdoBftOOueX69a0dWL3m2MZFdc3FyRLz9YkBiDsyuGJ_JxH1A5qurMYA6_j5xTnHg-iu-kqN92cKjNFWgwaVus5l4dVAD9gU4Cf8MGhLAcVQx9gaauLgQWNQrdhcPZaw==",
+                "text": "# Ask Mode\nHere are the details for the two tables you asked about:\n\n### `lennyisagoodboy.lfndata.backtest_regression_inferences`\n\nThis table appears to be specifically designed for backtesting.\n\n*   **Description**: No description available.\n*   **Row Count**: 449 rows\n*   **Key Columns**:\n    *   `run_id`: A unique identifier for the backtest run.\n    *   `game_id`: A unique identifier for the game.\n    *   `year`, `week`, `game_date`: Temporal details of the game.\n    *   `team`, `opponent`: The teams involved in the prediction.\n    *   `vegas_spread`: The closing point spread from the sportsbook.\n    *   `predicted_spread`: The model's predicted point spread differential. This is likely what you would compare against `vegas_spread` and `actual_result`.\n    *   `actual_result`: The outcome of the bet, either 'WIN' or 'LOSS', indicating how the prediction performed.\n    *   `edge`: The difference between the predicted spread and the Vegas spread, suggesting the model's perceived value.\n    *   `shap_features`: Top 10 features contributing to the prediction, stored as a JSON string for explainability.\n    *   `model_used`: The GCS path of the model used for the prediction.\n    *   `insert_time`: When the record was inserted.\n*   **Data Classification**: Does not contain PII or PHI.\n\nThis table seems highly relevant for directly evaluating the performance of regression-based predictions against actual outcomes.\n\n### `lennyisagoodboy.lfndata.regression_predictions`\n\nThis table contains the raw regression predictions and associated betting information.\n\n*   **Description**: No description available.\n*   **Row Count**: 700 rows\n*   **Key Columns**:\n    *   `game_id`, `team`, `opponent`, `week`, `start_time`: Basic game and team identifiers.\n    *   `spread`: The point spread (likely from Vegas).\n    *   `predicted_margin`: The model's predicted score differential between the team and its opponent. This is likely the core prediction.\n    *   `edge`: Points of value against the spread.\n    *   `tier`, `implied_win_prob`, `kelly_pct`, `bet_amount`, `is_sound_bet`, `original_bet_amount`: Several columns related to betting strategy and implied probabilities.\n    *   `model_name`: The name of the model that generated the prediction.\n    *   `prediction_timestamp_utc`: The timestamp when the prediction was made.\n    *   `explainability`: SHAP values as a JSON for model explainability.\n    *   `gemini_narrative`, `gemini_reasoning`: Textual narratives or reasoning, potentially AI-generated.\n    *   `role`: Indicates whether the team is the FAVORITE or UNDERDOG.\n*   **Data Classification**: Contains PII (Personally Identifiable Information).\n\nThis table appears to be the source of the predictions that could then be backtested using a table like `backtest_regression_inferences`. It also provides additional context around betting strategy and model explainability.\n\nDo these tables meet your needs for backtesting NFL predictions, or would you like to explore other datasets or details?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CrsCAePx_16NwZkounl9y7M1HwquNAPI6hNSlN7Q4QR17FHPrqzwPy8Oqaz03lW2yaHLo_EhFLaWPD_87pQqW9MiqndNsg1lQXp_PQoMjx5njGuct4kcLxt4wEBU3xvJCRURDgbIEZSh5UogTCBQyMZqL-m7aqo_eW5Kwx71bAeKgaLAVcNft9-G2NSQQdMr8XLDTsONN_okFtVsAUdtRO8eOO7BhlE6Fcj6oTO0ClKUzT1tx_dOJw9MLVKcMlu4oP1UBTsN1aKdiL6Bo14ngkaUxNJTPtLqUtRw5BnaqL-Td-ISaWKKf0bVOSxerN4nNUs9skW0PSFMOlM8jjwXOtgSPRQ3azyqDeS2HGBqBBn4NA5ASmhpKjSsAujs21qA6i13UNqIc6NZ-sHgplnWuZ5SfLyNxIHKp-WyNgbL",
+                      "text": "# Ask Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-8fe42bfe-d722-4e45-b94d-29675a3689de",
+                        "args": {
+                          "table_id": "lennyisagoodboy.lfndata.backtest_regression_inferences"
+                        },
+                        "name": "get_dataset_details"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-94918f52-0ad0-438e-9bcc-37859506fd36",
+                        "args": {
+                          "table_id": "lennyisagoodboy.lfndata.regression_predictions"
+                        },
+                        "name": "get_dataset_details"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-8fe42bfe-d722-4e45-b94d-29675a3689de",
+                        "name": "get_dataset_details",
+                        "response": {
+                          "result": "# lfndata.backtest_regression_inferences\n\n**Full ID**: `c533f07daac7dd9b284be035036e51f8`\n**Type**: TABLE\n**Description**: No description available\n\n## Statistics\n\n- **Row Count**: 449 rows\n- **Size**: 0.00 GB\n- **Created**: 2025-10-26 05:59:28.029 UTC\n- **Last Modified**: 2025-10-28 20:58:44.24 UTC\n\n## Data Classification\n\n- **Contains PII**: No\n- **Contains PHI**: No\n- **Environment**: unknown\n\n## Schema\n\n| Column | Type | Mode | Description |\n|--------|------|------|-------------|\n| `run_id` | STRING | NULLABLE | A unique identifier for the backtest run. |\n| `game_id` | STRING | NULLABLE | A unique identifier for the game. |\n| `year` | INTEGER | NULLABLE | The year of the game. |\n| `week` | INTEGER | NULLABLE | The week of the game. |\n| `game_date` | TIMESTAMP | NULLABLE | The UTC timestamp for the start of the game. |\n| `team` | STRING | NULLABLE | The team the prediction is for. |\n| `opponent` | STRING | NULLABLE | The opponent team. |\n| `vegas_spread` | FLOAT | NULLABLE | The closing point spread from the sportsbook. |\n| `predicted_spread` | FLOAT | NULLABLE | The model's predicted point spread differential. |\n| `actual_result` | STRING | NULLABLE | The outcome of the bet ('WIN' or 'LOSS'). |\n| `edge` | FLOAT | NULLABLE | The difference between the predicted spread and the Vegas spread. |\n| `shap_features` | STRING | NULLABLE | Top 10 features contributing to the prediction, as a JSON string. |\n| `model_used` | STRING | NULLABLE | The GCS path of the model used for the prediction. |\n| `insert_time` | TIMESTAMP | NULLABLE | The UTC timestamp when the record was inserted. |\n\n## Lineage\n\n- **Upstream Sources**: 0\n- **Downstream Targets**: 0\n"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-94918f52-0ad0-438e-9bcc-37859506fd36",
+                        "name": "get_dataset_details",
+                        "response": {
+                          "result": "# lfndata.regression_predictions\n\n**Full ID**: `1514fc8c4363ec6eaa3b358dc613d3ce`\n**Type**: TABLE\n**Description**: No description available\n\n## Statistics\n\n- **Row Count**: 700 rows\n- **Size**: 0.00 GB\n- **Created**: 2025-10-10 18:48:35.62 UTC\n- **Last Modified**: 2025-10-31 20:08:02.062 UTC\n\n## Data Classification\n\n- **Contains PII**: Yes\n- **Contains PHI**: No\n- **Environment**: unknown\n\n## Schema\n\n| Column | Type | Mode | Description |\n|--------|------|------|-------------|\n| `game_id` | STRING | NULLABLE | Game Id - String field |\n| `team` | STRING | NULLABLE | Team - String field |\n| `opponent` | STRING | NULLABLE | Opponent - String field |\n| `week` | INTEGER | NULLABLE | Week - Integer field |\n| `start_time` | TIMESTAMP | NULLABLE | Start Time - Timestamp field |\n| `spread` | FLOAT | NULLABLE | Spread - Float field |\n| `spread_price` | INTEGER | NULLABLE | Spread Price - Integer field |\n| `predicted_margin` | FLOAT | NULLABLE | Model's predicted score differential (Team - Opponent). |\n| `edge` | FLOAT | NULLABLE | Points of value against the spread. |\n| `tier` | STRING | NULLABLE | Tier - String field |\n| `implied_win_prob` | FLOAT | NULLABLE | Implied Win Prob - Float field |\n| `kelly_pct` | FLOAT | NULLABLE | Kelly Pct - Float field |\n| `bet_amount` | FLOAT | NULLABLE | Bet Amount - Float field |\n| `model_name` | STRING | NULLABLE | Model Name - String field |\n| `prediction_timestamp_utc` | TIMESTAMP | NULLABLE | Prediction Timestamp Utc - Timestamp field |\n| `explainability` | STRING | NULLABLE | SHAP values JSON. |\n| `gemini_narrative` | STRING | NULLABLE | Gemini Narrative - String field |\n| `is_sound_bet` | BOOLEAN | NULLABLE | Is Sound Bet - Boolean field |\n| `gemini_reasoning` | STRING | NULLABLE | Gemini Reasoning - String field |\n| `role` | STRING | NULLABLE | Whether team is FAVORITE or UNDERDOG based on spread. |\n| `original_bet_amount` | FLOAT | NULLABLE | Original bet amount before bankroll scaling. |\n\n## Lineage\n\n- **Upstream Sources**: 0\n- **Downstream Targets**: 0\n"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007599.211005
+        },
+        {
+          "invocation_id": "e-8a02aca8-21fb-48a7-a476-630fba9defa4",
+          "user_content": {
+            "parts": [
+              {
+                "text": "I want to join these two datasets to see if the back trace data is leaky. the back trace uses a different dataset than the future inferencing done in live bets."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CpwFAePx_14zrwZKn_NsubeBU3elSgXzIWaiDuCr6K19_lrn5Xs2csQfo9CNBS3Ktimx02FDT2QFp9RZem9JgxdzB1HIgXSeT0eJAC5jBJk0mJJAO1vhceIx9eUvLg3euLJc18LzxqxUhlNY6IY2XGZ-p2eYCXOQaSYwFc7kgGvhubIwPTK2Ovw8JyykPBvcbISu0tNyjBniszFWoQH4h0YX6hJLGrUOy4-qAr_XW-Ed1vY2BBEWERYvnmkA3y9Klqj_V0MM6Ztejv2UYDI2WQ4otXOvKK8Pp482dUfDEW7ST8xOepIbQkHu4e3w9fQRMPFgeiJfsL8GDg55coEHq0aBfNEKv757qfNV0tADaKgAS4Tc-_7YbWoD5cQFtad0hK70RDZb_Jb1AwTJmvawENhFhFEBya-xT6lbuNOF87vbrCLVd3qmCdzyFrNf47_3M-I2fk5kEkRqJ-Uwf45wF_qRmPx1vGyx3vRT3xb9bkXC-HRZt1ar2FCIsM7C3PkKOkjSmo02oZ9IW5n1ssBUR1vTg9VopYD_nrdWkNwX0pIci0ngZolEJwVfbA0GG8YC4-20txdM2qkYJtY_kTtFfEMw_mQMu_FjojbPJNs-iw_Lsi6RTFihfVUDaVnQ-WKdkNkF6vPUiXKF2_qAdjysN38mETusz5Kxv90gQWPyCtuZqvVyCHCuvn0uydcwKRRB7xUT92nrpaDX5muosGANrZ0YSaWtq_DTZBR9wfbFdBfwSeuk_XTMicBfINMz3KVjHs4vL7yVXIq6pgjK_IElmCoEHQGDiUm679hsQ9an4mF9qTaxpmguU1gyXgWUYwS4Ng_KYAxMxSrJCTBs0n4p-pHArXkZtgHfX6QIf8ET7GThxtccIZmcTmuoAqCd9Zk=",
+                "text": "# Ask Mode\nI understand you'd like to join `lennyisagoodboy.lfndata.backtest_regression_inferences` and `lennyisagoodboy.lfndata.regression_predictions` to investigate data leakage, especially concerning the difference in datasets used for backtesting versus live inferencing.\n\nTo perform data joins, analyze the combined data, and potentially write queries to identify leakage, I need to switch to **Action Mode**.\n\nWould you like me to switch to Action Mode so you can proceed with this analysis?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {},
+          "creation_timestamp": 1762007731.636937
+        },
+        {
+          "invocation_id": "e-604147f7-5e1a-4d63-a5aa-ea7367baa42d",
+          "user_content": {
+            "parts": [
+              {
+                "text": "yes"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "thought_signature": "CsgLAePx_16b4We-jYXjfpo66gPTLe-aT8PdZfOZ9AIsp84o-Wvb15tpvGmackF8P0Mk8ajJg5LcBdlH3dAgkQ53Ac9QCx27aY4vAe31kCqR3dtvVjhnxARSoLb6uMT8GqSU6R2HTK0QVaGB_iqhjnfAl8Humv-3MFSISAjMSvvyCr-ntcSdND7gQEEGsr30jR-xU8ULLfYiTlZdLRCrzZ6O5cUFF3LpZJJKBq0fYKLX_Ili3Z5goMMJJ-35uNEtlAwQxGioP6Q3URS7cYKS6DGY0UwjY1WdFjuWIATDk4KdAPXsHff2-ndb0a3hzs32FB708NBvHUtpqNtBRl4TGNTkcjD8ddQM55_Dv48ZrW4-o-lL-dOjT09pGpZ6IpAJRpqB3R2M3KVy4-9O6RjnL74oIVnP3eJzzNkoKxnuv9M1gzUkx8ER9fedyH9ftlwimXIq1PChVJTM2I-GXLUyqf3lD9YiypxmSIX_4ZyeRqvPvIBJ76ebbeLqkExJKLGd5VKcT-lSxOv3XmgZ5Uq0it0v3W7kRN1cOI-33EyG4SeMbjFEo0-NUJ9_HBj-w8EGHjmkxNPzoafpyUUAaojJsrIusz6u7K5B_3xk8O13azjpv5jYW6CtaGdrkweUgEiCfLFyNYpTXgSdtnK_JyThvlKjpOI1j3op6450a34PP-_cyiYii0m6dSnCCUyCGGvhwNldchRJHg4YPx2OZMDDqkJYXqfbzhTiEDUpiSc2wEPOCLWK9WNo9NOvKURtKDyC3ZiLRDXZEVqtdo3J0reAi-u3hl6c6SU2u4cx4vDdxvZLjr69VhjetxR9d24z3H8CiK0QwGwKfS6p7b37xSycAxwIm3GJxhj9UxBoyg5plyCZ1rBeWbWlGp1HPjJwcU00K8VpIMpkKdLv90RYNV1b_eFCYClRFNp1wRYBbMel1MGvPObWFcWq0dctvP8RLs5fa2BtuZ8aK5jiGqnq9eZtia8uataauTcUqmzeTx4pLLPKP51LqRqMDYI2najL5S3NcZM8lT6mF63UwfKXdzdAz0oGkrvJl6OWkvlnNv1UbqZlooU76aW8kX_6qJSLzvOhB2fSh7sXuHWM6aAr9a8gQKoWT7QN8rWCy_6eCoDGX45vrnYG5TQ0vRKVMqBauGjukenEytwvfoFq21EtD-bCcatSu1BdeHFnSEedqdiZz-ryB_ty-muGLGwcYTutMj6H_1YlIPy5bPVkYR5pBZwFEQ4KFRF_6eX9Jwlh4a3dj2Z6DMi-9FYijvnIrAnQ7Md4qEMqbST5M_ZXWyJH7-sIWLNDpA2xJ8n4qFe5V_SBVmFTtDwtXvH9vCU3UKKQSrLLCt0Ky5NueNFCT_aqIzQCVJ2ysluaCxs4lb5mSzBWwdLG8biiiArH3TCx4LKGMPKvYup2VckaJ92GA-3LsENpyaLwFmlQvGpOyuUkfQHijJ4u7gs56RIbxR_4DgcQthDr1MSsZpr5DfVEzeZaLZhWrcb0UYA40ND5ry4XZb2F0RUvFmuFUrozivxPqiXfUod1eEY_L1s5CGRq9oLRsyRUIcXOry27ofURRbGFB9NlaRG6A2hr0UBP7QYRbDDI4v9uBn_jzQ7WfBDneQxucmA6nx27TS-702kTcXA_35c5p44OupjZY9I9_YRL2XsiZzAgNoYgd1gE-tMPHkbqKGdyAutTXkP3RPWgUHUAXd0Cc9tvbmjgTGYYGmFPWnooegzmuPIytZXIU2Z0a5Jc1HZ0cIjwasYfI9cORY8OkDQ2xwbUtA66-hnHFL6J0jY-D0MGHqI4dMkfUfx539DKjGAn7G3TioMZyLBa_yFEmwWfGNlLqu3LpYf5qZ0EJXMbbj-1HdezC7pqQkgDztwzBLqkBy-W2kQBS2F544COr04ICCByuZrtQ5Js508lVW2Mqi6jTaxmJp7BGWNFu7XwJn-u3mqk_n5QO6dzcVFg4U4VFObwsmZ3tw2TN7m21w==",
+                "text": "# Action Mode\nIt appears that the session state with the discovered datasets from our previous conversation in Ask Mode was not carried over or is not accessible in this Action Mode session. The `prepare_tables_for_analysis` tool requires these datasets to be explicitly available in the current session.\n\nTo resolve this, I need to go back to Ask Mode and re-search for the specific tables you want to join. Then, we can switch back to Action Mode, and I can proceed with joining `lennyisagoodboy.lfndata.backtest_regression_inferences` and `lennyisagoodboy.lfndata.regression_predictions`.\n\nWould you like me to switch to Ask Mode so we can re-discover these datasets?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CsMBAePx_158DZhuKW9jbH4M_LOHlISv5Q2PV-nSu5UvhomuLYxy3cFu8StIw4blDqzkYoJtWAYw8PU5eyTVXcYQufDGoy5PmIoKKntZ6CgEbYYPwTrLJ44ODTFFBggGZlmtH5Y8v_eYUNbgszh7lwOVINCb39tzuxoRto_O_VwMOAQkP4yN0a_ETIazUckIVdJQnaj0qc2dqPnzKrCvQ2g0e9V5NHXbZ_kzxIDWVkiQ1WCzDUmv2VjqKee8R_5zddOUhoJI",
+                      "function_call": {
+                        "id": "adk-f98148a0-40d4-4265-9d44-60c1c352572e",
+                        "args": {},
+                        "name": "switch_to_action_mode"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "ask_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f98148a0-40d4-4265-9d44-60c1c352572e",
+                        "name": "switch_to_action_mode",
+                        "response": {
+                          "result": "Switching to Action Mode. You can now execute queries or build data products from PRPs."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "CroEAePx_14zZwoakmzXTAf0smNsu1njYqyK9MOQuOPDP7YUKa246fejggtolLWt8-JBryhV5cUFZJy_lJ8ds6XJAzXfhZggR1bShWZgWtzZyHz1XnOvPtmftnI1ju1iJOM4tlaLfg7b_2e-rju61HnNTB5lGZBfem2dJ6AisRiJxqME3_rc6PFNNPpmWDslOqglcKtcn1iz1G_bf_zAq6BKv3dztds6n9XGpDCYlI3Ve5HqxPkc18LNmz2R-pXbrYIe5ArouHUOuhNCBMmDgBZlYi9BiDLXOU3l5_9htrB2287zNrK4DgM15E2dPxCuARIcEewMa4g-CNTkZ1i2SvyxAyBU-MtFA9jSZTgFGDMSo0yDkZdfFAr3hgfcEO-2RkDnzYyt4geWncfVmCzZlnKlB26jB_wUZh2hiwjBUsVb6U3XzaQYsVMB2-okYapjpxQo66zlVoA4AOlg4i4TkrfOulg_gW4psuw5x2It35iHY20OhDe33ZIPtnCAIGQmXuJWm8tpFcM3Fb7a4TgSnKnKdaRHnr45l_d2vMwwuua-9gUxYY_mZDowJNB8e_lpcSvgee0mhALHxLMvRBI60u0zKx4pS4zBxMNAttsxTDmA30tYIuSVhvoZCI6CFAZ0_5Ms5zfrLKdUNdFR-xI5RnJuxZbvbFoGWaFsKkJMMCYplYEwck7FrvfO8MqHgEg8tOmJIzUl6OiGiIVv36NMPGlP9PqrycQCXYplphWD1Bi1ZpgXAvd7GTlWTnmK",
+                      "text": "# Action Mode\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-6bca47ef-b9cd-44b1-a9cf-cac17b66db32",
+                        "args": {
+                          "question": "Join lennyisagoodboy.lfndata.backtest_regression_inferences and lennyisagoodboy.lfndata.regression_predictions to investigate data leakage, specifically if the backtrace data is leaky compared to live inferencing."
+                        },
+                        "name": "prepare_tables_for_analysis"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-6bca47ef-b9cd-44b1-a9cf-cac17b66db32",
+                        "name": "prepare_tables_for_analysis",
+                        "response": {
+                          "result": "Error: No search results found in session. Please run search_datasets first in Ask Mode to discover tables."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "thought_signature": "Cuk9AePx_16ihYt8d7BlsWMA0T8fV0S0b4oW-HEXV0ld32HNRPLKvr0TOyU8aVxD6ymK_H-g2sI4mVQnmvRr1GtXeV4Ix-NyXVu1gFc9KNkOCjHGRMmjVglkuAB_JbN_k8NMPxFpJB6trUYiTR7TbbWqPzlu3MDOpvf_HbTJGWE0IHKLMcimcoPCZGhiNw9CZot-h2FaAbZwnAEzn0kXiHICyDp7StTM76G-LrsvyUIkDQ5ouJFOUNiMrqYWdgscvZZLvs1KHmSJOdgA2SQdiQBQKAbnKbGDo1uYVxBvbHYgYaIBgEEMCEoxGsYvX9xqYG6AKUthF70zGzaBUrOirPVEP3sOUNDjdRQseB7vCoUNz0O7T_0WHSzVbwa9ap824rkJbjY5gMOcnS9PTRniMWfpOpLM-TBP8dKa6MPNiGXgeg7yCiim9wuknXscY-uZp2x1U7JnFRFeOL_-nSjxyD5MNXyA2Ep-7qoBvr3JptAI4fXiZMzhJ4BKVq9wLQOTPCMAlhQYKRTaXEz82H5GD82Vx3UJuvbN6Ed5WPnUPjToEeZaUI9m7C3uDYq5HXaCexd39jFTGe8-3AFaIKeH2lBNnHnF9gD8Y6DaLh_bcmUQBB_OylTeNuXcU4LEt4amyV98dtIhcXWFb-nvnWeZ_v-OoDmwb-IJZUonJsgEGXX5_XhbLEAv6a28PX5VxF4l9beukdOXi6EmHDrwm9CbEOzdWDfe36Ml8CG4z5_Fd_vkyDnaRc_bkTtNGouu6n8XYkg__QdcZp3GYcBuY7QMQRABCBZRDaAUc63R3_CoS3nMrPVrceyvGsB6QLTl8W7hnby4Zxf6tX2Xb-GVfQV-1CKjiCKsS9aqLFXuEffmrq086v1GD7-iw4YnESSvwU7OUgXMxuYiSu8lt-9evWvet_lJWe4XOPrvrjSHLezLk36rN7RdaPXd3yI58n3VufHhMFtGIrhN5sRRS3yZJj1UjG98MQmrdUIpocQNz-ceZah4UlMQGgKqNSkjl-CmhD08Lz8rdM4Ti082ggncSFulPaGoxOdtaPTR2Ac_EYSWsGv1wCw0dsuzW4_bn-zJQUWERQfGgIGqvQkG4qHw09casCwLfG_OEm-a1e-Gf8Tbbd5z7dYrdquJ7wUI8dSc07i-76NYzBYxrWi9yjt93YDW9hSUcAeMr45_vus8jaxHUCVUKdXs8n5BCirZbb8x52VoGSyfd7fi3NK5zJRXIBxyuyuCOzzSccrAZIUvKCO_1RjKWq8mCQTIsfsSVDfLo3P1JaDHYkOGTs7iF2mMEX7zYfOVgup_VWMscc4q-8-7CgYa9C7ppflQ2GJTad1laXFhG0lT_vH3SabtxfclZ9ZhCRrA8xjFSxsif8DpqxhLjYd-rjawbSboOxkjtTyiN8PezOEPIjwwYUPLmneBqOrokTAXG8QgLMvbnhy3floautBB01tA1qBwQprodCpw4K590KtidyJTnlgASqcAHGg9QTb4vJAdYFNZKJCPuvsMC_9MV7yU2G9Pd80VeGvxMb2fbZtENnYeSgtSXWV2v0PUIQcxw49sRDvIyhvULg8AZ9lcbd5GNDt-EwRIZV5sjCvM9hCHneN48BEVgEXaKpR0Ucqr91M3uIsxO6KMylEsge2GLs9n-iEa6aE13a0q67xcNj26eTHW1yFYaLXCwfkSuMHFvY_hamKeqcTIDSi65ZSNp3hcfS911hPv8Rx1intVkTtPdWyVx122mnuxdBqv_4SJSPV6DZLruu_NoFLxjmS-ML01fi0ni_vo7oL8yZiXuZHQbDzpg4OmUwsU_IVY6DjlgSU9EVekeltD2vvwt4OPoDiD5tuqlebbZLt-i_Qe2MAyaZiALTbdm24_Ob1fR54on7gKvN33NeWy1hbTfnjHBjWd7tJoaN2s_TZmH-rJCgypGBWZvQHkmzeEeMFiSHVd-Ym8lbNiC5EibFEh0eDTc8UqcqdquqYx4CrD0eEUKY3Sj68eM3c2hvHjFpfjJrz09i05kZrbm-FtV3TzMGxhpsn0JH7zE3Rid95xpto4Z-QNfgqZke6kYgAaInwEB8POaR16J2ShRZK-u7uaxAfLC865pAY_I5OyD-PIK9-TN0ss1J68rlOJA3NByHrnK4nxMlKZtczFXAOb8mYbVCc1vyd4K-FZgSwO2PSholvZqJjpKkYAx3PFOD_iV-AAVhHpHo2oDsX6FuQ35h3jE98MBJfIUF_r6Iwi0wo0VrLo2yi2I6CCQXqoIpyqUUZP8v5_Pqp1I7VN1_HxaT1_SE-5fvoYtXY--E1FeVO1PFW8qE-Che9S5Ek2Isu_CsN71nmiWC3pGeXyoft40VLzSykoA9au-w-kqxPv8eTBkRtsCA_1kxy8gKeMDBUBSNMAWEmffSpUGkZvDpUOWta4kQTOU3rjyFL7TMF0NbzCkPFs_IpLiQ-3Ol29dKm3Q8xwiWy1X2yX6nTURdhz1qFG1fiSx0wAKLyPen7ho5S8Q5VAK356Ai8OeF3R-MQn4nQfUI62eaG9t-fc9dPJou2lBBNQqX9sa8DhMc-3rP47ebNLGD9MfGfYjbi-He62tf7RDds14FedCBn0UEvO0URwfkQy3ZYeQJ3GjpPOIcyTJVM_87y-Cihpubq4Ue6m3aB6r9dENlT0zJmoQPbFb-GgawWVNTfo3pfaE9eEl7413L1lDVyOBkGYhDF0-81LYK8tjZgHAcFlcmZW3_979uspevutiw4T9ynzsv8lMzdh7eUz54bC6-fu9kbReCeVEQSElBj1uFZ-fG_M4vfiea01FWrzgpWdSLt08fUp8KTdsFKoCPTuR7JLxlv6ESSH_Z_eVKfslFOdn46bGzUsMUKxIMu_F3R1DUt0zHWkobRIrtTlK4KuDJ4rlRMySUoC0_W00oLHC0Kc-QQ_iwBcfMS8P3brzk9F6aTmcjbsWLNrALoso2_MzY9r1LYgp0iWFEUyp-2K-ITy2sbL3fNFhrU_6hDIay6cmUTGTg0hCUplLghnopl1y5Kwgys7tz_7eJVTSHf6UTIUKMEjtKy5zEa-4F9s_oSV23-aNt4NhN5yE3OUMLJLZ_gMh5lbafvu7K2fgAJsub59fuJuN5nMHAH3_VXbqqnG2nEHTaqlYcrlPWC39hAuB00Wefjdo3DuYAAJne4meeAY8lAkyccupQ_LQpTAOUxS-3BOI1aM6rshED4R0SX6LV7Eq7SkweuVI8p_1gATH0IDKnWVidEgbmebLQUha8ApCFkVklOOz2L7CyNOdgKKlqxvR21BWlI4yLobxN9KZw6z4I1hrIPCV7oO0EqJX37w8FEJjPs-EVcq-stqk-bguzEbMpYtXRzoH7iTBs2Q1L2lBsD5II648q9K6dNmO3pqX2bi60o3BrDFQeC8mGw8S1aLa3hN1Y865TJe1TlztiUWyF31v22YD4-nowJRW_ezTKHbO3LLhRYIVwUIt5ME0GSHUIvc5go9dddzDy9KryHDA8MCXRkvYjsl3p2z8oxg6U3MivJ-UGdtHTy2iWxJwjXVSqA4kMXn1Z67Bat95sRKIlv8FOeaBL6eHD9F5iI-bClBA-n0eDKurYCMJgoCeiPpbLIcDLu-1hsW06joyW6tWDr5qnMVNxmNuwJTaZrNgd7f7XXMSRgxdP_lpBztNoo0FZIV6OKXR4t_zpZdwL_C1CNQtUdA4MK3emrEkKlSDExvJ36L7jWR0WGwA6Y1rL1JoQLdZ0FkVJP5UQufn2Pl25OZwTz7lbAzT8EV_yPbZ2ncjuh-MVJvrc00Ups9cZVSiQxLVmHy3RxeRG6hldhHgAgZdVM0bVjQa91_afE5-579nt41FPYpnh_B2HDUIuGOtdxChJ6UlrDCBAh5atYBvYKkdJLFCbBxYzE2upT_vf-iq1PTpobgUfitP6Si5JO13O5rjVnOd-10AK-Hq2crj5J6MpVGnTyUMaeulDL2Y2B_Nh5uWcfaxphaINAIqjODhoIoKndCZ55tsktJz_7eG-qpchPpxUDkRs-F2xLCsmB6zPG71X0QlY_ySaUwLdMF94ElwI4GXNkAWd3iMRpcH24_HeZAqVaoTOYWsfoB6EJYIiZcpeZdNhrb4EVxlSoobAPA38Dgm2qMzg3lV1vWEWotlpN71gFLIPmjUdsbl_l3RVVfc4GACoL5IOg-ydoEWNkb6ltNTsDjoEnH3Q1544j9pGiMqFdxX_VxBcdeBjt84DXy6SN0tFphwFLUvsw4Dwqf0-2Xl3CN52NuY5WopXHS_Xc7kMck6B888HusSKjK7WugET8RC6B-0IP7jd-Fb9XTdnymip6TGug0N3XrEOgn4c8GQJ7eJQqbElACEM73obbNnvUp9XoBlL2-JQ1MxrDIUykkOmCrq_1pqfbt1BNR_pVk2xUgh2QJTcXbleX3oXii6DE0gjepGVCGK8kT5o35dG4ogGETO-Px-6MFpANyG56gujjs7fc2FsvGai7SalZT_akvcYWCcBhDeP6DcTf95faWBa5qQq2mcKuTVyHm9d9lZQ4-aD1aV2Q_UE4C46BoFjk-052AvC3Cy4H8cnO_dcjrfEjseaVaY8hhCmS7epYuTOfNw0vYV0Kn-_nZf6gTB_7Hrgzwgq0dokXX47oz3EsMeX-ea45NukgDIooHF4LaPjJiAt9Qp1hOGtYvRtoqvIbAxUHgsCp_BiPWt9Yov3XMo61SNF73bdoDM2YY02d7M2o0-wtuUy8wkVs9uYRBPLAbfI7Ok3i9XLSjixUQU97vvjo06pS_OZBDSZwzO_4hRs4kXEzf9jOXuOHFI1EbERCvS0NeA9YDzdm6FyDmjvmD2hHUcXBw2rQhKW3kysJSKWnYWQWb7fyY3eQ4ZitKmGSjGfkn3dZFaQq3eZGNlC-a36kQ1PDctsTeBLE9Rf3H1v1ILR9t96iv7jfXy8cis_qljjZDQbj1UsRJRP25s_F3qmXVTv_ZpGKp9OGsm0i3JCCltgFmnEVEC-zFM_s7v7eTa1Zs9H3CwNSI1ye5vgxflZXHF9mzZS9ciCuz7VcfUhI6UvKe0avOY_Hzo_gJFn5KYt1ykyx8jaIGYLqvbNgL_JhZDiY5QjAVRgv1FIIPl_4sSTg9XZfYpN6g1aLWCnuozp-WU2ZtLKqrgHtuSZuijEsjGs0sJEuQeoRr4xlCoGciFUkGAyNgc3P7xNm9rhd5SaNWKZLEiv5b-sd8lyNCchGoCdkZIUiBCG_Qu9aaQPCT6o3ZEqnbnNV0aQ2qhVbQWNag1d5Zm7pprvUE5GyrxCAjGuCK_6HIV2Irf6A12lW3paNoBhUytP7jT1PlNZxan86Od20gDwNNSw4ooaqwW3oi24tR8PNrDC5G89RZgEgPaG4qL8Rxntv76OGYldVUPWuGd4uxY-8a6Zb20LKh8tIb75otxvZFLCshH36N-D4Ue8JVEiTJqNcK2WgrbPbazo5NoZvaLn3lbfLGu0wvxsco-DoWwfrPUVTdRcFt7vETCjaU1lZUr4Dey3vqZyd1GfgdnpXONmt003_xtaSqt8ZKFV-aS45q2dqhaychsuJ3UjPID73I9UaQe6ooQmdylvqyZl22gjKgxNn08TiikjzW-qe4gTzErerYof5Z4jLXl_b_DZ45MkfkHGUYzjLLdxZcjw5jSM3IOgurNo5IY9D4JUu5lpP_wB8YqMgyHMgg5rHIfDvUZF-UZDUwpfBUbo3i464X6JFebi1wXIpqCRCMaJu8uIm5ctk_8PkCBCgOHWrCfXVna7Ls_hdRieV0y3opJ2irVPl6kXuxkjrL17RdMWktbzT4azvh7d8X4euD1utqwpH3hJwSq6LAsktDmCO0sV6Fx7uG__1PhVE5OcLn9i5M_z4TviU5BWvsBuAcEE96Pu4PURWvzWUSaqe6IQbi9QQIJ5lmVvipkJUAdYlGolWmN7WFBbRkp353m33QObRGjCHTpCrIM7eO9io4X8eQnv54YtnDRxNO_WODuA3cexPmsr0VoZVidCAxOomKBaWuprvxD5Ur5qBEO7YkbEXbt6FgjUwx1-GRXPvbTKFtxJJXLdj6w23ebEyCUobNw4M33juiyaAYX9IToargUkSqoG0E3nTaf9F4P1kgVvGeMNNmYrbCcdP6Setsc0UPHQ57j0aEE8UiIGcYjcr2K5NroccBPrr_vD_Ta0MmXAC2JIO-amb6WubVb3RS-ARFCcLx9sIbJv2Ad4k8PNiiZf4ICDkgx2Ncl7txXvdfXPg1tuk9vvRec2jBIUsHzOYbCZma6ilPLhdqvDy5kW_yIGBR6Qi8Aak2aOAER4tj5hWegPnnA07kJbvOljGv24fWRSNR3f_YQMLbepvxQyXctkEPdAzUo0XHWU8mn-i_WsY1jOHdCRPkRXuwAPt1BgRbrAJ2tuyqoAw2CuxvvfEmw_WVoReyGCruuLCIA7XtpZfdUEKx8pdnUN0nmoguto1Wj5D3BkryoRQ6oABFUdBj0dI5ieWv9hWrSBxdBiKHpg9vJpj3MuEzPbrDxdw7N7nEjqoSqe00I9ahJe8SUkegExqE3jqJRSzP9lhu7pktj1cd_l-Qm6AzJ1gWMnara_XOy9pM1-yxSCD0NnM2nqbGruIny5uA7oDlR8S31bW1-o0LnaBSv7r25CUay1qIVzSXxvvMZbNlEhsOscG0cK6111U7ZG40TzD2sPbLF5NsrH2Ob2suwtUlvNXJbh9s5HYakjDquGlqhXxZ37A9MfhDblf1ed9FuMNiyMHM6SMTumnGVEPONZRh7TVtH7I18i_iEcSwkm1ommfejCTMm6zGRXw5gwK7Fb-fwC7f7Q907IeGXfGwP8GpHFtEZ_rWlxJOm_74m3RaFfmeT2XFw0ztvzAxUB328kOryGXd_lMawV7PJkL16OAGKgPL9MMOLBqjYLBk503MgBIIvpiiIlYk6NeZH7M-q6gh__g2Qtlu-ORwJcNShFL0gVY_RgXXWdqABRJ2QzboMjIzSRFiIr__4O84X5TCNHUEttzCHK1YgDbo0LIrb6YhQeumbhFKe08KNSjLH8uX3Lsd52IsJ-H6zBXKxIL-w8x1creSMVMpVYtwEU6FOh79RS8rdRSFeEaVQixpreYupkYiLZKWTDGLS2MM5BHo8c4F63XNRScHoh3zmtlxZBP11H1JuPXraJjiKz2Wg8OVUdBedRlCkFAdby4pyKu4TAG1CHkXL6pFEgsxriOjM-MnmW7V2Ynm6Vljd888HOM6JhTHLEgVSIEO91uy71Mc6DcepLDRsO9-llsyVhkmTbJubRYt8OI2hUGf26Hss-niOBVtHfk94HLyWEybIozqUMNvhA8D6VaGMw9Mf40Eku2IM-e9wLxr8ECvXS6Z7t5DQMrZLXJuo9JK63T7JTQEAGZMvTO9OEDsZYnPTcQsbI11GpCY_Ee93iBfwD59klM5-tkML9VziIe3QQRXOsoWtmYYYZK45uIxoYnt2w9U-SjX8rXO_EWCyN6MTsIH38OFrjmsRcKIuWFhXix96vBhcXKT4GvWm9OG-2YcfD9OKr22rDKJGSMZ3yBDjF_HVaEARKgPM5DniShzsnX941Skzpt2c0XtYTWtPaclR-5rxCIoOsV77NxHz7QVe3MrPOzGLUdRX_HMg3WkQs-5irHM1y-IBaE3ZRWHDjTnrA_aIVbrHiUNrovhinWi2LD43fLOJJ7Cc_68mP4ft5RbuQGvtJv4HMZ56q7lCFPTmmqp-MnX3xelWQ25diPWSYNSxTcjOlcVfsiZzTPKEPC9v94FNGjDRSfmxUoaFSsjPYPgIDbP_irSE3ATfi16Xm1oAuvC0skFB4WA_Ya_AaxNQR3pBWu5OsARXAEBG9m-92M2vjUU7J0CQimWtKsA6QBtfJJ27vM8d7Xb71zGMZnT6JjY5BjmxfABCMs_mDkav9fG9SBSX9lxQGJ1GIJAC4UlFUQMwHkU8BQNE25AtY_o2DI0kjGPSa82Bd2i_BGIlydhJgwwDRIyAz4MiCVcpS6oJvFLRtyj9mwaJ2fulzkb0MBRfDufhk8LlH_sOVsz9YBVYKPwkyA_w9rK2ErQzwLwlyw3adqKTl18phx8KJEzZw1NEPFh_MBiBq9bV5-5JLzG53uZpe3mbE5Oo_crJ_bRL_Ok5u34uYbAmTx9UmFU7uFi7pUn-wKkQsD8swAKkWV2a8Jhb-I4wAqtcvRRHtRx8UFx2Vy24x8Im8QIEsVNxzEQav995kxtxZw4e7WI6RRmR0vDJr4g_va2w1RAkV4Pc1E8CH4_eRkr0iR-sFeqbeUsxzz2rcdDgdAEHrm9AGppMf2SybpIOaQbv_V7dC2lOxbGN1QyMdi6QM4XJs_8QGJUE5ndGuOtVe4PDrqm8k1IfBKXDXPtyr50GWIZhGiZjnKeJ4y8sQgjz6NEF4ormo0dmiF1daMqqvn_0nM3eCOntu6QXxO-pb6AQdB4gCf03s8f10e8N5umkTe5pfnuzG1ItRTu6aLl3dmPzN0sRErWGirJNivK7QERwPcq5rz5v0gcUp93m_INqDOUjj1mm5P0Wf17QCeylVsWpT_GZJosdIQ_2sCXxNBW2F3I_dnxLXRF3RTssEm6pTyU1lA0PyMy0y-E0WgymuGWV8YLkB6K9dSmRLQEQsrjUo08kIjQeT2J6hhXm2d9F4aMkaRpJc6idKfZJiclkvla5jvxZ3OgOdkNGBfCcXcPkcq_YRmRrVTUMcXBOzBNE0mKnR_QLGozAR79OjViaTWXwlwwjDgTrBFu2dQ2XP_iSdkYL57BIeUKwSbJAdi3AsEhIa7bOaNQ0JlTN42SCYVG4J8NV6CG5oYWP9xFhRROc7zwqPh5Ds83aEiZ6LyJLfROgOhMxh--kpi0_n6PgOskb9jrYoGELG9pIays-NVPwlZR0GZlN2GyKJRIt5Ih0gtIApOwi4TBiH_PQvZhDGw1acVhkqb5JueZOCmHNbwJ7JMrWWxIn_6G3zKKrS1ip1s2ijIMbNCqdfJJjrp9uJlSQ160IrL6fIqH96Wick0RO29pyGObaIks9AIQE4m4Fw29IV6MgY3uotwq78GUA27RJJtR3_bbYAlvNxYLFlEtIOSqOVtxNF98LFND-elySl8E1VXkTHTXLNM_2a0ObL_5NlLdSY_OmeLyXOSWxf2316HBN56GEdESXXha9LuC6CJpRSu-3HbS5WUKsnKdCQNjiCeGBoiXWj_sFczbel0rOWhpGaGcaLL5bDzoYuNERdgOpfKFtgJKrWBMG4NXrY_c0bkTLpZqXBMdzKsh9ob48-TkKg5L3j2768OyUodofmLSMZ72yAIT7fLz57nN8rURkK5LmQ8_Sbxs85gn8uo9UjZFf0FftWTAIQ4cSvPjr6hwDwnTAlQ5JPhO2NqeNK7Cpzszubr7kz4M-__xuD2QJ0jxNdUnFL3pUl5IkVRWDdxwhTjmJpikA5t_FX7vG-loyJpR3g-CFX4jgGun0M6lZZJml8L78thr-MXXs4PmKMxorLdCOfjQgJRA2xE3kDgZQFAdLHo5HECNlC-jflLxaXZJthzqzpGJbbeY3KqBaJc82exRzLDisW7GWtrcqaxcEACUYvMELuoTlsMNYl8lnohlco3bbz54uAkDUHHBE3wOgyGE04sD8Uc0E3xGxDANYiV2BGA7CH1nfCYQaLRSxY0JpkQBeV_MI-9J-AQ2dOnIu2qGHpLPIcKS67eny6aXgnmD_TFcRuwckqRTHTwwKcGMrHdZGbsDOO0W0peGFC1j_E-SEx9n31pp4l1217OVEWb4mTUJ1k-Wz8POXSnOSbe_4fGgm2_QQKuLMmfxd8aBWzRLoYXMevCkIXhlVNxIEuLfuul00muSgsLkJCbGxGLs7qJ97i1aqhaNYTusYPfq9xvOcttJaRKQrNqokb5G3fQFnfR7popofbD-GgVsg8OLw314oHhO8oC2D0_SwYRfq50b_-a8-KhkwvKYcn4NBCrw3PZqfEAuQ64iHoy04b7vzoE94kLS-kzKoZ7Ko6T1ApIdJJiOJGe78_2A6KYsXXrfhwKWwzAafyYjjNoENzAMF1ncbi4oQZPZMvzc7YqZ5JjOkJpkEoJ0_l2w9oaIoQABnRxFlHTyl51pVCQR7H1I-X4P_uHuNVEoI7ci7s5llRrHkkM3eblfNgvH2NE-2X8vcPaDZisqmxZiJPnjF-qoBje48EF8RCUe5IGdSV2ybHuE4qGOaiHcE-tmUdrB2o4MrNohdV4RR8zAAmkpieNb9UiBDCyuGkzx_uu5zsnXX-htB-NoIQ9He8gH-86PSs6eeuqThbYZwujCYM_1BFWk46V-gZwzPwHKWREeq0hAmzDKVkLKMmC9wJiQCCFXbjs_aGzUvF7_c7YkrE-HPSuGe_ClyRmL44_dFmx_p1dnt5SrHvVbfZVvwQG7eOW5D8I4VdFwOAWyoAat293bggPElHz3VEWXlAuoqYng5wFoQa1TxU5PU-BxM8Vp94jvDyq6oXMbUKWF4cbJn0oNW9qUeWvG35ItR2BlzG_e1atXY6JwxCKQD690l-PB_htD3mfmNzxOWsndDIFJNsbACGFPClWGnkE4mKgCW43cS-s=",
+                      "text": "# Action Mode\nIt seems there's an issue with the session state. Even though we discussed these tables in Ask Mode, the current Action Mode session doesn't have the `search_datasets` results available for `prepare_tables_for_analysis`.\n\nThis means I can't proceed with generating SQL until the datasets are recognized in this mode. I need to get the session state for \"planning\" to see what's available."
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-7bf439ff-1f73-4260-9ad0-8951d4a2ce82",
+                        "args": {
+                          "state_path": "planning"
+                        },
+                        "name": "get_session_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "action_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-7bf439ff-1f73-4260-9ad0-8951d4a2ce82",
+                        "name": "get_session_state",
+                        "response": {
+                          "result": "State path not found: planning"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1762007751.685967
+        }
+      ],
+      "session_input": {
+        "app_name": "data_orchestration_agent",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1762008426.4429653
+    }
+  ],
+  "creation_timestamp": 1762007387.4556727
+}

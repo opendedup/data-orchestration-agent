@@ -7,6 +7,8 @@ import os
 import re
 from typing import Any, Dict, List, Optional
 
+from google.adk.tools import ToolContext
+
 logger = logging.getLogger(__name__)
 
 # Global client instances (will be injected by main.py)
@@ -175,21 +177,87 @@ async def prepare_tables_for_analysis(question: str) -> str:
             if not results:
                 return "Error: No tables found in the last search. Please search for datasets first in Ask Mode."
             
+            # Extract table names mentioned in the question
+            question_lower = question.lower()
+            mentioned_tables = set()
+            
+            # Check for table names in the question (keyword matching)
+            for r in results:
+                table_id = r['table_id'].lower()
+                # Check if table name appears in question (exact match)
+                if table_id in question_lower:
+                    mentioned_tables.add(r['table_id'])
+                else:
+                    # Check for partial matches (e.g., "backtest" matches "backtest_regression_inferences")
+                    # Split by underscore and check if any significant part is in the question
+                    table_parts = [part for part in table_id.split('_') if len(part) > 3]
+                    if any(part in question_lower for part in table_parts):
+                        mentioned_tables.add(r['table_id'])
+            
+            logger.info(f"[ACTION MODE - Tool 1/3] Found {len(mentioned_tables)} table(s) mentioned in question: {mentioned_tables}")
+            
             # Extract table IDs and build dataset list
             datasets = []
             for r in results:
-                table_id = f"{r['project_id']}.{r['dataset_id']}.{r['table_id']}"
+                # Only include tables mentioned in the question, or all if none mentioned
+                if mentioned_tables and r['table_id'] not in mentioned_tables:
+                    logger.debug(f"Skipping table {r['table_id']} - not mentioned in question")
+                    continue
+                
+                # Use just the table_id (not fully qualified name) per query-generation-agent schema
                 datasets.append({
-                    "table_id": table_id,
+                    "table_id": r['table_id'],
                     "project_id": r['project_id'],
                     "dataset_id": r['dataset_id'],
-                    "asset_type": r.get('asset_type', 'TABLE'),
+                    "asset_type": r.get('asset_type', 'table'),
                     "schema": r.get("schema", []),
                     "description": r.get("description", ""),
+                    "row_count": r.get("row_count"),
+                    "column_count": r.get("column_count"),
+                    "size_bytes": r.get("size_bytes"),
                     "has_pii": r.get('has_pii', False),
                     "has_phi": r.get('has_phi', False),
+                    "created": r.get("created"),
+                    "last_modified": r.get("last_modified"),
+                    # Enhanced metadata for better query generation
+                    "column_profiles": r.get("column_profiles", []),
+                    "lineage": r.get("lineage", []),
+                    "analytical_insights": r.get("analytical_insights", []),
+                    "key_metrics": r.get("key_metrics", []),
+                    "full_markdown": r.get("full_markdown", ""),
+                    "tags": r.get("tags", []),
                 })
-                logger.info(f"Extracted schema for {table_id}")
+                # Build full name for logging
+                full_table_id = f"{r['project_id']}.{r['dataset_id']}.{r['table_id']}"
+                logger.info(f"Extracted schema for {full_table_id}")
+            
+            # If no tables matched, fall back to all tables with a warning
+            if not datasets and results:
+                logger.warning("[ACTION MODE - Tool 1/3] No tables matched the question keywords, using all available tables")
+                for r in results:
+                    datasets.append({
+                        "table_id": r['table_id'],
+                        "project_id": r['project_id'],
+                        "dataset_id": r['dataset_id'],
+                        "asset_type": r.get('asset_type', 'table'),
+                        "schema": r.get("schema", []),
+                        "description": r.get("description", ""),
+                        "row_count": r.get("row_count"),
+                        "column_count": r.get("column_count"),
+                        "size_bytes": r.get("size_bytes"),
+                        "has_pii": r.get('has_pii', False),
+                        "has_phi": r.get('has_phi', False),
+                        "created": r.get("created"),
+                        "last_modified": r.get("last_modified"),
+                        "column_profiles": r.get("column_profiles", []),
+                        "lineage": r.get("lineage", []),
+                        "analytical_insights": r.get("analytical_insights", []),
+                        "key_metrics": r.get("key_metrics", []),
+                        "full_markdown": r.get("full_markdown", ""),
+                        "tags": r.get("tags", []),
+                    })
+                    full_table_id = f"{r['project_id']}.{r['dataset_id']}.{r['table_id']}"
+                    logger.info(f"Extracted schema for {full_table_id}")
             
             logger.info(f"[ACTION MODE - Tool 1/3] Prepared {len(datasets)} tables from search: '{original_query}'")
             logger.info(f"[ACTION MODE - Tool 1/3] Question context: '{question}'")
@@ -200,7 +268,10 @@ async def prepare_tables_for_analysis(question: str) -> str:
             _session_state["original_search_query"] = original_query
             
             # Return human-readable summary
-            table_list = "\n".join([f"  - {d['table_id']}" for d in datasets[:5]])
+            table_list = "\n".join([
+                f"  - {d['project_id']}.{d['dataset_id']}.{d['table_id']}" 
+                for d in datasets[:5]
+            ])
             if len(datasets) > 5:
                 table_list += f"\n  ... and {len(datasets) - 5} more"
             
@@ -214,7 +285,7 @@ async def prepare_tables_for_analysis(question: str) -> str:
         return f"Error preparing tables: {str(e)}"
 
 
-async def generate_sql_for_question() -> str:
+async def generate_sql_for_question(tool_context: ToolContext) -> str:
     """Generate SQL query using query-generation-agent (ACTION MODE - Tool 2/3).
     
     Loads table information from session state (prepared by prepare_tables_for_analysis)
@@ -224,6 +295,9 @@ async def generate_sql_for_question() -> str:
     1. prepare_tables_for_analysis
     2. generate_sql_for_question ← YOU ARE HERE
     3. execute_sql_query
+    
+    Args:
+        tool_context: ADK tool context for accessing conversation history
     
     Returns:
         Human-readable status with SQL preview
@@ -235,6 +309,7 @@ async def generate_sql_for_question() -> str:
         # Load prepared data from session state
         datasets = _session_state.get("prepared_tables")
         question = _session_state.get("analysis_question")
+        original_search_query = _session_state.get("original_search_query", "")
         
         if not datasets:
             return json.dumps({"error": "No prepared tables found in session. Please run prepare_tables_for_analysis first."})
@@ -244,63 +319,210 @@ async def generate_sql_for_question() -> str:
         
         logger.info(f"[ACTION MODE - Tool 2/3] Generating SQL for {len(datasets)} candidate table(s)")
         
-        # Enhance question with guidelines for query generation
-        enhanced_question = f"""{question}
-
-QUERY REQUIREMENTS (ACTION MODE):
-- LIMIT to 30 rows maximum
-- Use latest/most recent data (ORDER BY timestamp/date DESC when applicable)
-- Prefer aggregated results (GROUP BY, COUNT, SUM, AVG) unless user explicitly asks for detailed records
-- Apply time-based filters for temporal queries (e.g., "last week" should filter by date)"""
-        
-        # Try each candidate table with retries
-        last_result = None
-        for dataset in datasets:
-            logger.info(f"Attempting SQL generation for table: {dataset['table_id']}")
-            for attempt in range(5):
-                try:
-                    logger.info(f"Query generation attempt {attempt + 1}/5")
-                    result = await _query_gen_client.generate_queries(
-                        insight=enhanced_question,
-                        datasets=[dataset],
-                        max_queries=1,
-                        max_iterations=3
-                    )
-                    
-                    # Check if we got valid queries
-                    if result and "queries" in result and result["queries"]:
-                        # Extract the first (and only) query
-                        query = result["queries"][0]
-                        query_name = query.get("query_name", "unknown")
-                        
-                        # Initialize session state queries dict if needed
-                        if "queries" not in _session_state:
-                            _session_state["queries"] = {}
-                        
-                        # Store full query indexed by query_name
-                        _session_state["queries"][query_name] = query
-                        
-                        logger.info(f"[ACTION MODE - Tool 2/3] Saved query '{query_name}' to session state")
-                        logger.info(f"[ACTION MODE - Tool 2/3] Generated SQL successfully for table: {dataset['table_id']}")
-                        
-                        # Return human-readable summary for the agent
-                        summary = _query_gen_client.format_query_summary(result)
-                        return summary
-                    
-                    last_result = result
-                    logger.warning(f"No valid queries in result")
-                            
-                except Exception as e:
-                    logger.warning(f"Query generation attempt {attempt + 1} failed: {e}")
-                    last_result = {"error": str(e)}
-        
-        # If we got here, all attempts failed
-        if last_result and isinstance(last_result, dict) and "queries" in last_result:
-            # Even if all queries failed, return formatted diagnostic
-            summary = _query_gen_client.format_query_summary(last_result)
-            return summary
+        # === EXTRACT CONVERSATION HISTORY ===
+        conversation_context = []
+        if tool_context:
+            try:
+                # Access conversation history from tool context
+                if hasattr(tool_context, 'session') and hasattr(tool_context.session, 'history'):
+                    # Get last 10 messages for context (5 exchanges)
+                    recent_messages = list(tool_context.session.history)[-10:] if tool_context.session.history else []
+                    logger.info(f"[ACTION MODE - Tool 2/3] Found {len(recent_messages)} messages in conversation history")
+                    for msg in recent_messages:
+                        role = getattr(msg, 'role', 'unknown')
+                        content = getattr(msg, 'content', str(msg))
+                        # Limit each message to 300 chars for brevity
+                        content_preview = content[:300] + "..." if len(content) > 300 else content
+                        conversation_context.append(f"  {role}: {content_preview}")
+                    logger.info(f"[ACTION MODE - Tool 2/3] Extracted {len(conversation_context)} messages from conversation history")
+                else:
+                    logger.warning("[ACTION MODE - Tool 2/3] tool_context.session.history not available")
+            except Exception as e:
+                logger.warning(f"[ACTION MODE - Tool 2/3] Could not extract conversation history: {e}", exc_info=True)
         else:
-            return json.dumps(last_result or {"error": "Could not generate SQL query after retries"}, indent=2)
+            logger.warning("[ACTION MODE - Tool 2/3] tool_context is None - conversation history not available")
+        
+        # === EXTRACT SESSION CONTEXT ===
+        previous_queries = _session_state.get("queries", {})
+        planning_context = _session_state.get("planning", {})
+        prp_content = _session_state.get("prp_text", "")
+        
+        # === ANALYZE USER'S QUESTION FOR INTENT ===
+        question_lower = question.lower()
+        intent_signals = []
+        
+        if any(word in question_lower for word in ["join", "combine", "merge", "with", "and"]):
+            intent_signals.append("JOIN operation - user wants to combine data from multiple tables")
+        if any(word in question_lower for word in ["compare", "difference", "vs", "versus", "between"]):
+            intent_signals.append("COMPARISON - user wants to compare values or metrics")
+        if any(word in question_lower for word in ["trend", "over time", "change", "growth", "history"]):
+            intent_signals.append("TEMPORAL ANALYSIS - user wants to see changes over time")
+        if any(word in question_lower for word in ["total", "sum", "count", "average", "avg", "aggregate"]):
+            intent_signals.append("AGGREGATION - user wants summary statistics")
+        if any(word in question_lower for word in ["last week", "last month", "yesterday", "recent", "latest"]):
+            intent_signals.append("TIME-BASED FILTER - user wants recent data only")
+        if any(word in question_lower for word in ["where", "filter", "only", "specific"]):
+            intent_signals.append("FILTERING - user wants to narrow down results")
+        
+        # === EXTRACT MENTIONED COLUMNS ===
+        mentioned_columns = set()
+        for ds in datasets:
+            for field in ds.get("schema", []):
+                field_name = field.get("name", "").lower()
+                if field_name in question_lower:
+                    mentioned_columns.add(field.get("name"))
+        
+        # === BUILD TABLE SUMMARIES ===
+        table_summaries = []
+        for ds in datasets:
+            full_name = f"{ds['project_id']}.{ds['dataset_id']}.{ds['table_id']}"
+            logger.info(f"[ACTION MODE - Tool 2/3] Available table: {full_name}")
+            
+            row_count = ds.get('row_count')
+            row_str = f"{row_count:,} rows" if row_count else "unknown rows"
+            col_count = ds.get('column_count', 0)
+            
+            # Get key columns with their types
+            key_columns = []
+            for field in ds.get("schema", [])[:8]:  # First 8 columns
+                col_name = field.get("name", "unknown")
+                col_type = field.get("type", "unknown")
+                key_columns.append(f"{col_name} ({col_type})")
+            
+            description = ds.get('description') or 'No description available'
+            desc_preview = description[:150] + "..." if len(description) > 150 else description
+            
+            table_summaries.append(
+                f"  • `{ds['table_id']}`: {row_str}, {col_count} columns\n"
+                f"    Full name: {full_name}\n"
+                f"    Key columns: {', '.join(key_columns[:5])}\n"
+                f"    Description: {desc_preview}"
+            )
+        
+        logger.info(f"[ACTION MODE - Tool 2/3] Detected intent signals: {intent_signals}")
+        logger.info(f"[ACTION MODE - Tool 2/3] Mentioned columns: {mentioned_columns}")
+        
+        # === BUILD COMPREHENSIVE ENHANCED QUESTION ===
+        enhanced_question = f"""USER'S CURRENT QUESTION:
+{question}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONVERSATION HISTORY (Recent Context):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{chr(10).join(conversation_context) if conversation_context else "  (No prior conversation history available)"}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DISCOVERY CONTEXT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Original search query used to find tables: "{original_search_query}"
+- Number of tables discovered: {len(datasets)}
+- Selected tables for this analysis: {', '.join([ds['table_id'] for ds in datasets])}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SESSION CONTEXT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Previous queries in this session: {len(previous_queries)} ({', '.join(list(previous_queries.keys())[:3])}{"..." if len(previous_queries) > 3 else ""})
+- PRP/Planning context: {"PRP exists in session" if prp_content else "No PRP (ad-hoc analysis)"}
+{f"- Planning metadata: {list(planning_context.keys())}" if planning_context else ""}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ANALYSIS INTENT (Detected from context):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{chr(10).join([f"✓ {signal}" for signal in intent_signals]) if intent_signals else "→ General data retrieval/exploration"}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MENTIONED COLUMNS/FIELDS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{', '.join(sorted(mentioned_columns)) if mentioned_columns else "→ No specific columns mentioned - infer from context and schema"}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AVAILABLE TABLES (Full Details):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{chr(10).join(table_summaries)}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUERY GENERATION INSTRUCTIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. PRIMARY GOAL: Answer the user's question as directly and accurately as possible
+
+2. TABLE SELECTION:
+   • If specific table(s) mentioned in question → USE ONLY those tables
+   • If multiple tables mentioned with "join"/"combine" → Create appropriate JOIN query
+   • Available tables: {', '.join([f'`{ds["project_id"]}.{ds["dataset_id"]}.{ds["table_id"]}`' for ds in datasets])}
+
+3. COLUMN SELECTION:
+   • Prioritize explicitly mentioned columns: {', '.join(mentioned_columns) if mentioned_columns else 'derive from question context'}
+   • Include relevant identifying columns (IDs, names, timestamps)
+   • Add necessary grouping or filtering columns based on intent
+
+4. QUERY CONSTRAINTS (ACTION MODE - User expects quick results):
+   • LIMIT to 30 rows maximum for display
+   • ORDER BY timestamp/date DESC when applicable (show most recent first)
+   • Prefer aggregated results (GROUP BY, COUNT, SUM, AVG) if intent suggests it
+   • Apply time-based filters for temporal queries:
+     - "last week" → WHERE date >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+     - "last month" → WHERE date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+     - "yesterday" → WHERE date = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)
+
+5. DATA QUALITY & JOINS:
+   • Filter NULL values in key fields: WHERE key_field IS NOT NULL
+   • For JOINs, verify join keys exist in both tables (check schema)
+   • Use appropriate JOIN type based on intent:
+     - INNER JOIN: when both tables must have matching records
+     - LEFT JOIN: when keeping all records from primary table
+     - FULL OUTER JOIN: when need all records from both
+
+6. ANALYSIS TYPE ALIGNMENT:
+{chr(10).join([f"   → {signal}" for signal in intent_signals]) if intent_signals else "   → Standard data retrieval"}
+
+7. USE CONVERSATION CONTEXT:
+   • Reference previous exchanges to understand what user really wants
+   • If user is refining a previous question, incorporate that context
+   • If user mentions "these tables" or "from before", use session context
+
+IMPORTANT REMINDERS:
+✓ This is ad-hoc exploratory analysis - prioritize clarity and usefulness
+✓ User expects quick results, not perfect optimization
+✓ Make reasonable assumptions if question is ambiguous
+✓ Use FULLY QUALIFIED table names: `project_id.dataset_id.table_id`
+✓ Consider the conversation history - the user's intent may span multiple messages"""
+        
+        # Pass ALL datasets to query generation so LLM can choose the right one
+        logger.info(f"Attempting SQL generation with {len(datasets)} table(s)")
+        try:
+            result = await _query_gen_client.generate_queries_async(
+                insight=enhanced_question,
+                datasets=datasets,  # Pass ALL datasets
+                max_queries=1,
+                max_iterations=3,
+                max_wait_seconds=600.0  # 10 minutes max
+            )
+            
+            # Check if we got valid queries
+            if result and "queries" in result and result["queries"]:
+                # Extract the first (and only) query
+                query = result["queries"][0]
+                query_name = query.get("query_name", "unknown")
+                
+                # Initialize session state queries dict if needed
+                if "queries" not in _session_state:
+                    _session_state["queries"] = {}
+                
+                # Store full query indexed by query_name
+                _session_state["queries"][query_name] = query
+                
+                logger.info(f"[ACTION MODE - Tool 2/3] Saved query '{query_name}' to session state")
+                
+                # Return human-readable summary for the agent
+                summary = _query_gen_client.format_query_summary(result)
+                return summary
+            else:
+                return json.dumps(result or {"error": "No valid queries generated"}, indent=2)
+                    
+        except Exception as e:
+            logger.error(f"Query generation failed: {e}", exc_info=True)
+            return json.dumps({"error": str(e)}, indent=2)
         
     except Exception as e:
         logger.error(f"Error in generate_sql_for_question: {e}", exc_info=True)

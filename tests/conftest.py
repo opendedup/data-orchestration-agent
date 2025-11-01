@@ -11,7 +11,6 @@ from data_orchestration_agent.clients import (
     ApolloMCPClient,
     DiscoveryClient,
     GraphQLClient,
-    PlanningClient,
     QueryGenClient,
 )
 from data_orchestration_agent.config import Config
@@ -72,23 +71,6 @@ def mock_query_gen_client(mocker: "MockerFixture") -> QueryGenClient:
     """
     client = mocker.Mock(spec=QueryGenClient)
     client.generate_queries = mocker.AsyncMock(return_value={})
-    return client
-
-
-@pytest.fixture
-def mock_planning_client(mocker: "MockerFixture") -> PlanningClient:
-    """Create a mock planning client.
-    
-    Args:
-        mocker: Pytest mocker fixture
-        
-    Returns:
-        Mocked planning client
-    """
-    client = mocker.Mock(spec=PlanningClient)
-    client.start_planning_session = mocker.AsyncMock(return_value={})
-    client.continue_conversation = mocker.AsyncMock(return_value={})
-    client.generate_data_prp = mocker.AsyncMock(return_value={})
     return client
 
 

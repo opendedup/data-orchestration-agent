@@ -6,7 +6,7 @@ from typing import Any
 from google.adk.agents import Agent
 
 from ..config import Config
-from ..tools import action_mode_tools, ask_mode_tools, mode_switch_tools, planning_mode_tools
+from ..tools import action_mode_tools, ask_mode_tools, mode_switch_tools
 from .action_agent import create_action_agent
 from .ask_agent import create_ask_agent
 from .plan_agent import create_plan_agent
@@ -18,7 +18,6 @@ def create_orchestration_agent(
     config: Config,
     discovery_client: Any,
     query_gen_client: Any,
-    planning_client: Any,
     graphql_client: Any,
     apollo_mcp_client: Any,
     bigquery_agent: Any = None,
@@ -27,14 +26,13 @@ def create_orchestration_agent(
     
     The root agent coordinates between three specialized modes:
     - Ask Mode: Data discovery and exploration (read-only)
-    - Plan Mode: PRP creation and planning
+    - Plan Mode: PRP creation and planning (local implementation)
     - Action Mode: Query execution and PRP execution
     
     Args:
         config: Configuration object
         discovery_client: Data discovery client
         query_gen_client: Query generation client
-        planning_client: Data planning client
         graphql_client: GraphQL client
         apollo_mcp_client: Apollo MCP client
         bigquery_agent: BigQuery sub-agent for data analysis
@@ -44,7 +42,6 @@ def create_orchestration_agent(
     """
     # Inject clients into tool modules
     ask_mode_tools.set_clients(discovery_client, apollo_mcp_client)
-    planning_mode_tools.set_client(planning_client)
     action_mode_tools.set_clients(
         discovery_client, 
         query_gen_client, 
@@ -106,7 +103,8 @@ All sessions start in Ask Mode. Mode switches require explicit user confirmation
 
 Delegate all work to the appropriate sub-agent based on current mode."""
     
-    # Create root agent
+    # Create root agent with sub-agents
+    # ADK requires sub-agents to be passed in the constructor for proper agent tree registration
     root = Agent(
         name="root_orchestration_agent",
         model=config.agent_model,
@@ -115,11 +113,9 @@ Delegate all work to the appropriate sub-agent based on current mode."""
             mode_switch_tools.switch_to_ask_mode,
             mode_switch_tools.switch_to_plan_mode,
             mode_switch_tools.switch_to_action_mode,
-        ]
+        ],
+        sub_agents=[ask_agent, plan_agent, action_agent]
     )
-    
-    # Set sub-agents - ADK will handle delegation
-    root.sub_agents = [ask_agent, plan_agent, action_agent]
     
     logger.info("Root orchestration agent created with sub-agents")
     return root

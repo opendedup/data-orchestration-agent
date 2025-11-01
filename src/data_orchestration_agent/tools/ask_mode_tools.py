@@ -37,6 +37,15 @@ def set_session_state(state: Dict[str, Any]) -> None:
     _session_state = state
 
 
+def get_session_state() -> Dict[str, Any]:
+    """Return the current session state reference.
+
+    Returns:
+        Session state dictionary used by Ask Mode tools.
+    """
+    return _session_state
+
+
 async def search_datasets(query: str, project_id: Optional[str] = None) -> str:
     """Search for BigQuery datasets using natural language query.
     

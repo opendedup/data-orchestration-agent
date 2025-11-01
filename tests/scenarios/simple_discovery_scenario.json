@@ -1,0 +1,41 @@
+{
+  "name": "Simple Data Discovery Scenario",
+  "description": "Basic data discovery workflow - search and get details",
+  "session_id": "simple-discovery-test",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Search for customer data",
+      "message": "show me customer data tables",
+      "assertions": [
+        {
+          "type": "tool_called",
+          "value": "search_datasets"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "description": "Get details on a specific table",
+      "message": "tell me more about the first table",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "table"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "description": "Ask about current time",
+      "message": "what time is it?",
+      "assertions": [
+        {
+          "type": "tool_called",
+          "value": "get_current_time"
+        }
+      ]
+    }
+  ]
+}
+

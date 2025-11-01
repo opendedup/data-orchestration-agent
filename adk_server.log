@@ -1,0 +1,199 @@
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/google/adk/cli/fast_api.py:130: UserWarning: [EXPERIMENTAL] InMemoryCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credential_service = InMemoryCredentialService()
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/google/adk/auth/credential_service/in_memory_credential_service.py:33: UserWarning: [EXPERIMENTAL] BaseCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__()
+INFO:     Started server process [8908]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53530 - "GET /list-apps HTTP/1.1" 200 OK
+2025-10-31 20:47:43,261 - INFO - adk_web_server.py:602 - New session created: test-session-3
+INFO:     127.0.0.1:36780 - "POST /apps/data_orchestration_agent/users/test-user-3/sessions/test-session-3 HTTP/1.1" 200 OK
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'appName' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'appName' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'appName' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'userId' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'userId' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'userId' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'sessionId' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'sessionId' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'sessionId' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'newMessage' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'newMessage' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'newMessage' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'streaming' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'streaming' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'streaming' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'stateDelta' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'stateDelta' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'stateDelta' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'invocationId' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'validation_alias' attribute with value 'invocationId' was provided to the `Field()` function, which has no effect in the context it was used. 'validation_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'serialization_alias' attribute with value 'invocationId' was provided to the `Field()` function, which has no effect in the context it was used. 'serialization_alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+2025-10-31 20:47:43,288 - INFO - envs.py:47 - Loaded .env file for data_orchestration_agent at /home/user/git/data-orchestration-agent/.env
+2025-10-31 20:47:43,289 - INFO - envs.py:47 - Loaded .env file for data_orchestration_agent at /home/user/git/data-orchestration-agent/.env
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:42: UserWarning: [EXPERIMENTAL] BigQueryCredentialsConfig: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credentials_config = BigQueryCredentialsConfig(credentials=credentials)
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/google/adk/utils/feature_decorator.py:87: UserWarning: [EXPERIMENTAL] BaseGoogleCredentialsConfig: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  return orig_init(self, *args, **kwargs)
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:44: UserWarning: [EXPERIMENTAL] BigQueryToolConfig: Config defaults may have breaking change in the future.
+  tool_config = BigQueryToolConfig(
+/home/user/git/data-orchestration-agent/src/data_orchestration_agent/agents/bigquery_agent.py:50: UserWarning: [EXPERIMENTAL] BigQueryToolset: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  bigquery_toolset = BigQueryToolset(
+2025-10-31 20:47:44,708 - INFO - bigquery_agent.py:87 - BigQuery sub-agent created successfully with BigQueryToolset
+2025-10-31 20:47:44,708 - INFO - root_agent.py:55 - Injected clients into tool modules
+2025-10-31 20:47:44,708 - INFO - ask_agent.py:93 - Ask/Discover agent created successfully
+2025-10-31 20:47:44,708 - INFO - plan_agent.py:137 - Plan agent created successfully with PRP generator sub-agent
+2025-10-31 20:47:44,708 - INFO - action_agent.py:86 - Action agent created successfully
+2025-10-31 20:47:44,708 - INFO - root_agent.py:62 - Created specialized sub-agents (ask, plan, action)
+2025-10-31 20:47:44,708 - INFO - root_agent.py:120 - Root orchestration agent created with sub-agents
+2025-10-31 20:47:44,708 - INFO - agent.py:56 - ADK root_agent initialized successfully with sub-agents
+/home/user/.cache/pypoetry/virtualenvs/data-orchestration-agent-iRpqcA2d-py3.12/lib/python3.12/site-packages/google/adk/cli/adk_web_server.py:476: UserWarning: [EXPERIMENTAL] App: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  agentic_app = App(
+2025-10-31 20:47:44,712 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:47:45,762 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:47:45,762 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:47:46,565 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:47:46,567 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:47:46,567 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:47:46,568 - INFO - adk_web_server.py:1388 - Generated 1 events in agent run
+INFO:     127.0.0.1:36794 - "POST /run HTTP/1.1" 200 OK
+2025-10-31 20:47:54,032 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:47:55,131 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:47:55,131 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:47:55,747 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:47:55,749 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:47:55,749 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:47:55,750 - INFO - mode_switch_tools.py:37 - Transferring to Plan mode (plan_agent)
+2025-10-31 20:47:55,752 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:47:56,849 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:47:56,850 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:47:58,015 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:47:58,017 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:47:58,017 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:47:58,018 - INFO - adk_web_server.py:1388 - Generated 3 events in agent run
+INFO:     127.0.0.1:43436 - "POST /run HTTP/1.1" 200 OK
+2025-10-31 20:48:06,602 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:07,710 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:07,711 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:08,721 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:08,723 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:08,723 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:08,724 - INFO - ask_mode_tools.py:53 - Searching datasets with query: NFL prediction performance
+2025-10-31 20:48:08,724 - INFO - discovery_client.py:48 - Calling discovery tool: query_data_assets
+2025-10-31 20:48:08,945 - INFO - _client.py:1740 - HTTP Request: POST http://localhost:8080/mcp/call-tool "HTTP/1.1 200 OK"
+2025-10-31 20:48:08,951 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:10,065 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:10,066 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:12,186 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:12,188 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:12,188 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:12,189 - INFO - adk_web_server.py:1388 - Generated 3 events in agent run
+INFO:     127.0.0.1:52022 - "POST /run HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36656 - "GET /list-apps HTTP/1.1" 200 OK
+2025-10-31 20:48:19,917 - INFO - adk_web_server.py:602 - New session created: test-session
+INFO:     127.0.0.1:36656 - "POST /apps/data_orchestration_agent/users/test-user/sessions/test-session HTTP/1.1" 200 OK
+2025-10-31 20:48:19,921 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:20,994 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:20,994 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:22,212 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:22,214 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:22,214 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:22,217 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:23,340 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:23,340 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:24,327 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:24,329 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:24,329 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:24,330 - INFO - ask_mode_tools.py:53 - Searching datasets with query: NFL predictions backtest data
+2025-10-31 20:48:24,330 - INFO - discovery_client.py:48 - Calling discovery tool: query_data_assets
+2025-10-31 20:48:24,513 - INFO - _client.py:1740 - HTTP Request: POST http://localhost:8080/mcp/call-tool "HTTP/1.1 200 OK"
+2025-10-31 20:48:24,519 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:25,488 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:25,488 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:27,767 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:27,768 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:27,770 - INFO - adk_web_server.py:1388 - Generated 5 events in agent run
+INFO:     127.0.0.1:36656 - "POST /run HTTP/1.1" 200 OK
+2025-10-31 20:48:27,777 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:28,888 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:28,888 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:30,073 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:30,075 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:30,075 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:30,076 - INFO - ask_mode_tools.py:53 - Searching datasets with query: NFL live inferences predictions
+2025-10-31 20:48:30,076 - INFO - discovery_client.py:48 - Calling discovery tool: query_data_assets
+2025-10-31 20:48:30,281 - INFO - _client.py:1740 - HTTP Request: POST http://localhost:8080/mcp/call-tool "HTTP/1.1 200 OK"
+2025-10-31 20:48:30,287 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:31,478 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:31,478 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:34,274 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:34,276 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:34,277 - INFO - adk_web_server.py:1388 - Generated 3 events in agent run
+INFO:     127.0.0.1:36656 - "POST /run HTTP/1.1" 200 OK
+2025-10-31 20:48:34,285 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:35,271 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:35,271 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:36,289 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:36,290 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:36,291 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:36,292 - INFO - ask_mode_tools.py:122 - Getting details for table: lennyisagoodboy.lfndata.backtest_regression_inferences
+2025-10-31 20:48:36,292 - INFO - discovery_client.py:48 - Calling discovery tool: get_asset_details
+2025-10-31 20:48:36,293 - INFO - ask_mode_tools.py:122 - Getting details for table: lennyisagoodboy.lfndata.regression_predictions
+2025-10-31 20:48:36,293 - INFO - discovery_client.py:48 - Calling discovery tool: get_asset_details
+2025-10-31 20:48:36,713 - INFO - _client.py:1740 - HTTP Request: POST http://localhost:8080/mcp/call-tool "HTTP/1.1 200 OK"
+2025-10-31 20:48:36,713 - INFO - _client.py:1740 - HTTP Request: POST http://localhost:8080/mcp/call-tool "HTTP/1.1 200 OK"
+2025-10-31 20:48:36,716 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:37,702 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:37,703 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:42,073 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:42,075 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:42,077 - INFO - adk_web_server.py:1388 - Generated 3 events in agent run
+INFO:     127.0.0.1:36656 - "POST /run HTTP/1.1" 200 OK
+2025-10-31 20:48:42,085 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:43,150 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:43,150 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:44,254 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:44,256 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:44,256 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:44,257 - INFO - adk_web_server.py:1388 - Generated 1 events in agent run
+INFO:     127.0.0.1:36656 - "POST /run HTTP/1.1" 200 OK
+2025-10-31 20:48:44,267 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:45,467 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:45,467 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:48:46,159 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:48:46,161 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:48:46,161 - WARNING - types.py:5972 - Warning: there are non-text parts in the response: ['thought_signature', 'function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-10-31 20:48:46,162 - INFO - mode_switch_tools.py:37 - Transferring to Plan mode (plan_agent)
+2025-10-31 20:48:46,165 - INFO - _api_client.py:626 - The project/location from the environment variables will take precedence over the API key from the environment variables.
+2025-10-31 20:48:47,221 - INFO - google_llm.py:133 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+2025-10-31 20:48:47,221 - INFO - models.py:6756 - AFC is enabled with max remote calls: 10.
+2025-10-31 20:49:03,384 - INFO - _client.py:1740 - HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/lennyisagoodboy/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-10-31 20:49:03,386 - INFO - google_llm.py:186 - Response received from the model.
+2025-10-31 20:49:03,387 - INFO - adk_web_server.py:1388 - Generated 3 events in agent run
+INFO:     127.0.0.1:36656 - "POST /run HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8908]

@@ -32,7 +32,7 @@ class Config(BaseSettings):
         description="Host address for the agent web server"
     )
     agent_port: int = Field(
-        default=8085,
+        default=8086,
         description="Port number for the agent web server"
     )
 
@@ -44,10 +44,6 @@ class Config(BaseSettings):
     query_gen_agent_url: str = Field(
         default="http://localhost:8081",
         description="URL for the query generation agent MCP service"
-    )
-    planning_agent_url: str = Field(
-        default="http://localhost:8082",
-        description="URL for the data planning agent MCP service"
     )
     graphql_agent_url: str = Field(
         default="http://localhost:8083",
