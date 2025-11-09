@@ -56,6 +56,7 @@ services:
       - MCP_HOST=0.0.0.0
       - MCP_PORT=8081
       - GOOGLE_APPLICATION_CREDENTIALS=/home/appuser/.config/gcloud/application_default_credentials.json
+      - DISCOVERY_AGENT_URL=http://data-discovery-agent:8080
     ports:
       - "8081:8081"
     volumes:
@@ -71,6 +72,8 @@ services:
       start_period: 10s
     networks:
       - mcp-platform
+    depends_on:
+      - data-discovery-agent
 
   # =============================================================================
   # Data Planning Agent - Port 8082
@@ -137,6 +140,47 @@ services:
     networks:
       - mcp-platform
 
+  # =============================================================================
+  # Data Orchestration Agent - Port 8085
+  # =============================================================================
+  data-orchestration-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: data-orchestration-adk
+    image: data-orchestration-agent:latest
+    env_file:
+      - .env
+    environment:
+      - AGENT_PORT=8085
+      - AGENT_HOST=0.0.0.0
+      - ENABLE_CORS=true
+      - DISCOVERY_AGENT_URL=http://data-discovery-agent:8080
+      - QUERY_GEN_AGENT_URL=http://query-generation-agent:8081
+      - GRAPHQL_AGENT_URL=http://data-graphql-agent:8083
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/adk/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8085:8085"
+    volumes:
+      # Mount sessions database for persistence
+      - ./sessions.db:/app/sessions.db
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/adk/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8085/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - mcp-platform
+    depends_on:
+      - data-discovery-agent
+      - query-generation-agent
+      - data-planning-agent
+      - data-graphql-agent
+
 # =============================================================================
 # Shared Network
 # =============================================================================
@@ -175,6 +219,10 @@ networks:
 #   curl http://localhost:8081/health  # Query Generation
 #   curl http://localhost:8082/health  # Data Planning
 #   curl http://localhost:8083/health  # Data GraphQL
+#   curl http://localhost:8085/health  # Data Orchestration
+#
+# Access ADK API documentation:
+#   http://localhost:8085/docs
 #
 # =============================================================================
 

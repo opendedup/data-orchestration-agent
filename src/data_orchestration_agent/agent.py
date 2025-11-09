@@ -7,6 +7,12 @@ For production deployment, use the FastAPI server in main.py instead.
 import logging
 import os
 
+# Configure logging to respect the LOG_LEVEL environment variable
+log_level = os.environ.get("LOG_LEVEL", "INFO").upper()
+# Get the root logger configured by the ADK framework and set its level.
+# This is more robust than using basicConfig(force=True) which can be overwritten.
+logging.getLogger().setLevel(log_level)
+
 from .agents.bigquery_agent import create_bigquery_agent
 from .agents.root_agent import create_orchestration_agent
 from .clients import (

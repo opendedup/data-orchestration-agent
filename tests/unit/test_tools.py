@@ -11,12 +11,12 @@ from data_orchestration_agent.clients import (
     ApolloMCPClient,
     DiscoveryClient,
     GraphQLClient,
-    PlanningClient,
     QueryGenClient,
 )
 from data_orchestration_agent.tools import (
     action_mode_tools,
     ask_mode_tools,
+    mode_switch_tools,
     planning_mode_tools,
 )
 from data_orchestration_agent.utils import SessionState
@@ -234,73 +234,6 @@ class TestAskModeTools:
         assert "Error: No candidate tables provided" in result
 
 
-class TestPlanningModeTools:
-    """Tests for Planning Mode tools."""
-    
-    @pytest.mark.asyncio
-    async def test_start_planning(
-        self,
-        mock_planning_client: PlanningClient,
-        session_state: SessionState
-    ) -> None:
-        """Test starting planning session.
-        
-        Args:
-            mock_planning_client: Mocked planning client
-            session_state: Session state fixture
-        """
-        # Set up client and state
-        planning_mode_tools.set_client(mock_planning_client)
-        planning_mode_tools.set_session_state(session_state)
-        
-        # Mock response
-        mock_planning_client.start_planning_session.return_value = {
-            "session_id": "test-session-123",
-            "questions": ["What is your goal?", "Who are the users?"]
-        }
-        
-        # Call tool
-        result = await planning_mode_tools.start_planning("Build a customer dashboard")
-        
-        # Verify
-        assert "test-session-123" in result
-        assert "What is your goal?" in result
-        assert session_state["planning_session_id"] == "test-session-123"
-        assert session_state["planning_complete"] is False
-        mock_planning_client.start_planning_session.assert_called_once()
-    
-    @pytest.mark.asyncio
-    async def test_answer_planning_questions(
-        self,
-        mock_planning_client: PlanningClient,
-        session_state: SessionState
-    ) -> None:
-        """Test answering planning questions.
-        
-        Args:
-            mock_planning_client: Mocked planning client
-            session_state: Session state fixture
-        """
-        # Set up client and state
-        planning_mode_tools.set_client(mock_planning_client)
-        planning_mode_tools.set_session_state(session_state)
-        session_state["planning_session_id"] = "test-session-123"
-        
-        # Mock response - not complete yet
-        mock_planning_client.continue_conversation.return_value = {
-            "is_complete": False,
-            "questions": ["Next question?"]
-        }
-        
-        # Call tool
-        result = await planning_mode_tools.answer_planning_questions("My answers here")
-        
-        # Verify
-        assert "Next question?" in result
-        assert session_state["planning_complete"] is False
-        mock_planning_client.continue_conversation.assert_called_once()
-
-
 class TestActionModeTools:
     """Tests for Action Mode tools."""
     
@@ -386,4 +319,425 @@ class TestActionModeTools:
         assert "Iterating on Discovery" in result
         assert "discovery_modifications" in session_state
         assert session_state["discovery_modifications"] == "Please use more recent data sources"
+    
+    @pytest.mark.asyncio
+    async def test_generate_sql_for_question_with_explicit_params(
+        self,
+        mock_discovery_client: DiscoveryClient,
+        mock_query_gen_client: QueryGenClient,
+        mock_graphql_client: GraphQLClient,
+        session_state: SessionState,
+        mocker: "MockerFixture"
+    ) -> None:
+        """Test generate_sql_for_question with explicit parameters.
+        
+        Args:
+            mock_discovery_client: Mocked discovery client
+            mock_query_gen_client: Mocked query generation client
+            mock_graphql_client: Mocked GraphQL client
+            session_state: Session state fixture
+            mocker: Pytest mocker fixture
+        """
+        # Set up clients and state
+        action_mode_tools.set_clients(
+            mock_discovery_client,
+            mock_query_gen_client,
+            mock_graphql_client
+        )
+        action_mode_tools.set_session_state(session_state)
+        
+        # Prepare test data
+        question = "Show me the latest backtest predictions for last week"
+        candidate_tables = [
+            {
+                "project_id": "lennyisagoodboy",
+                "dataset_id": "lfndata",
+                "table_id": "backtest_regression_inferences",
+                "schema": [
+                    {"name": "run_id", "type": "STRING"},
+                    {"name": "game_id", "type": "STRING"},
+                    {"name": "week", "type": "INTEGER"},
+                    {"name": "predictions", "type": "FLOAT"}
+                ],
+                "description": "Backtest regression inferences",
+                "row_count": 449,
+                "column_count": 4
+            }
+        ]
+        mentioned_columns = ["week", "predictions", "game_id"]
+        
+        # Mock query generation response
+        mock_query_gen_client.generate_queries_async.return_value = {
+            "queries": [
+                {
+                    "query_name": "backtest_predictions_last_week",
+                    "sql": "SELECT * FROM lennyisagoodboy.lfndata.backtest_regression_inferences WHERE week = 10 LIMIT 30",
+                    "description": "Latest backtest predictions"
+                }
+            ]
+        }
+        mock_query_gen_client.format_query_summary.return_value = "Query generated successfully"
+        
+        # Call tool with explicit parameters
+        result = await action_mode_tools.generate_sql_for_question(
+            question=question,
+            candidate_tables=candidate_tables,
+            mentioned_columns=mentioned_columns,
+            related_queries=None,
+            tool_context=None
+        )
+        
+        # Verify
+        assert "Query generated successfully" in result
+        mock_query_gen_client.generate_queries_async.assert_called_once()
+        
+        # Verify the enhanced question contains our data
+        call_args = mock_query_gen_client.generate_queries_async.call_args
+        enhanced_question = call_args.kwargs["insight"]
+        assert question in enhanced_question
+        assert "backtest_regression_inferences" in enhanced_question
+        assert "week" in enhanced_question or "predictions" in enhanced_question
+        assert "1" in enhanced_question  # Should show 1 table
+    
+    @pytest.mark.asyncio
+    async def test_generate_sql_for_question_validates_inputs(
+        self,
+        mock_discovery_client: DiscoveryClient,
+        mock_query_gen_client: QueryGenClient,
+        mock_graphql_client: GraphQLClient,
+        session_state: SessionState
+    ) -> None:
+        """Test that generate_sql_for_question validates required inputs.
+        
+        Args:
+            mock_discovery_client: Mocked discovery client
+            mock_query_gen_client: Mocked query generation client
+            mock_graphql_client: Mocked GraphQL client
+            session_state: Session state fixture
+        """
+        # Set up clients
+        action_mode_tools.set_clients(
+            mock_discovery_client,
+            mock_query_gen_client,
+            mock_graphql_client
+        )
+        action_mode_tools.set_session_state(session_state)
+        
+        # Test empty question
+        result = await action_mode_tools.generate_sql_for_question(
+            question="",
+            candidate_tables=[{"table_id": "test"}],
+            mentioned_columns=None
+        )
+        assert "error" in result.lower()
+        assert "question" in result.lower()
+        
+        # Test no tables
+        result = await action_mode_tools.generate_sql_for_question(
+            question="Show me data",
+            candidate_tables=[],
+            mentioned_columns=None
+        )
+        assert "error" in result.lower()
+        assert "table" in result.lower()
+    
+    @pytest.mark.asyncio
+    async def test_generate_sql_for_question_intent_detection(
+        self,
+        mock_discovery_client: DiscoveryClient,
+        mock_query_gen_client: QueryGenClient,
+        mock_graphql_client: GraphQLClient,
+        session_state: SessionState
+    ) -> None:
+        """Test intent detection in generate_sql_for_question.
+        
+        Args:
+            mock_discovery_client: Mocked discovery client
+            mock_query_gen_client: Mocked query generation client
+            mock_graphql_client: Mocked GraphQL client
+            session_state: Session state fixture
+        """
+        # Set up clients
+        action_mode_tools.set_clients(
+            mock_discovery_client,
+            mock_query_gen_client,
+            mock_graphql_client
+        )
+        action_mode_tools.set_session_state(session_state)
+        
+        # Mock response
+        mock_query_gen_client.generate_queries_async.return_value = {
+            "queries": [{
+                "query_name": "test",
+                "sql": "SELECT * FROM test",
+                "description": "Test"
+            }]
+        }
+        mock_query_gen_client.format_query_summary.return_value = "Success"
+        
+        # Test single table with comparison - should detect COMPARISON only
+        table = {
+            "project_id": "p", "dataset_id": "d", "table_id": "t",
+            "schema": [], "row_count": 100, "column_count": 5
+        }
+        
+        result = await action_mode_tools.generate_sql_for_question(
+            question="Compare backtest with regression predictions",
+            candidate_tables=[table],
+            mentioned_columns=None
+        )
+        
+        # Verify intent was detected correctly
+        call_args = mock_query_gen_client.generate_queries_async.call_args
+        enhanced_question = call_args.kwargs["insight"]
+        assert "COMPARISON" in enhanced_question
+        # Should NOT detect JOIN for single table
+        assert "JOIN operation" not in enhanced_question or len([table]) > 1
+
+
+class TestModeSwitchTools:
+    """Tests for mode switching tools."""
+    
+    def test_switch_to_action_mode_preserves_discovery_state(
+        self,
+        mocker: "MockerFixture"
+    ) -> None:
+        """Test that switching to Action Mode preserves discovered datasets from Ask Mode.
+        
+        This test verifies the fix for the bug where discovered table information
+        was lost when switching from Ask Mode to Action Mode.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        # Create mock ToolContext with session state
+        mock_session = mocker.Mock()
+        mock_session.state = {
+            "current_mode": "ask",
+            "some_other_key": "some_value"
+        }
+        
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mock_session
+        mock_tool_context.actions = mocker.Mock()
+        
+        # Set up Ask Mode state with discovered datasets
+        ask_state = {
+            "last_search_results": {
+                "results": [
+                    {
+                        "project_id": "lennyisagoodboy",
+                        "dataset_id": "lfndata",
+                        "table_id": "backtest_regression_inferences",
+                        "row_count": 449,
+                        "description": "Backtest regression inferences table"
+                    }
+                ],
+                "total_count": 1,
+                "query": "backtest regression inferences"
+            },
+            "last_search_query": "backtest regression inferences",
+            "discovered_datasets": [
+                {
+                    "target_table": "customer_analytics",
+                    "sources": [
+                        {
+                            "table_id": "project.dataset.customers",
+                            "confidence": 0.95
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        # Mock the ask_mode_tools.get_session_state() to return our test state
+        mocker.patch.object(
+            ask_mode_tools,
+            "get_session_state",
+            return_value=ask_state
+        )
+        
+        # Mock set_session_state methods
+        mocker.patch.object(action_mode_tools, "set_session_state")
+        mocker.patch.object(ask_mode_tools, "set_session_state")
+        
+        # Call switch_to_action_mode
+        result = mode_switch_tools.switch_to_action_mode(mock_tool_context)
+        
+        # Verify the result message
+        assert "Switching to Action Mode" in result
+        
+        # Verify mode was changed
+        assert mock_session.state["current_mode"] == "action"
+        
+        # Verify that all three keys were preserved in the session state
+        assert "user:last_search_results" in mock_session.state
+        assert "user:last_search_query" in mock_session.state
+        assert "user:planning_discovereddatasets" in mock_session.state
+        
+        # Verify the values match what was in Ask Mode state
+        assert mock_session.state["user:last_search_results"] == ask_state["last_search_results"]
+        assert mock_session.state["user:last_search_query"] == ask_state["last_search_query"]
+        assert mock_session.state["user:planning_discovereddatasets"] == ask_state["discovered_datasets"]
+        
+        # Verify that both tools received the updated state
+        action_mode_tools.set_session_state.assert_called_once_with(mock_session.state)
+        ask_mode_tools.set_session_state.assert_called_once_with(mock_session.state)
+        
+        # Verify agent transfer was triggered
+        assert mock_tool_context.actions.transfer_to_agent == "action_agent"
+
+    def test_switch_to_action_mode_migrates_string_planning_state(
+        self,
+        mocker: "MockerFixture"
+    ) -> None:
+        """Test that string planning state is migrated and PRP content is preserved.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        prp_text = "# Data Product Requirement Prompt"
+
+        mock_session = mocker.Mock()
+        mock_session.state = {
+            "current_mode": "planning",
+            "planning": prp_text,
+        }
+
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mock_session
+        mock_tool_context.actions = mocker.Mock()
+
+        mocker.patch.object(ask_mode_tools, "get_session_state", return_value={})
+        mocker.patch.object(action_mode_tools, "set_session_state")
+        mocker.patch.object(ask_mode_tools, "set_session_state")
+
+        result = mode_switch_tools.switch_to_action_mode(mock_tool_context)
+
+        assert "Switching to Action Mode" in result
+        assert mock_session.state["current_mode"] == "action"
+        assert isinstance(mock_session.state["planning"], dict)
+        assert mock_session.state["planning"]["prp_content"] == prp_text
+        assert mock_session.state["planning"]["prp_generated"] is True
+        assert mock_session.state["prp_text"] == prp_text
+        assert mock_tool_context.actions.transfer_to_agent == "action_agent"
+
+
+class TestPlanModeTools:
+    """Tests for Plan Mode tools."""
+
+    def test_update_session_state_rejects_planning_overwrite(
+        self,
+        mocker: "MockerFixture"
+    ) -> None:
+        """Test that update_session_state prevents replacing planning root with non-dict.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        session_state = SessionState()
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mocker.Mock(state=session_state)
+
+        result = planning_mode_tools.update_session_state(
+            mock_tool_context,
+            "planning",
+            "# PRP",
+            planning_mode_tools.SessionStateOperation.SET
+        )
+
+        assert "Attempted to replace planning state" in result
+        assert isinstance(mock_tool_context.session.state["planning"], dict)
+
+    def test_track_user_message(self, mocker: "MockerFixture") -> None:
+        """Test track_user_message helper function.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        session_state = SessionState()
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mocker.Mock(state=session_state)
+
+        result = planning_mode_tools.track_user_message(
+            mock_tool_context, 
+            message="I need a revenue report"
+        )
+
+        assert "✓ Appended to planning.qa_history" in result
+        assert len(session_state["planning"]["qa_history"]) == 1
+        assert session_state["planning"]["qa_history"][0]["role"] == "user"
+        assert session_state["planning"]["qa_history"][0]["content"] == "I need a revenue report"
+
+    def test_track_assistant_message(self, mocker: "MockerFixture") -> None:
+        """Test track_assistant_message helper function.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        session_state = SessionState()
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mocker.Mock(state=session_state)
+
+        result = planning_mode_tools.track_assistant_message(
+            mock_tool_context,
+            message="I found 3 tables"
+        )
+
+        assert "✓ Appended to planning.qa_history" in result
+        assert len(session_state["planning"]["qa_history"]) == 1
+        assert session_state["planning"]["qa_history"][0]["role"] == "assistant"
+        assert session_state["planning"]["qa_history"][0]["content"] == "I found 3 tables"
+
+    def test_set_datasets_confirmed(self, mocker: "MockerFixture") -> None:
+        """Test set_datasets_confirmed helper function.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        session_state = SessionState()
+        session_state["planning"] = {"datasets_confirmed": False}
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mocker.Mock(state=session_state)
+
+        result = planning_mode_tools.set_datasets_confirmed(mock_tool_context, True)
+
+        assert "✓ Updated planning.datasets_confirmed" in result
+        assert session_state["planning"]["datasets_confirmed"] is True
+
+    def test_set_intent_confirmed(self, mocker: "MockerFixture") -> None:
+        """Test set_intent_confirmed helper function.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        session_state = SessionState()
+        session_state["planning"] = {"intent_confirmed": False}
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mocker.Mock(state=session_state)
+
+        result = planning_mode_tools.set_intent_confirmed(mock_tool_context, True)
+
+        assert "✓ Updated planning.intent_confirmed" in result
+        assert session_state["planning"]["intent_confirmed"] is True
+
+    def test_store_discovered_datasets(self, mocker: "MockerFixture") -> None:
+        """Test store_discovered_datasets helper function.
+        
+        Args:
+            mocker: Pytest mocker fixture
+        """
+        session_state = SessionState()
+        session_state["planning"] = {"discovered_datasets": []}
+        mock_tool_context = mocker.Mock()
+        mock_tool_context.session = mocker.Mock(state=session_state)
+
+        dataset_ids = ["project.dataset.table1", "project.dataset.table2"]
+        result = planning_mode_tools.store_discovered_datasets(
+            mock_tool_context,
+            dataset_ids
+        )
+
+        assert "✓ Updated planning.discovered_datasets" in result
+        assert session_state["planning"]["discovered_datasets"] == dataset_ids
 

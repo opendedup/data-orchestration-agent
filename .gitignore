@@ -52,3 +52,7 @@ poetry.lock
 .DS_Store
 Thumbs.db
 
+.sessions/
+sessions.db
+adk_server.log
+adk_server.log

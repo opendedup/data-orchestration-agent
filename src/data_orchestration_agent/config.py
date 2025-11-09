@@ -32,8 +32,12 @@ class Config(BaseSettings):
         description="Host address for the agent web server"
     )
     agent_port: int = Field(
-        default=8086,
+        default=8085,
         description="Port number for the agent web server"
+    )
+    enable_cors: bool = Field(
+        default=True,
+        description="Enable CORS for cross-origin requests (set to true for development)"
     )
 
     # MCP Service URLs

@@ -14,9 +14,11 @@ pydantic = "^2.10.5"
 pydantic-settings = "^2.7.1"
 python-dotenv = "^1.0.1"
 fastapi = "^0.115.12"
-uvicorn = "^0.34.0"
-google-adk = "^1.17.0"
+uvicorn = ">=0.35.0"
+google-adk = "^1.18.0"
 google-cloud-bigquery = "^3.28.0"
+sse-starlette = "^2.2.1"
+ag-ui-adk = "^0.3.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"

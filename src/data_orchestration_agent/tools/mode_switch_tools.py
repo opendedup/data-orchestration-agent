@@ -1,26 +1,13 @@
 """Mode switching tools using ToolContext for agent transfers."""
 
 import logging
-from typing import Dict, Iterable
+from typing import Any, Dict, Optional
 
 from google.adk.tools import ToolContext
 
-from . import action_mode_tools, ask_mode_tools
+from .planning_mode_tools.session_state import to_prefixed_key
 
 logger = logging.getLogger(__name__)
-
-
-def _merge_state_keys(source: Dict[str, object], target: Dict[str, object], keys: Iterable[str]) -> None:
-    """Merge selected keys from source into target.
-
-    Args:
-        source: Source dictionary containing values to merge.
-        target: Target dictionary to update.
-        keys: Iterable of keys to copy from source to target when present.
-    """
-    for key in keys:
-        if key in source:
-            target[key] = source[key]
 
 
 def switch_to_ask_mode(tool_context: ToolContext) -> str:
@@ -34,10 +21,10 @@ def switch_to_ask_mode(tool_context: ToolContext) -> str:
     Returns:
         Confirmation message
     """
+    logger.warning(f"🔄 TOOL CALLED: switch_to_ask_mode")
     session_state = tool_context.session.state
+    logger.debug("Setting current_mode to 'ask' in session state")
     session_state["current_mode"] = "ask"
-    action_mode_tools.set_session_state(session_state)
-    ask_mode_tools.set_session_state(session_state)
     tool_context.actions.transfer_to_agent = "ask_agent"
     logger.info("Transferring to Ask/Discover mode (ask_agent)")
     return "Switching to Ask/Discover Mode. You can now search for datasets and explore their schemas."
@@ -54,10 +41,10 @@ def switch_to_plan_mode(tool_context: ToolContext) -> str:
     Returns:
         Confirmation message
     """
+    logger.warning(f"🔄 TOOL CALLED: switch_to_plan_mode")
     session_state = tool_context.session.state
+    logger.debug("Setting current_mode to 'planning' in session state")
     session_state["current_mode"] = "planning"
-    action_mode_tools.set_session_state(session_state)
-    ask_mode_tools.set_session_state(session_state)
     tool_context.actions.transfer_to_agent = "plan_agent"
     logger.info("Transferring to Plan mode (plan_agent)")
     return "Switching to Plan Mode. Let's create a Product Requirement Prompt (PRP)."
@@ -74,25 +61,21 @@ def switch_to_action_mode(tool_context: ToolContext) -> str:
     Returns:
         Confirmation message
     """
+    logger.warning(f"🔄 TOOL CALLED: switch_to_action_mode")
     session_state = tool_context.session.state
+    logger.debug("Setting current_mode to 'action' in session state")
     session_state["current_mode"] = "action"
 
-    # Preserve dataset discovery context gathered in Ask Mode
-    ask_state = ask_mode_tools.get_session_state()
-    _merge_state_keys(
-        ask_state,
-        session_state,
-        keys=("last_search_results", "last_search_query"),
-    )
-
     # Surface PRP content generated in Plan Mode for Action Mode tools
-    planning_state = session_state.get("planning", {})
-    prp_content = planning_state.get("prp_content")
-    if prp_content:
-        session_state["prp_text"] = prp_content
+    prp_content_key = to_prefixed_key("planning.prp_content")
+    prp_content = session_state.get(prp_content_key)
 
-    action_mode_tools.set_session_state(session_state)
-    ask_mode_tools.set_session_state(session_state)
+    if prp_content and isinstance(prp_content, str):
+        logger.info(f"Found PRP content in '{prp_content_key}', making it available to Action Mode.")
+        session_state["prp_text"] = prp_content
+    else:
+        logger.info("No PRP content found in session state to forward to Action Mode.")
+
     tool_context.actions.transfer_to_agent = "action_agent"
     logger.info("Transferring to Action mode (action_agent)")
     return "Switching to Action Mode. You can now execute queries or build data products from PRPs."

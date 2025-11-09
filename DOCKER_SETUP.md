@@ -25,7 +25,7 @@ If you prefer using a service account:
 
 1. Create and download a service account key from GCP Console
 2. Save it locally (e.g., `~/gcp-keys/service-account.json`)
-3. Update the volume mounts in `docker-compose.yml` for each agent:
+3. Update the volume mounts in `docker compose.yml` for each agent:
    ```yaml
    volumes:
      - ~/gcp-keys/service-account.json:/app/credentials/service-account.json:ro
@@ -33,9 +33,9 @@ If you prefer using a service account:
      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/service-account.json
    ```
 
-### Credential Mounting in docker-compose.yml
+### Credential Mounting in docker compose.yml
 
-The `docker-compose.yml` is already configured to mount your gcloud credentials:
+The `docker compose.yml` is already configured to mount your gcloud credentials:
 
 - **data-discovery-agent**: `~/.config/gcloud:/home/mcp/.config/gcloud:ro`
 - **query-generation-agent**: `~/.config/gcloud:/home/appuser/.config/gcloud:ro`
@@ -49,7 +49,7 @@ Each agent also has `GOOGLE_APPLICATION_CREDENTIALS` environment variable set to
 After starting the agents, verify authentication is working:
 ```bash
 # Check logs for authentication errors
-docker-compose logs | grep -i "permission\|auth\|403"
+docker compose logs | grep -i "permission\|auth\|403"
 
 # Should return empty if authentication is working
 ```
@@ -58,7 +58,7 @@ docker-compose logs | grep -i "permission\|auth\|403"
 
 ```
 data-orchestration-agent/
-├── docker-compose.yml      # Master orchestration file
+├── docker compose.yml      # Master orchestration file
 ├── check-health.sh         # Health check script
 └── DOCKER_SETUP.md        # This file
 
@@ -76,7 +76,7 @@ All agents communicate via the shared `mcp-platform-network`.
 ### Start All Agents
 ```bash
 cd /home/user/git/data-orchestration-agent
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Check Health
@@ -101,18 +101,18 @@ Expected output:
 ### View Logs
 ```bash
 # All agents
-docker-compose logs -f
+docker compose logs -f
 
 # Specific agent
-docker-compose logs -f data-discovery-agent
-docker-compose logs -f query-generation-agent
-docker-compose logs -f data-planning-agent
-docker-compose logs -f data-graphql-agent
+docker compose logs -f data-discovery-agent
+docker compose logs -f query-generation-agent
+docker compose logs -f data-planning-agent
+docker compose logs -f data-graphql-agent
 ```
 
 ### Stop All Agents
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ## 📋 Common Commands
@@ -120,44 +120,44 @@ docker-compose down
 ### Start Specific Agents
 ```bash
 # Start only discovery and query generation
-docker-compose up -d data-discovery-agent query-generation-agent
+docker compose up -d data-discovery-agent query-generation-agent
 
 # Start only planning
-docker-compose up -d data-planning-agent
+docker compose up -d data-planning-agent
 ```
 
 ### Rebuild After Code Changes
 ```bash
 # Rebuild all
-docker-compose up -d --build
+docker compose up -d --build
 
 # Rebuild specific agent
-docker-compose up -d --build data-discovery-agent
+docker compose up -d --build data-discovery-agent
 ```
 
 ### Check Container Status
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 ### Follow Logs in Real-time
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ### Restart a Specific Agent
 ```bash
-docker-compose restart query-generation-agent
+docker compose restart query-generation-agent
 ```
 
 ### Stop Without Removing Containers
 ```bash
-docker-compose stop
+docker compose stop
 ```
 
 ### Start Stopped Containers
 ```bash
-docker-compose start
+docker compose start
 ```
 
 ## 🔍 Health Endpoints
@@ -230,17 +230,17 @@ ls -la ~/.config/gcloud/application_default_credentials.json
 gcloud auth application-default login
 
 # 3. Restart all containers
-docker-compose down
-docker-compose up -d
+docker compose down
+docker compose up -d
 
 # 4. Check logs for auth errors
-docker-compose logs | grep -i "403\|permission\|auth"
+docker compose logs | grep -i "403\|permission\|auth"
 ```
 
 ### Agent Not Starting
 ```bash
 # Check logs for the specific agent
-docker-compose logs data-discovery-agent
+docker compose logs data-discovery-agent
 
 # Check if .env file exists
 ls -la ../data-discovery-agent/.env
@@ -262,18 +262,18 @@ docker stop <container_id>
 ### Network Issues
 ```bash
 # Recreate the network
-docker-compose down
+docker compose down
 docker network rm mcp-platform-network
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Clear Everything and Start Fresh
 ```bash
 # Stop and remove all containers, networks, and volumes
-docker-compose down -v
+docker compose down -v
 
 # Rebuild and start
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## 📊 Resource Usage
@@ -289,7 +289,7 @@ docker stats data-discovery-mcp query-generation-mcp data-planning-mcp data-grap
 ```bash
 # 1. Start all agents
 cd /home/user/git/data-orchestration-agent
-docker-compose up -d
+docker compose up -d
 
 # 2. Wait for startup
 sleep 15
@@ -301,19 +301,19 @@ sleep 15
 # Changes to mounted volumes (src/) are reflected immediately
 
 # 5. View logs to debug
-docker-compose logs -f data-planning-agent
+docker compose logs -f data-planning-agent
 
 # 6. Restart specific agent if needed
-docker-compose restart data-planning-agent
+docker compose restart data-planning-agent
 
 # 7. When done
-docker-compose down
+docker compose down
 ```
 
 ### Testing Inter-Agent Communication
 ```bash
 # Start all agents
-docker-compose up -d
+docker compose up -d
 
 # Test the full workflow:
 # 1. Plan with planning agent (port 8082)
@@ -324,7 +324,7 @@ docker-compose up -d
 
 ## 🆘 Getting Help
 
-- Check individual agent logs: `docker-compose logs <service-name>`
+- Check individual agent logs: `docker compose logs <service-name>`
 - Check health endpoints: `./check-health.sh`
 - Verify .env files exist in each agent directory
 - Ensure Docker daemon is running: `docker ps`

@@ -66,15 +66,18 @@ class QueryGenClient:
     async def generate_queries(
         self,
         insight: str,
-        datasets: List[Dict[str, Any]],
+        dataset_ids: List[Dict[str, str]],
         max_queries: Optional[int] = None,
         max_iterations: Optional[int] = None
     ) -> Dict[str, Any]:
-        """Generate SQL queries from insight and discovered datasets.
+        """Generate SQL queries from insight and dataset IDs.
+        
+        The query generation agent will automatically fetch full dataset metadata
+        from the discovery agent using the provided IDs.
         
         Args:
             insight: Natural language description of the desired queries
-            datasets: List of discovered datasets with schemas
+            dataset_ids: List of dataset identifiers (e.g., [{"project_id": "...", "dataset_id": "...", "table_id": "..."}])
             max_queries: Maximum number of queries to generate
             max_iterations: Maximum iterations for query refinement
             
@@ -104,7 +107,7 @@ class QueryGenClient:
         Example:
             >>> result = await client.generate_queries(
             ...     insight="What are average sales by region?",
-            ...     datasets=[{"table_id": "sales.transactions", ...}]
+            ...     dataset_ids=[{"project_id": "my-project", "dataset_id": "sales", "table_id": "transactions"}]
             ... )
             >>> for query in result["queries"]:
             ...     print(f"SQL: {query['sql']}")
@@ -113,7 +116,7 @@ class QueryGenClient:
         logger.info(f"Generating queries for insight: {insight}")
         arguments = {
             "insight": insight,
-            "datasets": datasets
+            "dataset_ids": dataset_ids
         }
         
         if max_queries is not None:
@@ -158,7 +161,7 @@ class QueryGenClient:
     async def generate_queries_async(
         self,
         insight: str,
-        datasets: List[Dict[str, Any]],
+        dataset_ids: List[Dict[str, str]],
         max_queries: Optional[int] = None,
         max_iterations: Optional[int] = None,
         poll_interval: float = 5.0,
@@ -170,9 +173,12 @@ class QueryGenClient:
         query generation tasks. Instead of waiting for completion in a single request,
         it starts a task and polls for completion.
         
+        The query generation agent will automatically fetch full dataset metadata
+        from the discovery agent using the provided IDs.
+        
         Args:
             insight: Natural language description of the desired queries
-            datasets: List of discovered datasets with schemas
+            dataset_ids: List of dataset identifiers (e.g., [{"project_id": "...", "dataset_id": "...", "table_id": "..."}])
             max_queries: Maximum number of queries to generate
             max_iterations: Maximum iterations for query refinement
             poll_interval: Seconds between status polls (default: 5)
@@ -188,7 +194,7 @@ class QueryGenClient:
         Example:
             >>> result = await client.generate_queries_async(
             ...     insight="What are average sales by region?",
-            ...     datasets=[{"table_id": "sales.transactions", ...}],
+            ...     dataset_ids=[{"project_id": "my-project", "dataset_id": "sales", "table_id": "transactions"}],
             ...     max_wait_seconds=600.0
             ... )
         """
@@ -196,7 +202,7 @@ class QueryGenClient:
         
         arguments = {
             "insight": insight,
-            "datasets": datasets
+            "dataset_ids": dataset_ids
         }
         
         if max_queries is not None:
