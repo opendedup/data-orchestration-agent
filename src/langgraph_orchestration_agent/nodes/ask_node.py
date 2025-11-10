@@ -4,6 +4,7 @@ import logging
 from typing import Any
 
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, ToolMessage
+from langgraph.types import interrupt
 
 from ..config import Config
 from ..llm import create_llm
@@ -145,10 +146,12 @@ async def ask_node(
 - search_datasets(query) - Find tables with natural language
 - get_dataset_details(table_id) - View table schema and metadata
   * You MUST call this tool whenever the user asks about a table whose name matches the fully qualified pattern "project.dataset.table" or explicitly requests schema/column/field details.
-- generate_query(question, tables, max_rows_returned=10, previous_query_indices="") - Create SQL query from question
+- generate_query(question, tables, max_rows_returned=10, previous_query_indices="", should_execute=False) - Create SQL query from question
   * Tables must be fully qualified: "project_id.dataset_id.table_id"
   * previous_query_indices: Optional comma-separated string of query indices to use as examples (e.g., "0,2")
-  * Use previous queries when user references them or wants similar patterns
+  * should_execute: Set to True ONLY if user explicitly wants to see the actual data/results immediately
+    - True examples: "show me the data", "get me the results", "run the query and show results", "fetch the data"
+    - False examples: "what is X?", "what's the latest Y?", "create a query for Z", "generate SQL"
   * Extract table IDs from search_datasets results
 - run_query(query_index) - Execute a query (0 = most recent)
 - view_query(query_index) - View query SQL or list all queries (-1 to list all)
@@ -285,9 +288,66 @@ Be helpful and efficient."""
                 )
                 conversation_messages.append(tool_message)
 
+                # Handle interrupt for generate_query tool
+                if tool_name == "generate_query" and "Error" not in str(tool_result):
+                    # Check if LLM indicated user wants immediate execution via should_execute parameter
+                    should_execute = tool_args.get("should_execute", False)
+                    logger.info(f"[HITL] Query generated with should_execute={should_execute}")
+
+                    if not should_execute:
+                        # User didn't explicitly request execution - ask for confirmation
+                        logger.info("[HITL] Interrupting for user confirmation")
+                        
+                        # Interrupt and ask for confirmation
+                        user_approved = interrupt({
+                            "type": "confirm_query_execution",
+                            "message": "I've generated a SQL query. Would you like me to run it?",
+                            "query_preview": str(tool_result)[:300]
+                        })
+
+                        logger.info(f"[HITL] User response to query confirmation: {user_approved}")
+
+                        if user_approved:
+                            # User approved - automatically run the query
+                            logger.info("User approved query execution - running query")
+                            
+                            # Find and execute run_query tool
+                            for run_tool in tools:
+                                if run_tool.name == "run_query":
+                                    try:
+                                        run_result = await run_tool.ainvoke({"query_index": 0})
+                                        
+                                        # Add the run_query result to conversation
+                                        run_tool_message = ToolMessage(
+                                            content=str(run_result),
+                                            tool_call_id=f"{tool_call_id}-auto-run",
+                                            name="run_query",
+                                        )
+                                        conversation_messages.append(run_tool_message)
+                                        logger.info("Query executed successfully after user approval")
+                                    except Exception as e:
+                                        logger.error(f"Error auto-running query: {e}")
+                                        error_message = ToolMessage(
+                                            content=f"Error running query: {e}",
+                                            tool_call_id=f"{tool_call_id}-auto-run-error",
+                                            name="run_query",
+                                        )
+                                        conversation_messages.append(error_message)
+                                    break
+                        else:
+                            logger.info("[HITL] User declined query execution")
+                    else:
+                        # LLM determined user wants immediate execution - skip confirmation
+                        logger.info("[HITL] Skipping confirmation - LLM detected explicit execution intent")
+
             # Continue loop to get LLM's response after tool execution
 
         except Exception as e:
+            # Re-raise interrupt exceptions - they need to propagate to LangGraph
+            if e.__class__.__name__ == "GraphInterrupt":
+                logger.info("Interrupt raised - propagating to LangGraph")
+                raise
+            
             logger.error(f"Error in ask mode agent loop: {e}")
             error_msg = AIMessage(content=f"# Ask Mode\n\nError: {e}")
             return {

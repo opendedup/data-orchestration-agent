@@ -186,16 +186,46 @@ def create_copilotkit_app(config: Config, clients: dict[str, Any]) -> FastAPI:
                     state_with_context,
                     thread_id=thread_id,
                 ):
-                    snapshot = {
-                        "session_id": thread_id,
-                        "message_id": message_id,
-                        "event_type": graph_event.event_type,
-                        **build_shared_state(graph_event.state),
-                    }
-                    yield encoder.encode(StateSnapshotEvent(snapshot=snapshot))
-
-                    # Node telemetry removed - only showing final AI responses
+                    # Handle interrupt event
+                    if graph_event.event_type == "interrupt":
+                        interrupt_data = graph_event.payload.get("interrupt", [])
+                        logger.info(f"[INTERRUPT] Detected in stream: {interrupt_data}")
+                        
+                        # Emit state snapshot with interrupt information
+                        yield encoder.encode(StateSnapshotEvent(
+                            snapshot={
+                                "session_id": thread_id,
+                                "message_id": message_id,
+                                "interrupted": True,
+                                "interrupt_payload": interrupt_data,
+                                **build_shared_state(graph_event.state)
+                            }
+                        ))
+                        
+                        # Store interrupted state in session
+                        session_states[thread_id] = graph_event.state
+                        
+                        # Emit run finished event
+                        yield encoder.encode(RunFinishedEvent(
+                            threadId=thread_id,
+                            runId=run_id,
+                            result=build_shared_state(graph_event.state)
+                        ))
+                        
+                        logger.info("Graph execution interrupted - waiting for user response")
+                        break
                     
+                    # Handle state update events
+                    if graph_event.event_type == "state_update":
+                        snapshot = {
+                            "session_id": thread_id,
+                            "message_id": message_id,
+                            "event_type": graph_event.event_type,
+                            **build_shared_state(graph_event.state),
+                        }
+                        yield encoder.encode(StateSnapshotEvent(snapshot=snapshot))
+                    
+                    # Handle final state
                     if graph_event.event_type == "final_state":
                         updated_state = graph_event.state
                         session_states[thread_id] = updated_state

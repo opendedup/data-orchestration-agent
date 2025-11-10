@@ -149,6 +149,7 @@ def create_ask_tools(
         tables: str,
         max_rows_returned: int = 10,
         previous_query_indices: str = "",
+        should_execute: bool = False,
     ) -> str:
         """Generate SQL query from a natural language question using specified tables.
 
@@ -160,6 +161,10 @@ def create_ask_tools(
             tables: Comma-separated list of fully qualified table names (e.g., "project.dataset.table1, project.dataset.table2")
             max_rows_returned: Maximum number of rows to return in query results (default: 10)
             previous_query_indices: Optional comma-separated list of up to 3 query indices to use as examples (e.g., "0,2")
+            should_execute: Set to True if the user explicitly wants to execute the query immediately and see results. 
+                          Set to False (default) if the user just wants to see the query or is asking "what would the query be".
+                          Examples where should_execute=True: "show me the data", "run the query", "get me the results", "fetch the data"
+                          Examples where should_execute=False: "what is X?", "create a query for Y", "generate SQL for Z"
 
         Returns:
             Human-readable summary with SQL preview and query index for execution

@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from langchain_core.messages import HumanMessage
+from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, StateGraph
 
 from .config import Config
@@ -65,8 +66,9 @@ def create_graph(config: Config, clients: dict[str, Any]) -> StateGraph:
     workflow.add_edge("plan", END)
     workflow.add_edge("action", END)
 
-    # Compile the graph
-    app = workflow.compile()
+    # Compile the graph with checkpointer for interrupt support
+    checkpointer = MemorySaver()
+    app = workflow.compile(checkpointer=checkpointer)
 
     logger.info("LangGraph orchestration graph compiled successfully")
     return app
@@ -88,7 +90,11 @@ class GraphStreamEvent:
 
 
 async def run_graph(
-    app: StateGraph, user_input: str, state: dict[str, Any] | None = None
+    app: StateGraph,
+    user_input: str,
+    state: dict[str, Any] | None = None,
+    *,
+    thread_id: str | None = None,
 ) -> dict[str, Any]:
     """Run the graph with a user input.
 
@@ -96,6 +102,7 @@ async def run_graph(
         app: Compiled StateGraph
         user_input: User's message
         state: Optional existing state to continue conversation
+        thread_id: Optional thread ID for checkpointer persistence
 
     Returns:
         Updated state after graph execution
@@ -119,8 +126,15 @@ async def run_graph(
     user_message = HumanMessage(content=user_input)
     state["messages"] = state.get("messages", []) + [user_message]
 
+    # Build config with thread_id if checkpointer is present
+    config: dict[str, Any] | None = None
+    if hasattr(app, "checkpointer") and app.checkpointer is not None:
+        # Checkpointer requires a thread_id
+        thread_id = thread_id or "default-thread"
+        config = {"configurable": {"thread_id": thread_id}}
+
     # Run the graph
-    result = await app.ainvoke(state)
+    result = await app.ainvoke(state, config=config)
 
     return result
 
@@ -161,42 +175,33 @@ async def stream_graph(
     user_message = HumanMessage(content=user_input)
     state["messages"] = state.get("messages", []) + [user_message]
 
-    latest_state: dict[str, Any] = state
     config: dict[str, Any] | None = (
         {"configurable": {"thread_id": thread_id}} if thread_id else None
     )
 
-    # Use astream to get node outputs with updated state
-    async for event in app.astream(state, config=config, stream_mode="updates"):
-        # event is a dict with node_name as key and node output as value
-        # e.g., {"router": {"next": "ask", ...}} or {"ask": {"messages": [...]}}
-        for node_name, node_output in event.items():
-            logger.debug(f"Node '{node_name}' output: {node_output.keys() if isinstance(node_output, dict) else type(node_output)}")
-            
-            # Yield node start event
+    # Use astream with stream_mode="values" to get full state including interrupts
+    async for latest_state in app.astream(state, config=config, stream_mode="values"):
+        logger.debug(f"State update: {latest_state.keys() if isinstance(latest_state, dict) else type(latest_state)}")
+        
+        # Check for interrupt in state
+        if "__interrupt__" in latest_state:
+            logger.info(f"[INTERRUPT] Detected interrupt in state: {latest_state['__interrupt__']}")
             yield GraphStreamEvent(
-                event_type="on_node_start",
-                payload={"node": node_name},
+                event_type="interrupt",
+                payload={"interrupt": latest_state["__interrupt__"]},
                 state=latest_state,
             )
-            
-            # Update latest_state with node output
-            if isinstance(node_output, dict):
-                # Merge node output into latest_state
-                for key, value in node_output.items():
-                    if key == "messages" and isinstance(value, list):
-                        # For messages, take the full list from node output
-                        latest_state[key] = value
-                    elif value is not None:
-                        latest_state[key] = value
-            
-            # Yield node end event with updated state
-            yield GraphStreamEvent(
-                event_type="on_node_end",
-                payload={"node": node_name, "output": node_output},
-                state=latest_state,
-            )
+            # Don't yield final_state on interrupt - the graph is paused
+            return
+        
+        # Yield state update event
+        yield GraphStreamEvent(
+            event_type="state_update",
+            payload={"state": latest_state},
+            state=latest_state,
+        )
 
+    # Only yield final_state if we completed without interrupt
     yield GraphStreamEvent(
         event_type="final_state",
         payload={"result": latest_state},
