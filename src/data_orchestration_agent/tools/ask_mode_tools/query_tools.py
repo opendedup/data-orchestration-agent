@@ -37,14 +37,15 @@ def _get_queries_from_state(tool_context: ToolContext) -> List[Dict[str, Any]]:
     Returns:
         List of query dictionaries
     """
-    # Use tool_context.state directly - it automatically handles persistence via event system
-    queries = tool_context.state.get("user:queries")
+    session_state = tool_context.session.state
+    queries = session_state.get("user:queries")
     if queries is None:
-        logger.info("Initializing user:queries in context state")
-        tool_context.state["user:queries"] = []
-        return []
+        logger.info("Initializing user:queries in session state")
+        queries = []
+        session_state["user:queries"] = queries
+    tool_context.state["user:queries"] = queries
     
-    logger.info(f"Found {len(queries)} queries in context state")
+    logger.info(f"Found {len(queries)} queries in session state")
     return queries
 
 
@@ -57,13 +58,15 @@ def _get_query_results_from_state(tool_context: ToolContext) -> List[Dict[str, A
     Returns:
         List of query result dictionaries
     """
-    query_results = tool_context.state.get("user:query_results")
+    session_state = tool_context.session.state
+    query_results = session_state.get("user:query_results")
     if query_results is None:
-        logger.info("Initializing user:query_results in context state")
-        tool_context.state["user:query_results"] = []
-        return []
+        logger.info("Initializing user:query_results in session state")
+        query_results = []
+        session_state["user:query_results"] = query_results
+    tool_context.state["user:query_results"] = query_results
     
-    logger.info(f"Found {len(query_results)} query results in context state")
+    logger.info(f"Found {len(query_results)} query results in session state")
     return query_results
 
 
@@ -197,7 +200,9 @@ async def generate_query(
         # Append to queries list
         queries.append(query_entry)
         
-        # Store back to context.state - this automatically persists via event delta
+        # Store back to session and run state - ensures persistence
+        session_state = tool_context.session.state
+        session_state["user:queries"] = queries
         tool_context.state["user:queries"] = queries
         
         # Diagnostic logging
@@ -336,6 +341,8 @@ async def run_query(tool_context: ToolContext, query_index: int = 0) -> str:
         }
         
         query_results.append(result_entry)
+        session_state = tool_context.session.state
+        session_state["user:query_results"] = query_results
         tool_context.state["user:query_results"] = query_results
         
         logger.info(f"Query executed successfully, returned {row_count} rows")

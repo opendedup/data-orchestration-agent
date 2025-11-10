@@ -1,0 +1,178 @@
+version: '3.8'
+
+services:
+  # =============================================================================
+  # Data Discovery Agent - Port 8080
+  # =============================================================================
+  data-discovery-agent:
+    build:
+      context: ../data-discovery-agent
+      dockerfile: Dockerfile
+    container_name: data-discovery-mcp
+    image: data-discovery-agent:latest
+    env_file:
+      - ../data-discovery-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8080
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/mcp/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../data-discovery-agent/src:/app/src:ro
+      - ../data-discovery-agent/config:/app/config:ro
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/mcp/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - data-agent-network
+
+  # =============================================================================
+  # Query Generation Agent - Port 8081
+  # =============================================================================
+  query-generation-agent:
+    build:
+      context: ../query-generation-agent
+      dockerfile: Dockerfile
+    container_name: query-generation-mcp
+    image: query-generation-agent:latest
+    env_file:
+      - ../query-generation-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8081
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/appuser/.config/gcloud/application_default_credentials.json
+      - DISCOVERY_AGENT_URL=http://data-discovery-agent:8080
+    ports:
+      - "8081:8081"
+    volumes:
+      - ../query-generation-agent/logs:/app/logs
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/appuser/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8081/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - data-agent-network
+    depends_on:
+      - data-discovery-agent
+
+  # =============================================================================
+  # Data Planning Agent - Port 8082
+  # =============================================================================
+  data-planning-agent:
+    build:
+      context: ../data-planning-agent
+      dockerfile: Dockerfile
+    container_name: data-planning-mcp
+    image: data-planning-agent:latest
+    env_file:
+      - ../data-planning-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8082
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/mcp/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8082:8082"
+    volumes:
+      - ../data-planning-agent/output:/app/output
+      - ../data-planning-agent/context.example:/app/context:ro
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/mcp/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8082/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - data-agent-network
+
+  # =============================================================================
+  # Data GraphQL Agent - Port 8083
+  # =============================================================================
+  data-graphql-agent:
+    build:
+      context: ../data-graphql-agent
+      dockerfile: Dockerfile
+    container_name: data-graphql-mcp
+    image: data-graphql-agent:latest
+    env_file:
+      - ../data-graphql-agent/.env
+    environment:
+      - MCP_TRANSPORT=http
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8083
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/mcp/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8083:8083"
+    volumes:
+      - ../data-graphql-agent/output:/app/output
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/mcp/.config/gcloud:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8083/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - data-agent-network
+  # =============================================================================
+  # LangGraph Orchestration Agent - Port 8085
+  # =============================================================================
+  langgraph-orchestration-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.langgraph
+    image: langgraph-orchestration-agent:latest
+    container_name: langgraph-orchestration-agent
+    env_file:
+      - .env
+    environment:
+      - AGENT_PORT=8085
+      - AGENT_HOST=0.0.0.0
+      - ENABLE_CORS=true
+      - DISCOVERY_AGENT_URL=http://data-discovery-agent:8080
+      - QUERY_GEN_AGENT_URL=http://query-generation-agent:8081
+      - GRAPHQL_AGENT_URL=http://data-graphql-agent:8083
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/langgraph/.config/gcloud/application_default_credentials.json
+    ports:
+      - "8085:8085"
+    volumes:
+      # Mount GCP credentials for authentication
+      - ~/.config/gcloud:/home/langgraph/.config/gcloud:ro
+    networks:
+      - data-agent-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8085/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      - data-discovery-agent
+      - query-generation-agent
+      - data-graphql-agent
+
+networks:
+  data-agent-network:
+    driver: bridge
+
+

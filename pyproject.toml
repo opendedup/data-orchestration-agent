@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Root orchestration agent for data discovery, planning, and product creation using Google ADK"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "data_orchestration_agent", from = "src"}]
+packages = [
+    {include = "data_orchestration_agent", from = "src"},
+    {include = "langgraph_orchestration_agent", from = "src"}
+]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
@@ -19,6 +22,10 @@ google-adk = "^1.18.0"
 google-cloud-bigquery = "^3.28.0"
 sse-starlette = "^2.2.1"
 ag-ui-adk = "^0.3.2"
+langgraph = "^0.2.60"
+langchain = "^0.3.20"
+langchain-google-genai = "^2.0.8"
+langchain-core = "^0.3.31"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
@@ -32,6 +39,7 @@ respx = "^0.21.1"
 
 [tool.poetry.scripts]
 data-orchestration-agent = "data_orchestration_agent.main:main"
+langgraph-orchestration-agent = "langgraph_orchestration_agent.main:main"
 
 [build-system]
 requires = ["poetry-core"]

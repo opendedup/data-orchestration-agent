@@ -32,13 +32,15 @@ def _get_datasets_from_state(tool_context: ToolContext) -> Dict[str, Dict[str, A
     Returns:
         Dictionary of dataset entries keyed by table_id
     """
-    datasets = tool_context.state.get("user:datasets")
+    session_state = tool_context.session.state
+    datasets = session_state.get("user:datasets")
     if datasets is None:
-        logger.info("Initializing user:datasets in context state")
-        tool_context.state["user:datasets"] = {}
-        return {}
+        logger.info("Initializing user:datasets in session state")
+        datasets = {}
+        session_state["user:datasets"] = datasets
+    tool_context.state["user:datasets"] = datasets
     
-    logger.info(f"Found {len(datasets)} datasets in context state")
+    logger.info(f"Found {len(datasets)} datasets in session state")
     return datasets
 
 
@@ -162,7 +164,9 @@ async def get_dataset_details(tool_context: ToolContext, table_id: str) -> str:
         # Store with table_id as key
         datasets[table_id] = dataset_entry
         
-        # Store back to context.state - this automatically persists via event delta
+        # Store back to session and run state to ensure persistence and immediate availability
+        session_state = tool_context.session.state
+        session_state["user:datasets"] = datasets
         tool_context.state["user:datasets"] = datasets
         
         return result
